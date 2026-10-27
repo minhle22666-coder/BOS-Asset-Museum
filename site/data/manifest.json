@@ -1,0 +1,41 @@
+{
+ "generatedAt": "2026-10-27T03:38:18+00:00",
+ "categories": [
+  {
+   "slug": "logo-mascot",
+   "title": "Logo & Mascot for BOS Theme",
+   "description": "The official BOS logo and core mascot artwork. Start here for any deck cover.",
+   "frame": "square",
+   "count": 0,
+   "bytes": 0,
+   "items": []
+  },
+  {
+   "slug": "desktop-background",
+   "title": "Desktop Background",
+   "description": "Wallpapers for laptops, monitors and meeting-room screens.",
+   "frame": "wide",
+   "count": 0,
+   "bytes": 0,
+   "items": []
+  },
+  {
+   "slug": "slide-design",
+   "title": "Mascot Materials for Slide Design",
+   "description": "Poses, avatars and props ready to drop straight into a slide.",
+   "frame": "square",
+   "count": 0,
+   "bytes": 0,
+   "items": []
+  },
+  {
+   "slug": "mini-games",
+   "title": "Materials for Mini Games",
+   "description": "Characters and pieces for quizzes and team games.",
+   "frame": "square",
+   "count": 0,
+   "bytes": 0,
+   "items": []
+  }
+ ]
+}

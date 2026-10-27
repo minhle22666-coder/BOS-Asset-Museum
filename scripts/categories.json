@@ -1,0 +1,33 @@
+{
+  "_comment": "Maps each Drive sub-folder to a gallery wing. 'drive_names' are matched case-insensitively against the Drive folder name. Order here = order on the website. 'frame' is 'square' or 'wide' (16:10, good for wallpapers).",
+  "categories": [
+    {
+      "slug": "logo-mascot",
+      "title": "Logo & Mascot for BOS Theme",
+      "description": "The official BOS logo and core mascot artwork. Start here for any deck cover.",
+      "frame": "square",
+      "drive_names": ["Logo & Mascot", "Logo and Mascot"]
+    },
+    {
+      "slug": "desktop-background",
+      "title": "Desktop Background",
+      "description": "Wallpapers for laptops, monitors and meeting-room screens.",
+      "frame": "wide",
+      "drive_names": ["Desktop Background", "Desktop Backgrounds"]
+    },
+    {
+      "slug": "slide-design",
+      "title": "Mascot Materials for Slide Design",
+      "description": "Poses, avatars and props ready to drop straight into a slide.",
+      "frame": "square",
+      "drive_names": ["Mascot-Slide Design", "Mascot Slide Design", "Slide Design"]
+    },
+    {
+      "slug": "mini-games",
+      "title": "Materials for Mini Games",
+      "description": "Characters and pieces for quizzes and team games.",
+      "frame": "square",
+      "drive_names": ["Mascot for Mini Games", "Mini Games"]
+    }
+  ]
+}
