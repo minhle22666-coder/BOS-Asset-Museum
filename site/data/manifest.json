@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T08:15:28+00:00",
+ "generatedAt": "2026-10-28T08:37:43+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -7,7 +7,7 @@
    "description": "The official BOS logo and core mascot artwork. Start here for any deck cover.",
    "frame": "square",
    "count": 8,
-   "bytes": 1060187,
+   "bytes": 2293495,
    "items": [
     {
      "id": "ecb722e01b96",
@@ -32,18 +32,6 @@
      "w": 454,
      "h": 141,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/BOS.png.webp"
-    },
-    {
-     "id": "ae757e3ba012",
-     "name": "chameleon",
-     "file": "media/logo-mascot/Logo KMR & BOS/chameleon.png",
-     "collection": "Logo KMR & BOS",
-     "mime": "image/png",
-     "size": 110735,
-     "hash": "99d511f8076f13731acdf763354477c82b5e0706",
-     "w": 295,
-     "h": 337,
-     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/chameleon.png.webp"
     },
     {
      "id": "d77c7a164dd3",
@@ -104,6 +92,18 @@
      "w": 1302,
      "h": 1302,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png.webp"
+    },
+    {
+     "id": "9ae2ecb82e9d",
+     "name": "Mid-Autumn",
+     "file": "media/logo-mascot/Zalo Avatar/Mid-Autumn.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1344043,
+     "hash": "eea128f59ebaffc3f3fe1dd25df4c347bb27b729",
+     "w": 1160,
+     "h": 1160,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Mid-Autumn.png.webp"
     }
    ]
   },
@@ -121,9 +121,81 @@
    "title": "Mascot Materials for Slide Design",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 1,
-   "bytes": 187421,
+   "count": 11,
+   "bytes": 10888739,
    "items": [
+    {
+     "id": "99c30e9a41ed",
+     "name": "all hands q1 2026 BOS (55)",
+     "file": "media/slide-design/all hands q1 2026 BOS (55).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1742455,
+     "hash": "6024470d7b447f6275ca098e894b67506a1a7af9",
+     "w": 1364,
+     "h": 768,
+     "thumb": "thumbs/slide-design/all hands q1 2026 BOS (55).png.webp"
+    },
+    {
+     "id": "0b6eeca70977",
+     "name": "All Hands Q3 2026",
+     "file": "media/slide-design/All Hands Q3 2026.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 633349,
+     "hash": "fc0df2028ea5b014db16463b3d2431b1605557ca",
+     "w": 706,
+     "h": 706,
+     "thumb": "thumbs/slide-design/All Hands Q3 2026.png.webp"
+    },
+    {
+     "id": "3376c07141cf",
+     "name": "All Hands Q4 2026",
+     "file": "media/slide-design/All Hands Q4 2026.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 812894,
+     "hash": "1b259827290de67a291890a4f882e4e2c7a8826f",
+     "w": 706,
+     "h": 706,
+     "thumb": "thumbs/slide-design/All Hands Q4 2026.png.webp"
+    },
+    {
+     "id": "f0f2e472124a",
+     "name": "BOS Website 1",
+     "file": "media/slide-design/BOS Website 1.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1418849,
+     "hash": "db8a4a20df838da5346ad57cf2c3404709c267e6",
+     "w": 1298,
+     "h": 730,
+     "thumb": "thumbs/slide-design/BOS Website 1.png.webp"
+    },
+    {
+     "id": "1649a9ba9386",
+     "name": "BOS Website",
+     "file": "media/slide-design/BOS Website.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1137145,
+     "hash": "08adba8a326d4c32bbc0e67c4d70134a42570304",
+     "w": 1298,
+     "h": 730,
+     "thumb": "thumbs/slide-design/BOS Website.png.webp"
+    },
+    {
+     "id": "aa327d201243",
+     "name": "Explorer",
+     "file": "media/slide-design/Explorer.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1120575,
+     "hash": "dfda3e348d8e29a2073bb129b098566634cfacfb",
+     "w": 1364,
+     "h": 768,
+     "thumb": "thumbs/slide-design/Explorer.png.webp"
+    },
     {
      "id": "610aeebef2e4",
      "name": "KMR-Tet",
@@ -135,6 +207,54 @@
      "w": 290,
      "h": 367,
      "thumb": "thumbs/slide-design/KMR-Tet.png.webp"
+    },
+    {
+     "id": "8c5dd627b4db",
+     "name": "New Function",
+     "file": "media/slide-design/New Function.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 589802,
+     "hash": "b680e12cdfb842e81ff3dda6063629f6a12d2fc0",
+     "w": 958,
+     "h": 539,
+     "thumb": "thumbs/slide-design/New Function.png.webp"
+    },
+    {
+     "id": "4d623abc6878",
+     "name": "New Kaizen Discussion",
+     "file": "media/slide-design/New Kaizen Discussion.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 649051,
+     "hash": "9f32ac17c4ac1a6809eb44a9ae8f6027eb481ae1",
+     "w": 687,
+     "h": 557,
+     "thumb": "thumbs/slide-design/New Kaizen Discussion.png.webp"
+    },
+    {
+     "id": "7809b557a4d1",
+     "name": "Performance Review (1)",
+     "file": "media/slide-design/Performance Review (1).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1131262,
+     "hash": "8b9e39292ee77d815a3b208076c581320ea21fb2",
+     "w": 1364,
+     "h": 768,
+     "thumb": "thumbs/slide-design/Performance Review (1).png.webp"
+    },
+    {
+     "id": "012afd4458da",
+     "name": "Performance Review",
+     "file": "media/slide-design/Performance Review.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1465936,
+     "hash": "8b121291bc0f06f48df0509f4ae1a5e9ac698f23",
+     "w": 1364,
+     "h": 768,
+     "thumb": "thumbs/slide-design/Performance Review.png.webp"
     }
    ]
   },
@@ -351,28 +471,28 @@
      "thumb": "thumbs/mini-games/BOS 14.png.webp"
     },
     {
-     "id": "bea385cf7aaa",
-     "name": "Your paragraph text (5)",
-     "file": "media/mini-games/Your paragraph text (5).png",
-     "collection": "",
-     "mime": "image/png",
-     "size": 131761,
-     "hash": "6cb42816b2e51c54ed034e21aa7c28917351eea0",
-     "w": 265,
-     "h": 270,
-     "thumb": "thumbs/mini-games/Your paragraph text (5).png.webp"
-    },
-    {
-     "id": "80d6b1a85d7e",
-     "name": "Your paragraph text (7)",
-     "file": "media/mini-games/Your paragraph text (7).png",
+     "id": "de9edeb3282b",
+     "name": "BOS Buzzer",
+     "file": "media/mini-games/BOS Buzzer.png",
      "collection": "",
      "mime": "image/png",
      "size": 137036,
      "hash": "ced6076a7b5b1f1191ff85ce5c4cc35e4969e6c3",
      "w": 289,
      "h": 294,
-     "thumb": "thumbs/mini-games/Your paragraph text (7).png.webp"
+     "thumb": "thumbs/mini-games/BOS Buzzer.png.webp"
+    },
+    {
+     "id": "bff7a3aa390f",
+     "name": "BOS Quiz",
+     "file": "media/mini-games/BOS Quiz.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 131761,
+     "hash": "6cb42816b2e51c54ed034e21aa7c28917351eea0",
+     "w": 265,
+     "h": 270,
+     "thumb": "thumbs/mini-games/BOS Quiz.png.webp"
     }
    ]
   }
