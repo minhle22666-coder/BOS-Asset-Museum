@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Planet BOS, the Pixel Gallery</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#06103a">
-  <link rel="icon" href="assets/planet/mascot-wave.webp" type="image/webp">
+  <meta name="theme-color" content="#0a1240">
+  <link rel="icon" href="assets/planet/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/planet/favicon-64.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="assets/planet/favicon-180.png">
   <link rel="preload" href="assets/planet/hall-bg.webp" as="image">
   <link rel="preload" href="assets/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
@@ -20,6 +22,7 @@
     <div class="world-img"></div>
     <canvas class="motes" id="motes"></canvas>
     <div class="world-tint"></div>
+    <div class="planet" id="planet"><img class="planet-flat" src="assets/planet/planet.webp" alt="" width="720" height="504"></div>
   </div>
 
   <!-- Top bar -->
@@ -45,7 +48,6 @@
   <main class="deck" id="deck" aria-live="polite">
     <section class="page page-home" data-index="0" aria-labelledby="home-title">
       <div class="home">
-        <p class="signal"><span class="signal-dot" aria-hidden="true"></span>Incoming transmission from Planet BOS</p>
         <h1 class="home-title" id="home-title">Where pixels become galaxies.</h1>
 
         <div class="story" id="story" role="group" aria-roledescription="story" aria-label="The story of Planet BOS">
@@ -62,6 +64,7 @@
           <p class="travel-hint"><span class="mouse" aria-hidden="true"></span>Scroll or swipe to travel between halls</p>
         </div>
       </div>
+      <p class="credit">3D planet: “Purple Planet” by Yo.Ri, CC BY 4.0</p>
     </section>
     <!-- hall pages are added by app.js from the gallery list -->
   </main>
@@ -106,5 +109,7 @@
 
   <script src="assets/vendor/jszip-3.10.1.min.js" defer></script>
   <script src="assets/app.js" defer></script>
+  <script type="importmap">{ "imports": { "three": "./assets/vendor/three-0.170.0.module.min.js" } }</script>
+  <script type="module" src="assets/planet.js"></script>
 </body>
 </html>

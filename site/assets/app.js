@@ -15,22 +15,23 @@
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
-    "logo-mascot": { hue: "#66f57d", pose: "hero", lines: ["These are the originals. Handle with care!", "Copy a logo, paste it on your cover slide."] },
-    "desktop-background": { hue: "#8fe3ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
-    "slide-design": { hue: "#ff8a47", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
-    "mini-games": { hue: "#b99bff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
+    "logo-mascot": { hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Copy a logo, paste it on your cover slide."] },
+    "desktop-background": { hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
+    "slide-design": { hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
+    "mini-games": { hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
     _: { hue: "#8fe3ff", pose: "float", lines: ["Fresh arrivals from the BOS Drive."] },
   };
   const HOME_LINES = ["Hi! I'm your guide. Scroll down to start the tour.", "Psst, every picture here can be copied straight into your slides."];
   const POSE = { wave: [389, 511], hero: [304, 517], fly: [409, 564], tablet: [405, 515], thumbs: [358, 482], float: [409, 513], point: [386, 501] };
 
   const ICON = {
-    home: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M3.2 15.8c-1.4 1.5-1.7 2.8-1 3.4 1.5 1.3 7-1.5 12.4-6.3S22.7 4.5 21.3 3.2c-.6-.6-1.9-.3-3.4.8"/></svg>',
-    "logo-mascot": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c-4.4 0-7.5 3.3-7.5 7.6 0 3.6 2.2 6.3 4 7.4v2h7v-2c1.8-1.1 4-3.8 4-7.4 0-4.3-3.1-7.6-7.5-7.6z"/><path d="M7.6 10.4c1.3-1.5 7.5-1.5 8.8 0 .7.8.6 2.8-.3 3.6-1.4 1.2-6.8 1.2-8.2 0-.9-.8-1-2.8-.3-3.6z"/></svg>',
-    "desktop-background": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12.5" rx="2"/><path d="M9 20.5h6M12 16.5v4"/><path d="M3.5 14c3-3.6 7.2-4.6 11-3.1 2.5 1 4.5 2.6 6 4.2"/><circle cx="16.5" cy="7.8" r="1.3"/></svg>',
-    "slide-design": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v3.5M8.5 21h7"/><path d="m11.5 7 1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></svg>',
-    "mini-games": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a4.5 4.5 0 0 1 4.4 5.4l-.6 3a2.4 2.4 0 0 1-4.1 1.2L15 16H9l-1.7 1.6a2.4 2.4 0 0 1-4.1-1.2l-.6-3A4.5 4.5 0 0 1 7 8z"/><path d="M8 11v3M6.5 12.5h3"/><circle cx="15.5" cy="11.5" r=".6" fill="currentColor"/><circle cx="17.3" cy="13.4" r=".6" fill="currentColor"/></svg>',
-    _: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.7l2 2h7.3A2.5 2.5 0 0 1 21 9.5v7a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5z"/><path d="m12 10 .8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z"/></svg>',
+    // Duotone hall icons: .d1 is the soft glass layer, .d2 the solid shape, .k a cut-out in the page colour.
+    home: '<img src="assets/planet/favicon-64.png" alt="" width="26" height="26">',
+    "logo-mascot": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5 20 7v10l-8 4.5L4 17V7z"/><path class="d2" d="m12 7.2 1.45 2.95 3.25.47-2.35 2.3.55 3.24L12 14.63l-2.9 1.53.55-3.24-2.35-2.3 3.25-.47z"/></svg>',
+    "desktop-background": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="2.5" y="3.5" width="19" height="13.5" rx="2.6"/><path class="d2" d="M2.5 14.2 7.6 9.6l3.6 3.1 2.9-2.4 7.4 5.5v.6a2.6 2.6 0 0 1-2.6 2.6H5.1a2.6 2.6 0 0 1-2.6-2.6z"/><circle class="d2" cx="16.6" cy="7.6" r="1.6"/><path class="s" d="M9 21h6"/></svg>',
+    "slide-design": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="6.5" y="2.5" width="15" height="11" rx="2.4"/><rect class="d2" x="2.5" y="7" width="15" height="11" rx="2.4"/><path class="k" d="m10 9.4 1 2.1 2.1 1-2.1 1-1 2.1-1-2.1-2.1-1 2.1-1z"/><path class="s" d="M7 21h6"/></svg>',
+    "mini-games": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M7.5 5.5h9a5 5 0 0 1 4.9 6l-.9 4.4a2.6 2.6 0 0 1-4.5 1.2L14.6 15H9.4L8 17.1a2.6 2.6 0 0 1-4.5-1.2l-.9-4.4a5 5 0 0 1 4.9-6z"/><path class="d2" d="M7.4 8.6h1.2v1.8h1.8v1.2H8.6v1.8H7.4v-1.8H5.6v-1.2h1.8z"/><circle class="d2" cx="15.6" cy="9.6" r="1.15"/><circle class="d2" cx="17.6" cy="12" r="1.15"/></svg>',
+    _: '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M2.5 7A2.5 2.5 0 0 1 5 4.5h4l2 2h8A2.5 2.5 0 0 1 21.5 9v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 18z"/><path class="d2" d="m12 9.5 1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></svg>',
     orbit: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="6" width="7" height="12" rx="1.6"/><path d="M5.5 8v8M2.5 10v4M18.5 8v8M21.5 10v4"/></svg>',
     wall: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.6"/></svg>',
     copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
@@ -96,12 +97,12 @@
   function build() {
     const cats = manifest.categories;
     const pill = $("#pill");
-    const pills = [{ slug: "home", title: "Home", icon: ICON.home, hue: "#8fe3ff" }].concat(
+    const pills = [{ slug: "home", title: "Home", icon: ICON.home, hue: "#9fb4ff" }].concat(
       cats.map((c) => ({ slug: c.slug, title: c.title, icon: ICON[c.slug] || ICON._, hue: hallOf(c.slug).hue }))
     );
     pill.innerHTML = pills.map((p, i) => `
       <button class="pill-btn" type="button" data-go="${i}" style="--hue:${p.hue}" aria-label="${esc(p.title)}">
-        <span class="pill-orb">${p.icon}</span><span class="pill-label">${esc(i === 0 ? "Home" : shortTitle(p.title))}</span>
+        <span class="pill-ico">${p.icon}</span><span class="pill-label">${esc(i === 0 ? "Home" : shortTitle(p.title))}</span>
       </button>`).join("");
     $("#progress").innerHTML = pills.map((p, i) => `<span style="--hue:${p.hue}" data-i="${i}"></span>`).join("");
 
@@ -118,7 +119,7 @@
       page.innerHTML = `
         <header class="hall-head">
           <div class="hall-id">
-            <span class="hall-orb">${ICON[c.slug] || ICON._}</span>
+            <span class="hall-badge">${ICON[c.slug] || ICON._}</span>
             <div>
               <p class="hall-no">Hall ${pad(k + 1)}<span>${plural(c.count, "piece")}</span></p>
               <h2 class="hall-title">${esc(c.title)}</h2>
@@ -366,7 +367,7 @@
     const hall = halls[i - 1];
     const hash = hall ? `#hall-${hall.cat.slug}` : "#home";
     if (location.hash !== hash) history.replaceState(null, "", hash);
-    document.documentElement.style.setProperty("--hue", hall ? hallOf(hall.cat.slug).hue : "#8fe3ff");
+    document.documentElement.style.setProperty("--hue", hall ? hallOf(hall.cat.slug).hue : "#9fb4ff");
     document.body.dataset.view = hall ? hall.view : "home";
     if (changed || instant) guideTo(i);
   }
@@ -395,6 +396,10 @@
     const fx = pointer.sx * 14, fy = pointer.sy * 10;
     img.style.transform = `translate3d(${(-t * 12 + 6).toFixed(3)}%, ${(Math.sin(deck.p * 1.3) * 2).toFixed(3)}%, 0) translate(${fx}px, ${fy}px) scale(${1.32 + Math.abs(frac) * 0.08}) rotate(${(frac * 2.2).toFixed(3)}deg)`;
     $(".progress").style.setProperty("--p", String(deck.p / span));
+    const pl = $("#planet");
+    pl.style.setProperty("--deck", deck.p.toFixed(4));
+    pl.style.setProperty("--fx", `${(pointer.sx * -18).toFixed(2)}px`);
+    pl.style.setProperty("--fy", `${(pointer.sy * -12).toFixed(2)}px`);
   }
 
   // ---------------------------------------------------------------- the guide
@@ -590,6 +595,17 @@
       if (v) { const hall = halls[deck.index - 1]; if (hall && hall.view !== v.dataset.view) setView(hall, v.dataset.view); return; }
       const z = e.target.closest("[data-zip]");
       if (z) exportZip(z.dataset.zip);
+    });
+    // a ring of light where you press, so every press feels answered
+    document.addEventListener("pointerdown", (e) => {
+      const b = e.target.closest(".btn-go, .btn-ghost, .pill-btn, .switch button");
+      if (!b || reduce) return;
+      const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2;
+      const w = document.createElement("span");
+      w.className = "ripple";
+      w.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+      b.appendChild(w);
+      setTimeout(() => w.remove(), 700);
     });
     $("#export-all").addEventListener("click", () => exportZip("all"));
     $("#refresh").addEventListener("click", refreshFromDrive);

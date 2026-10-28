@@ -92,3 +92,8 @@ Tên thư mục sảnh: `logo-mascot`, `desktop-background`, `slide-design`, `mi
 | Bấm Refresh báo "hit a problem" | Mở GitHub → Actions → lần chạy màu đỏ để xem lỗi. Hay gặp nhất: thư mục Drive chưa chia sẻ cho service account, hoặc token hết hạn. |
 | Robot báo dừng vì xoá quá nhiều | Phanh an toàn. Nếu đúng là muốn xoá nhiều ảnh, thêm Variable `ALLOW_MASS_DELETE` = `true`, chạy lại, rồi xoá biến đó. |
 | Ảnh mới chưa lên sau 5 phút | Xem Cloudflare → Workers & Pages → bos-asset-museum → Deployments có lỗi không. |
+
+## 7. Ghi công
+Hành tinh 3D ở góc phải: "Purple Planet" của Yo.Ri (https://sketchfab.com/grox777), giấy phép CC BY 4.0,
+https://sketchfab.com/3d-models/purple-planet-264eb22207184fc99a5e3b1279a763b8 (đã nén ảnh bề mặt sang WebP).
+Giấy phép yêu cầu giữ dòng ghi công này, nên trang chủ có một dòng chữ nhỏ ở góc dưới.
