@@ -1,14 +1,27 @@
 {
- "generatedAt": "2026-10-27T03:38:18+00:00",
+ "generatedAt": "2026-10-28T05:04:29+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Logo & Mascot for BOS Theme",
    "description": "The official BOS logo and core mascot artwork. Start here for any deck cover.",
    "frame": "square",
-   "count": 0,
-   "bytes": 0,
-   "items": []
+   "count": 1,
+   "bytes": 90689,
+   "items": [
+    {
+     "id": "9f32c8b10a30",
+     "name": "BOS-LOGO",
+     "file": "media/logo-mascot/BOS-LOGO.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 90689,
+     "hash": "845b271a89d4e6d978f340e5aecd3f8b81f638f6",
+     "w": 516,
+     "h": 322,
+     "thumb": "thumbs/logo-mascot/BOS-LOGO.png.webp"
+    }
+   ]
   },
   {
    "slug": "desktop-background",
@@ -24,9 +37,262 @@
    "title": "Mascot Materials for Slide Design",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 0,
-   "bytes": 0,
-   "items": []
+   "count": 21,
+   "bytes": 3522613,
+   "items": [
+    {
+     "id": "bf229357e1d4",
+     "name": "B O S (4)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (4).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 97670,
+     "hash": "289d82578c71c6e923ac5df44ffb0ad2a143efd2",
+     "w": 238,
+     "h": 200,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (4).png.webp"
+    },
+    {
+     "id": "7b3f03957a84",
+     "name": "B O S (5)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (5).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 87708,
+     "hash": "7c2b22f57ff7b68bfc5c450cd3075639df0727bf",
+     "w": 209,
+     "h": 228,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (5).png.webp"
+    },
+    {
+     "id": "82d9c116323e",
+     "name": "B O S (6)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (6).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 81732,
+     "hash": "e48f6cbb2ebf8f8381ab2d41f3d4a2734513a896",
+     "w": 188,
+     "h": 208,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (6).png.webp"
+    },
+    {
+     "id": "fe6afe544e61",
+     "name": "B O S (7)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (7).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 77435,
+     "hash": "d0ec340c33fe69adc27dc6a2e73fae4b3a6ca8da",
+     "w": 210,
+     "h": 203,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (7).png.webp"
+    },
+    {
+     "id": "336243a9cc4a",
+     "name": "B O S (8)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (8).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 90609,
+     "hash": "9c240efcbd9448315eec5fbbf1c4f8bbe467350a",
+     "w": 251,
+     "h": 234,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (8).png.webp"
+    },
+    {
+     "id": "b46a2c9a2db6",
+     "name": "B O S (9)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (9).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 72096,
+     "hash": "7b808dd477d1bc6d227d77ea5c9cb1c1e935c5ba",
+     "w": 207,
+     "h": 189,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (9).png.webp"
+    },
+    {
+     "id": "1a05a40a0cc0",
+     "name": "B O S (10)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (10).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 74743,
+     "hash": "5e0ee50d2523440955cf36acf6deb7e57b277859",
+     "w": 193,
+     "h": 197,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (10).png.webp"
+    },
+    {
+     "id": "823a169a9d1a",
+     "name": "B O S (11)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (11).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 82262,
+     "hash": "fd688c39e89ecd2e5093bb4445562da561dda84b",
+     "w": 194,
+     "h": 223,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (11).png.webp"
+    },
+    {
+     "id": "9dacdb2d2d01",
+     "name": "B O S (19)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (19).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 85454,
+     "hash": "3cb7e2ebeac56ae62cc48301e38247154e558ef3",
+     "w": 235,
+     "h": 192,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (19).png.webp"
+    },
+    {
+     "id": "55ec4ecbc65b",
+     "name": "B O S (20)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (20).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 93211,
+     "hash": "6db979ec45bb8b0fc033f34311fc565c71f59615",
+     "w": 199,
+     "h": 227,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (20).png.webp"
+    },
+    {
+     "id": "ac92f6c41147",
+     "name": "B O S (21)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (21).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 87871,
+     "hash": "1ccfb87eed0ee4d11547cbb4df7a162441bb4500",
+     "w": 209,
+     "h": 243,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (21).png.webp"
+    },
+    {
+     "id": "2ca3cfe773ce",
+     "name": "B O S (22)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (22).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 85627,
+     "hash": "00ff3c1b6fc6183ba99146fc3a094463ffea19f4",
+     "w": 232,
+     "h": 188,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (22).png.webp"
+    },
+    {
+     "id": "5c46bb6fcb5b",
+     "name": "B O S (23)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (23).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 95033,
+     "hash": "7c0a0ed8abe638e762f7ef44730ffe312d400d3b",
+     "w": 218,
+     "h": 255,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (23).png.webp"
+    },
+    {
+     "id": "2bc5b359e9a1",
+     "name": "B O S (24)",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/B O S (24).png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 58521,
+     "hash": "42bc6603edd9cb30f9ab1bbfe5796b3b0a460b09",
+     "w": 213,
+     "h": 199,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/B O S (24).png.webp"
+    },
+    {
+     "id": "eef681ac4f5b",
+     "name": "BOS 12",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/BOS 12.png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 260231,
+     "hash": "aa21cb6377ee0ffd9bf1efe975f740de1954cf9e",
+     "w": 471,
+     "h": 454,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/BOS 12.png.webp"
+    },
+    {
+     "id": "ccaf6d4cb8f8",
+     "name": "BOS 13",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/BOS 13.png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 274122,
+     "hash": "0dfa224142583c554408368894fbef3f34b76dce",
+     "w": 632,
+     "h": 485,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/BOS 13.png.webp"
+    },
+    {
+     "id": "2e61f312c0e8",
+     "name": "BOS 14",
+     "file": "media/slide-design/Avatar-Head-For-Quiz/BOS 14.png",
+     "collection": "Avatar-Head-For-Quiz",
+     "mime": "image/png",
+     "size": 240277,
+     "hash": "daad1ab4d38808088d162d1bc283b37c39b822d7",
+     "w": 410,
+     "h": 397,
+     "thumb": "thumbs/slide-design/Avatar-Head-For-Quiz/BOS 14.png.webp"
+    },
+    {
+     "id": "36551ceb1026",
+     "name": "BOS-QUIZ-MASCOT-BUZZER",
+     "file": "media/slide-design/BOS-QUIZ-MASCOT-BUZZER.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 137036,
+     "hash": "ced6076a7b5b1f1191ff85ce5c4cc35e4969e6c3",
+     "w": 289,
+     "h": 294,
+     "thumb": "thumbs/slide-design/BOS-QUIZ-MASCOT-BUZZER.png.webp"
+    },
+    {
+     "id": "bb889c962b06",
+     "name": "BOS-QUIZ-MASCOT",
+     "file": "media/slide-design/BOS-QUIZ-MASCOT.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1129885,
+     "hash": "50ac071f47e258524ae7ef9f1a9e05f17abbacc6",
+     "w": 1024,
+     "h": 1024,
+     "thumb": "thumbs/slide-design/BOS-QUIZ-MASCOT.png.webp"
+    },
+    {
+     "id": "23c5755212e1",
+     "name": "BOS-QUIZ",
+     "file": "media/slide-design/BOS-QUIZ.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 123669,
+     "hash": "31d6a7bbcc8900518554622f968cfbe0a001e61e",
+     "w": 687,
+     "h": 101,
+     "thumb": "thumbs/slide-design/BOS-QUIZ.png.webp"
+    },
+    {
+     "id": "610aeebef2e4",
+     "name": "KMR-Tet",
+     "file": "media/slide-design/KMR-Tet.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 187421,
+     "hash": "5db59a49f5befa1e0a2e8687ebddc3a9e3c87e6a",
+     "w": 290,
+     "h": 367,
+     "thumb": "thumbs/slide-design/KMR-Tet.png.webp"
+    }
+   ]
   },
   {
    "slug": "mini-games",
