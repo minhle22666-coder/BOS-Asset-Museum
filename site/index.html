@@ -2,115 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BOS Asset Museum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Planet BOS, the Pixel Gallery</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍀</text></svg>">
+  <meta name="theme-color" content="#06103a">
+  <link rel="icon" href="assets/planet/mascot-wave.webp" type="image/webp">
+  <link rel="preload" href="assets/planet/hall-bg.webp" as="image">
+  <link rel="preload" href="assets/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
   <script src="config.js"></script>
 </head>
-<body>
-  <a class="skip" href="#gallery">Skip to gallery</a>
+<body data-page="0">
+  <a class="skip" href="#deck">Skip to the gallery</a>
 
-  <!-- Sign-in gate (only shown in "google-signin" mode) -->
-  <div id="gate" class="gate" hidden>
-    <div class="gate-card">
-      <div class="gate-mark" aria-hidden="true">🍀</div>
-      <h1>BOS Asset Museum</h1>
-      <p>Sign in with your BOS Google account to enter.</p>
-      <div id="gsi-button"></div>
-      <p id="gate-error" class="gate-error" role="alert"></p>
-    </div>
+  <!-- The hall behind everything: drifts as you travel and as you move the mouse -->
+  <div class="world" aria-hidden="true">
+    <div class="world-img"></div>
+    <canvas class="motes" id="motes"></canvas>
+    <div class="world-tint"></div>
   </div>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="#top" aria-label="BOS Asset Museum, back to top">
-        <span class="brand-mark" aria-hidden="true">🍀</span>
-        <span class="brand-name">BOS Asset Museum</span>
-      </a>
-
-      <label class="search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="search" type="search" placeholder="Search by name, e.g. buzzer, logo, avatar" autocomplete="off" aria-label="Search assets">
-        <kbd aria-hidden="true">/</kbd>
-      </label>
-
-      <div class="topbar-actions">
-        <button id="export-all" class="btn btn-primary" type="button">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v3h16v-3"/></svg>
-          <span>Download all</span>
-        </button>
-        <div id="who" class="who" hidden>
-          <span id="who-email"></span>
-          <a id="who-out" href="/cdn-cgi/access/logout">Sign out</a>
-        </div>
-      </div>
+  <!-- Top bar -->
+  <header class="top">
+    <a class="logo" href="#home" data-go="0" aria-label="Planet BOS, back to the start">
+      <img src="assets/planet/logo-planet-bos.webp" alt="Planet BOS" width="913" height="313">
+    </a>
+    <nav class="pill" id="pill" aria-label="Halls"></nav>
+    <div class="top-right">
+      <button class="orb-btn" id="refresh" type="button" aria-label="Get the latest pieces from Drive">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2"/></svg>
+        <span class="hint">Get the latest from Drive</span>
+      </button>
+      <button class="orb-btn" id="export-all" type="button" aria-label="Download everything as one ZIP">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
+        <span class="hint">Download everything</span>
+      </button>
+      <a class="me" id="me" href="/cdn-cgi/access/logout" hidden><span id="me-initial"></span><span class="hint" id="me-hint">Sign out</span></a>
     </div>
-
-    <nav class="wings" aria-label="Wings">
-      <div class="wings-inner" id="wing-tabs" role="tablist"></div>
-      <div class="view-tools">
-        <div class="seg" role="group" aria-label="Preview background">
-          <button type="button" data-bg="wall" aria-pressed="true" title="Gallery wall"><i class="sw sw-wall"></i></button>
-          <button type="button" data-bg="white" aria-pressed="false" title="White slide"><i class="sw sw-white"></i></button>
-          <button type="button" data-bg="dark" aria-pressed="false" title="Dark slide"><i class="sw sw-dark"></i></button>
-          <button type="button" data-bg="checker" aria-pressed="false" title="Show transparency"><i class="sw sw-checker"></i></button>
-        </div>
-        <div class="seg" role="group" aria-label="Thumbnail size">
-          <button type="button" data-size="s" aria-pressed="false" title="Small"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg></button>
-          <button type="button" data-size="m" aria-pressed="true" title="Medium"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></button>
-          <button type="button" data-size="l" aria-pressed="false" title="Large"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg></button>
-        </div>
-      </div>
-    </nav>
   </header>
 
-  <main id="gallery" class="gallery" tabindex="-1">
-    <section class="hero" id="top">
-      <h1 class="hero-title">Every BOS logo, mascot and backdrop, <span class="nowrap">on one wall.</span></h1>
-      <p class="hero-sub">Click <b>Copy</b> and paste straight into Google Slides or PowerPoint, or download originals one by one or by the wing.</p>
-      <p class="hero-stats" id="hero-stats"></p>
+  <!-- Pages: the story, then one hall per collection -->
+  <main class="deck" id="deck" aria-live="polite">
+    <section class="page page-home" data-index="0" aria-labelledby="home-title">
+      <div class="home">
+        <p class="signal"><span class="signal-dot" aria-hidden="true"></span>Incoming transmission from Planet BOS</p>
+        <h1 class="home-title" id="home-title">Where pixels become galaxies.</h1>
+
+        <div class="story" id="story" role="group" aria-roledescription="story" aria-label="The story of Planet BOS">
+          <div class="story-bars" id="story-bars" aria-hidden="true"></div>
+          <p class="story-meta" id="story-meta"></p>
+          <p class="story-text" id="story-text"></p>
+        </div>
+
+        <div class="home-cta">
+          <button class="btn-go" type="button" data-go="1">
+            <span>Start the tour</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </button>
+          <p class="travel-hint"><span class="mouse" aria-hidden="true"></span>Scroll or swipe to travel between halls</p>
+        </div>
+      </div>
     </section>
-    <div id="wings-root"></div>
-    <p id="no-results" class="no-results" hidden></p>
+    <!-- hall pages are added by app.js from the gallery list -->
   </main>
 
-  <footer class="foot">
-    <p id="synced"></p>
-    <p>Images sync automatically from the BOS Drive folder. Internal use only.</p>
-  </footer>
+  <!-- Where you are in the tour -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- Lightbox -->
-  <dialog id="viewer" class="viewer" aria-labelledby="v-name">
-    <div class="viewer-stage" id="v-stage">
-      <button class="v-nav v-prev" id="v-prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
-      <img id="v-img" alt="">
-      <button class="v-nav v-next" id="v-next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
-    </div>
-    <div class="viewer-plate">
-      <div>
-        <p class="v-wing" id="v-wing"></p>
+  <!-- The guide: one mascot that changes pose in every hall -->
+  <button class="guide" id="guide" type="button" aria-label="Ask the guide for a tip">
+    <span class="guide-float"><img id="guide-img" src="assets/planet/mascot-wave.webp" alt="" width="389" height="511"></span>
+    <span class="bubble" id="bubble" role="status"></span>
+  </button>
+
+  <!-- Full-screen viewer -->
+  <dialog class="viewer" id="viewer" aria-labelledby="v-name">
+    <div class="v-stage" id="v-stage"><img id="v-img" alt=""></div>
+    <button class="v-nav v-prev" id="v-prev" type="button" aria-label="Previous piece"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+    <button class="v-nav v-next" id="v-next" type="button" aria-label="Next piece"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+    <div class="v-bar">
+      <div class="v-text">
+        <p class="v-where" id="v-where"></p>
         <h2 id="v-name"></h2>
         <p class="v-meta" id="v-meta"></p>
       </div>
       <div class="v-actions">
-        <button class="btn" id="v-copy" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>Copy image</button>
-        <a class="btn" id="v-download" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v3h16v-3"/></svg>Download</a>
-        <button class="btn btn-ghost" id="v-close" type="button" aria-label="Close viewer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        <button class="btn-go btn-sm" id="v-copy" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Copy</span></button>
+        <a class="btn-ghost btn-sm" id="v-download" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>Download</span></a>
       </div>
     </div>
+    <button class="v-close" id="v-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </dialog>
 
   <!-- ZIP progress -->
-  <dialog id="zipper" class="zipper" aria-labelledby="z-title">
+  <dialog class="zipper" id="zipper" aria-labelledby="z-title">
     <h2 id="z-title">Packing your ZIP</h2>
     <p id="z-text">Starting…</p>
     <div class="bar"><span id="z-bar"></span></div>
-    <button class="btn" id="z-cancel" type="button">Cancel</button>
+    <button class="btn-ghost btn-sm" id="z-cancel" type="button">Cancel</button>
   </dialog>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="assets/vendor/jszip-3.10.1.min.js" defer></script>
   <script src="assets/app.js" defer></script>

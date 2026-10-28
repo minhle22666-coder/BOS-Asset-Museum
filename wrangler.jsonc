@@ -1,0 +1,19 @@
+// Cloudflare settings for the website.
+// The site files live in ./site. The small worker in ./worker only answers /api/* (the Refresh button);
+// every other request is served straight from ./site.
+{
+  "name": "bos-asset-museum",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "GITHUB_REPO": "minhle22666-coder/BOS-Asset-Museum",
+    "GITHUB_BRANCH": "main",
+    "WORKFLOW_FILE": "sync.yml"
+  }
+  // The secret GITHUB_TOKEN is added in the Cloudflare dashboard, never here.
+}
