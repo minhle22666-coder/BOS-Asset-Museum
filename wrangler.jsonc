@@ -2,7 +2,7 @@
 // The site files live in ./site. The small worker in ./worker only answers /api/* (the Refresh button);
 // every other request is served straight from ./site.
 {
-  "name": "bos-asset-museum",
+  "name": "gallery",
   "main": "worker/index.js",
   "compatibility_date": "2025-09-01",
   "assets": {

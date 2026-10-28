@@ -57,7 +57,7 @@ Nút Refresh cần một "thẻ ra vào" để được phép bấm nút chạy 
 5. Bấm Generate, copy token (chỉ hiện một lần).
 
 ### 3.3 Cloudflare: gắn token vào website
-1. **Workers & Pages → bos-asset-museum → Settings → Variables and Secrets → Add**.
+1. **Workers & Pages → gallery → Settings → Variables and Secrets → Add**.
 2. Type: **Secret**, Name: `GITHUB_TOKEN`, Value: dán token. Bấm **Deploy**.
 3. Ở **Settings → Build**, kiểm tra *Deploy command* là `npx wrangler deploy` và *Root directory* để trống hoặc `/`.
 
@@ -91,7 +91,7 @@ Tên thư mục sảnh: `logo-mascot`, `desktop-background`, `slide-design`, `mi
 | Bấm Refresh báo "isn't switched on yet" | Chưa thêm secret `GITHUB_TOKEN` ở Cloudflare (mục 3.3). |
 | Bấm Refresh báo "hit a problem" | Mở GitHub → Actions → lần chạy màu đỏ để xem lỗi. Hay gặp nhất: thư mục Drive chưa chia sẻ cho service account, hoặc token hết hạn. |
 | Robot báo dừng vì xoá quá nhiều | Phanh an toàn. Nếu đúng là muốn xoá nhiều ảnh, thêm Variable `ALLOW_MASS_DELETE` = `true`, chạy lại, rồi xoá biến đó. |
-| Ảnh mới chưa lên sau 5 phút | Xem Cloudflare → Workers & Pages → bos-asset-museum → Deployments có lỗi không. |
+| Ảnh mới chưa lên sau 5 phút | Xem Cloudflare → Workers & Pages → gallery → Deployments có lỗi không. |
 
 ## 7. Ghi công
 Hành tinh 3D ở góc phải: "Purple Planet" của Yo.Ri (https://sketchfab.com/grox777), giấy phép CC BY 4.0,
