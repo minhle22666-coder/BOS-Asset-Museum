@@ -156,7 +156,7 @@ body.dragging, body.dragging * { cursor: grabbing !important; user-select: none;
   background: linear-gradient(180deg, #ffffff 35%, #a6dcff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 6px 30px rgba(0, 16, 80, 0.7)); }
 
 .story { cursor: pointer; max-width: 600px; }
-.story-line { min-height: 2.5em; font-size: clamp(20px, 1.85vw, 28px); font-weight: 500; line-height: 1.25; letter-spacing: -0.015em; color: #d6e6ff; text-shadow: 0 2px 20px rgba(0, 10, 50, 0.8); }
+.story-line { min-height: 4.2em; font-size: clamp(18px, 1.5vw, 23px); font-weight: 400; line-height: 1.4; letter-spacing: -0.015em; color: #d6e6ff; text-shadow: 0 2px 20px rgba(0, 10, 50, 0.8); }
 .caret { display: inline-block; width: 3px; height: 1.05em; margin-left: 4px; vertical-align: -0.14em; border-radius: 2px; background: linear-gradient(var(--glow-c), var(--glow-a)); box-shadow: 0 0 12px var(--glow-c); animation: caret 1s steps(1) infinite; }
 .story.typing .caret { animation: none; }
 @keyframes caret { 50% { opacity: 0; } }

@@ -10,7 +10,7 @@ function gh(env, path, init = {}) {
   return fetch(`${GH}/repos/${env.GITHUB_REPO}${path}`, {
     ...init,
     headers: {
-      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Authorization: `Bearer ${String(env.GITHUB_TOKEN).trim()}`,
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
       "User-Agent": "planet-bos-gallery",
@@ -22,9 +22,19 @@ function gh(env, path, init = {}) {
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
 
+// Turn a GitHub refusal into an error the page can explain.
+async function ghError(r, step) {
+  let message = "";
+  try { message = (await r.json()).message || ""; } catch (_) {}
+  const e = new Error(`${step}: ${r.status} ${message}`);
+  e.status = r.status;
+  e.github = message;
+  return e;
+}
+
 async function latestRun(env) {
   const r = await gh(env, `/actions/workflows/${env.WORKFLOW_FILE}/runs?per_page=1&branch=${encodeURIComponent(env.GITHUB_BRANCH)}`);
-  if (!r.ok) throw new Error(`GitHub runs: ${r.status}`);
+  if (!r.ok) throw await ghError(r, "read runs");
   const run = (await r.json()).workflow_runs?.[0];
   return run ? { id: run.id, status: run.status, conclusion: run.conclusion, createdAt: run.created_at, event: run.event, url: run.html_url } : null;
 }
@@ -47,7 +57,7 @@ async function refresh(request, env) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ref: env.GITHUB_BRANCH }),
     });
-    if (r.status !== 204) return json({ error: "dispatch-failed", status: r.status, detail: await r.text() }, 502);
+    if (r.status !== 204) throw await ghError(r, "start run");
     return json({ state: "started", startedAt: new Date().toISOString(), previousRunId: before?.id ?? null });
   }
 
@@ -69,7 +79,7 @@ export default {
       try {
         return await refresh(request, env);
       } catch (e) {
-        return json({ error: "github-unreachable", detail: String(e) }, 502);
+        return json({ error: "github", status: e.status || 0, github: e.github || "", detail: String(e.message || e) }, 502);
       }
     }
     if (url.pathname.startsWith("/api/")) return json({ error: "not-found" }, 404);

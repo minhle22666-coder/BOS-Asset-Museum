@@ -8,13 +8,13 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
   // ---------------------------------------------------------------- words
-  // Short lines, typed one letter at a time, then wiped for the next.
+  // The legend of Planet BOS, typed one letter at a time, one chapter after another.
   const STORY = [
-    "Hi! Welcome to Planet BOS.",
-    "Every BOS logo and mascot lives here.",
-    "Wallpapers and game art, too.",
-    "Copy any piece. Paste it into your slides.",
-    "New pieces fly in straight from our Drive.",
+    "The year is 5000. Planet Earth has gone boom, and the BOS crew is packing up for the stars.",
+    "Into their little rocket go their treasures: glowing seeds of energy, holding every logo, mascot and backdrop they ever made.",
+    "After a long, long flight they land on a quiet purple world. They plant the seeds and call it Planet BOS.",
+    "Here the seeds keep growing, so every BOS explorer, new or old, can pick one up and keep the creativity alive.",
+    "Welcome aboard, explorer. Take whatever you need for your next mission.",
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
@@ -570,14 +570,15 @@
       if (reduce) { text.textContent = line; if (await sleep(4000, t)) play(k + 1); return; }
       card.classList.add("typing");
       // type, with a little human unevenness
-      while (text.textContent.length && t === token) { text.textContent = text.textContent.slice(0, -1); if (!(await sleep(16, t))) return; }
+      while (text.textContent.length && t === token) { text.textContent = text.textContent.slice(0, -3); if (!(await sleep(14, t))) return; }
       for (let c = 1; c <= line.length; c++) {
         text.textContent = line.slice(0, c);
         const ch = line[c - 1];
-        if (!(await sleep(ch === " " ? 70 : /[.,!]/.test(ch) ? 220 : 38 + Math.random() * 34, t))) return;
+        if (!(await sleep(ch === " " ? 55 : /[.,!:]/.test(ch) ? 260 : 26 + Math.random() * 26, t))) return;
       }
       card.classList.remove("typing");
-      if (!(await sleep(2300, t))) return;
+      // give people time to read before the next chapter
+      if (!(await sleep(2200 + line.length * 28, t))) return;
       play(k + 1);
     }
     card.addEventListener("click", () => play(k + 1));
@@ -854,6 +855,16 @@
   // The button asks the site's worker to start the GitHub "Sync gallery" job, then follows it:
   // copy from Drive (1-2 min) -> Cloudflare publishes (about 1 min) -> the page reloads with the new pieces.
   let refreshing = false;
+  // Explain why GitHub said no, in words the site owner can act on.
+  async function refreshError(r) {
+    let e = {};
+    try { e = await r.json(); } catch (_) {}
+    const s = e.status, why = e.github ? ` (GitHub: ${e.github})` : "";
+    if (s === 401) return `Refresh failed: the GitHub token is wrong or has expired. Make a new one and update GITHUB_TOKEN in Cloudflare.${why}`;
+    if (s === 403 || s === 404) return `Refresh failed: the GitHub token isn't allowed to run the sync. It needs access to BOS-Asset-Museum with "Actions: Read and write".${why}`;
+    if (s === 422) return `Refresh failed: GitHub couldn't find the sync on the main branch.${why}`;
+    return `Couldn't start the refresh (${s || r.status}${e.detail ? `: ${e.detail}` : ""}). Try again in a minute.`;
+  }
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   async function refreshFromDrive() {
     if (refreshing) { toast("Already fetching from Drive. Hang on…", true); return; }
@@ -865,7 +876,7 @@
       toast("Asking the crew to fetch new pieces from Drive…", true);
       const r = await fetch("/api/refresh", { method: "POST", cache: "no-store" });
       if (r.status === 501) return done("The Refresh button isn't switched on yet. The site owner needs to add the GitHub token in Cloudflare.");
-      if (!r.ok) return done("Couldn't start the refresh. Try again in a minute.");
+      if (!r.ok) return done(await refreshError(r));
       const start = await r.json();
       const prev = start.state === "started" ? start.previousRunId : undefined;
       const t0 = Date.now();
