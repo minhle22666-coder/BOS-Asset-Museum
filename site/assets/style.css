@@ -229,17 +229,17 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
 .orbit { position: absolute; inset: 0; display: flex; flex-direction: column; }
 .orbit-stage { position: relative; flex: 1; min-height: 0; perspective: 1300px; perspective-origin: 50% 42%; cursor: grab; outline: none; overflow: visible; }
 .orbit-stage:focus-visible .card.is-front .card-face { outline: 2px solid var(--cyan); outline-offset: 4px; }
-.helix { position: absolute; left: 50%; top: 46%; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
-.card { position: absolute; width: var(--cw); height: var(--ch); left: calc(var(--cw) / -2); top: calc(var(--ch) / -2); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: opacity 0.35s; }
-.card-face { position: absolute; inset: 0; border-radius: 22px; overflow: hidden; cursor: pointer;
-  background: radial-gradient(120% 90% at 50% 8%, rgba(140, 190, 255, 0.38), rgba(16, 32, 104, 0.6) 58%, rgba(6, 12, 42, 0.86));
+.helix { position: absolute; left: 50%; top: 47%; width: 0; height: 0; transform-style: preserve-3d; }
+.card { position: absolute; width: var(--cw); height: var(--ch); left: calc(var(--cw) / -2); top: calc(var(--ch) / -2); will-change: transform; }
+.card-face { position: absolute; inset: 0; border-radius: 20px; overflow: hidden; cursor: pointer;
+  background: radial-gradient(120% 90% at 50% 8%, #2a4fb0, #142a78 58%, #0a1440);
   border: 1px solid rgba(200, 225, 255, 0.24); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 40px 60px -34px rgba(0, 0, 0, 0.9);
   -webkit-box-reflect: below 10px linear-gradient(transparent 76%, rgba(255, 255, 255, 0.16)); transition: border-color 0.4s, box-shadow 0.4s; }
 .card-face img { position: absolute; inset: 9%; width: 82%; height: 82%; object-fit: contain; pointer-events: none; filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.45)); transition: transform 0.6s var(--ease); }
 [data-frame="wide"] .card-face img { inset: 0; width: 100%; height: 100%; object-fit: cover; filter: none; }
 .card.is-front .card-face { cursor: zoom-in; border-color: color-mix(in srgb, var(--hue) 80%, white); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 0 1px color-mix(in srgb, var(--hue) 50%, transparent), 0 0 60px -12px var(--hue), 0 40px 60px -34px rgba(0, 0, 0, 0.9); }
 .card.is-front .card-face img { transform: scale(1.04); }
-.orbit-floor { position: absolute; left: 50%; top: calc(46% + var(--ch) / 2 - 10px); width: calc(var(--cw) * 2.6); height: 90px; transform: translateX(-50%); border-radius: 50%; pointer-events: none;
+.orbit-floor { position: absolute; left: 50%; top: calc(47% + var(--ch) / 2 - 10px); width: calc(var(--cw) * 4); height: 90px; transform: translateX(-50%); border-radius: 50%; pointer-events: none;
   background: radial-gradient(50% 50% at 50% 50%, color-mix(in srgb, var(--hue) 34%, transparent), transparent 70%); filter: blur(6px); }
 .orbit-caption { display: grid; justify-items: center; gap: 3px; text-align: center; padding: 6px 0 4px; }
 .oc-count { font-size: 12.5px; font-weight: 600; color: var(--hue); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
@@ -282,12 +282,10 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
 /* ================================================================ viewer */
 .viewer { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: hidden; }
 .viewer::backdrop { background: rgba(3, 8, 32, 0.74); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
-.v-stage { position: absolute; inset: 84px 100px 130px; display: grid; place-items: center; }
-.v-stage img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.6)); animation: drift 7s ease-in-out infinite alternate; }
-.v-stage[data-frame="wide"] img { border-radius: 16px; animation: none; }
-.v-stage img.in { animation: v-in 0.55s var(--ease), drift 7s ease-in-out 0.55s infinite alternate; }
-.v-stage[data-frame="wide"] img.in { animation: v-in 0.55s var(--ease); }
-@keyframes v-in { from { opacity: 0; transform: translateY(24px) scale(0.92); } }
+.v-stage { position: absolute; inset: 84px 100px 132px; }
+.v-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55)); }
+.v-stage img.in { animation: v-in 0.24s ease-out; }
+@keyframes v-in { from { opacity: 0; transform: scale(0.97); } }
 .viewer[open] { animation: fade-in 0.3s ease; }
 .viewer.closing { animation: fade-out 0.22s ease forwards; }
 @keyframes fade-in { from { opacity: 0; } }

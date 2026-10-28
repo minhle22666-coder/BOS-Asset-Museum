@@ -10,9 +10,7 @@
   // ---------------------------------------------------------------- words
   // The legend of Planet BOS, typed one letter at a time, one chapter after another.
   const STORY = [
-    "The year is 5000. Planet Earth has gone boom, and the BOS crew is packing up for the stars.",
-    "Into their little rocket go their treasures: glowing seeds of energy, holding every logo, mascot and backdrop they ever made.",
-    "After a long, long flight they land on a quiet purple world. They plant the seeds and call it Planet BOS.",
+    "Far out among the stars, the BOS crew found a quiet new home for their seeds of creative energy, and called it Planet BOS.",
     "Here the seeds keep growing, so every BOS explorer, new or old, can pick one up and keep the creativity alive.",
     "Welcome aboard, explorer. Take whatever you need for your next mission.",
   ];
@@ -213,24 +211,22 @@
       // open a few pieces in, so the spiral fans out on both sides
       this.go(Math.min(Math.floor((items.length - 1) / 2), 3), true);
     }
+    // Film strip: the front piece is biggest, the rest shrink and turn away towards both ends.
     measure() {
       const W = innerWidth, H = innerHeight;
-      const wide = this.frame === "wide";
-      const h = clamp(H * (W < 760 ? 0.36 : 0.42), 200, 400);
-      const w = wide ? h * 1.6 : h * 0.86;
-      this.w = w; this.h = h;
-      const N = this.items.length;
-      this.perTurn = N > 12 ? 12 : Math.max(N, 8);
-      this.step = 360 / this.perTurn;
-      this.R = Math.max(w * 0.9, (w / 2 + 26) / Math.tan(Math.PI / this.perTurn));
-      this.pitch = N > this.perTurn ? (h * 1.12) / this.perTurn : 0;
+      const ratio = this.frame === "wide" ? 1.6 : 0.86;
+      this.K = W < 760 ? 2 : 4;                       // pieces shown on each side of the front one
+      const room = (this.stage.clientWidth || (W < 760 ? W - 28 : W - 118)) - 24;
+      const span = 2 * (this.fx(this.K) + this.sc(this.K) / 2 + 0.06); // strip width in card-widths
+      const w = Math.min(clamp(H * (W < 760 ? 0.34 : 0.36), 170, 330) * ratio, room / span);
+      this.w = w; this.h = w / ratio;
       this.el.style.setProperty("--cw", `${w}px`);
-      this.el.style.setProperty("--ch", `${h}px`);
-      this.cards.forEach((c, i) => {
-        c.style.transform = `rotateY(${i * this.step}deg) translateZ(${this.R}px) translateY(${i * this.pitch}px)`;
-      });
+      this.el.style.setProperty("--ch", `${this.h}px`);
+      this.helix.style.transform = "none";
       this.dirty = true;
     }
+    sc(a) { return Math.max(0.42, 1 - 0.115 * a); }          // size at distance a from the front
+    fx(a) { return 0.76 + (a - 1) * 0.64 - (a - 1) * (a - 1) * 0.05; } // centre position in card-widths (a ≥ 1)
     get index() { return clamp(Math.round(this.target), 0, this.items.length - 1); }
     go(i, instant) {
       this.target = clamp(i, 0, this.items.length - 1);
@@ -258,7 +254,7 @@
     hide() { this.el.hidden = true; }
     // drag support (called by the deck's pointer router)
     dragStart() { this.drag0 = this.pos; this.touched = true; }
-    dragMove(dx) { this.target = this.pos = clamp(this.drag0 - dx / (this.w * 0.7), -0.4, this.items.length - 0.6); this.dirty = true; }
+    dragMove(dx) { this.target = this.pos = clamp(this.drag0 - dx / (this.w * 0.55), -0.4, this.items.length - 0.6); this.dirty = true; }
     dragEnd(vx) {
       this.justDragged = true; setTimeout(() => (this.justDragged = false), 0);
       this.go(Math.round(this.pos - vx * 6));
@@ -276,16 +272,17 @@
       if (!this.dirty) return;
       this.dirty = false;
       const e = 1 - Math.pow(1 - this.intro, 3); // 1 → 0, eased
-      const spin = this.pos * this.step + e * 140;
-      this.helix.style.transform = `translateZ(${-this.R - e * 400}px) rotateY(${-spin}deg) translateY(${-this.pos * this.pitch}px)`;
-      this.helix.style.opacity = String(1 - e * 0.8);
-      const front = this.index;
+      const front = this.index, K = this.K;
       this.cards.forEach((c, i) => {
-        const d = Math.abs(i - this.pos);
-        const vis = d < this.perTurn / 2 + 0.5;
-        c.style.visibility = vis ? "visible" : "hidden";
-        if (!vis) return;
-        c.style.opacity = String(clamp(1.25 - d / (this.perTurn / 2.6), 0.12, 1));
+        const d = i - this.pos, a = Math.abs(d);
+        if (a > K + 1) { c.style.visibility = "hidden"; return; }
+        c.style.visibility = "visible";
+        const x = (a < 1 ? d * 0.62 : Math.sign(d) * this.fx(a)) * this.w * (1 - e);
+        const scale = this.sc(a) * (1 - e * 0.3);
+        const ry = clamp(-d * 17, -52, 52);
+        c.style.transform = `translateX(${x.toFixed(1)}px) translateZ(${(-a * 60).toFixed(1)}px) rotateY(${ry.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+        c.style.zIndex = String(100 - Math.round(a * 10));
+        c.style.opacity = String(((a <= K ? 1 - a * 0.07 : (K + 1 - a) * (1 - K * 0.07))) * (1 - e * 0.6));
         c.classList.toggle("is-front", i === front);
       });
     }
