@@ -50,10 +50,10 @@
       <div class="home">
         <h1 class="home-title" id="home-title">Where pixels become galaxies.</h1>
 
-        <div class="story" id="story" role="group" aria-roledescription="story" aria-label="The story of Planet BOS">
-          <div class="story-bars" id="story-bars" aria-hidden="true"></div>
-          <p class="story-meta" id="story-meta"></p>
-          <p class="story-text" id="story-text"></p>
+        <div class="story" id="story">
+          <p class="story-line" aria-hidden="true"><span id="story-text"></span><span class="caret"></span></p>
+          <p class="sr-only" id="story-all"></p>
+          <div class="story-dots" id="story-dots" aria-hidden="true"></div>
         </div>
 
         <div class="home-cta">
@@ -73,8 +73,8 @@
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <!-- The guide: one mascot that changes pose in every hall -->
-  <button class="guide" id="guide" type="button" aria-label="Ask the guide for a tip">
-    <span class="guide-float"><img id="guide-img" src="assets/planet/mascot-wave.webp" alt="" width="389" height="511"></span>
+  <button class="guide" id="guide" type="button" aria-label="Say hi to the guide. You can also drag and throw them.">
+    <span class="guide-float"><span class="guide-tilt" id="guide-tilt"><img id="guide-img" src="assets/planet/mascot-wave.webp" alt="" width="389" height="511" draggable="false"></span></span>
     <span class="bubble" id="bubble" role="status"></span>
   </button>
 

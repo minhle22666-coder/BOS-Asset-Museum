@@ -74,6 +74,8 @@ async function main() {
   const frame = (now) => {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
+    // only the home page shows the planet; skip drawing while it's away
+    if ((parseFloat(wrap.style.getPropertyValue("--deck")) || 0) > 0.98) { raf = requestAnimationFrame(frame); return; }
     if (!reduce) {
       holder.rotation.y += dt * 0.16;
       mx += (tx - mx) * Math.min(1, dt * 2); my += (ty - my) * Math.min(1, dt * 2);

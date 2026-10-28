@@ -8,10 +8,13 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
   // ---------------------------------------------------------------- words
+  // Short lines, typed one letter at a time, then wiped for the next.
   const STORY = [
-    { meta: "Transmission 1 of 3, stardate 2049", text: "Somewhere past the edge of the office, a small crew called BOS kept a whole company in orbit. Orders shipped, numbers checked, lights always on." },
-    { meta: "Transmission 2 of 3", text: "Along the way they made things. A logo that glows in the dark. A crew of green explorers in silver suits. A sky for every meeting screen." },
-    { meta: "Transmission 3 of 3", text: "So they built a planet to keep it all safe and opened the doors to everyone. Every piece in these halls is yours to take on your next mission." },
+    "Hi! Welcome to Planet BOS.",
+    "Every BOS logo and mascot lives here.",
+    "Wallpapers and game art, too.",
+    "Copy any piece. Paste it into your slides.",
+    "New pieces fly in straight from our Drive.",
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
@@ -439,33 +442,111 @@
   }
   function hideBubble() { $("#guide").classList.remove("talk"); }
 
+  // Grab the guide and throw them: they spring back to their spot, spinning a little.
+  const G = { x: 0, y: 0, vx: 0, vy: 0, r: 0, vr: 0, drag: null };
+  function guidePlay() {
+    const g = $("#guide");
+    g.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      g.setPointerCapture(e.pointerId);
+      G.drag = { sx: e.clientX, sy: e.clientY, x0: G.x, y0: G.y, moved: 0, lx: e.clientX, ly: e.clientY, lt: performance.now() };
+      g.classList.add("held");
+    });
+    addEventListener("pointermove", (e) => {
+      const d = G.drag;
+      if (!d) return;
+      const dx = e.clientX - d.sx, dy = e.clientY - d.sy;
+      d.moved = Math.max(d.moved, Math.hypot(dx, dy));
+      const now = performance.now(), dt = Math.max(8, now - d.lt);
+      G.vx = ((e.clientX - d.lx) / dt) * 1000; G.vy = ((e.clientY - d.ly) / dt) * 1000;
+      d.lx = e.clientX; d.ly = e.clientY; d.lt = now;
+      G.x = d.x0 + dx; G.y = d.y0 + dy;
+    });
+    const release = () => {
+      const d = G.drag;
+      if (!d) return;
+      G.drag = null;
+      g.classList.remove("held");
+      if (d.moved < 6) { G.vx = G.vy = 0; say(); burst(); return; }
+      const speed = Math.hypot(G.vx, G.vy);
+      G.vr = clamp(G.vx / 6, -900, 900);
+      if (speed > 650) { $("#bubble").textContent = ["Wheee!", "Woah, zero gravity!", "Again! Again!"][Math.floor(Math.random() * 3)]; g.classList.add("talk"); clearTimeout(bubbleTimer); bubbleTimer = setTimeout(hideBubble, 1800); }
+    };
+    addEventListener("pointerup", release);
+    addEventListener("pointercancel", release);
+    g.addEventListener("lostpointercapture", release);
+    g.addEventListener("click", (e) => e.preventDefault());
+    g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); say(); burst(); } });
+  }
+  function guideTick(dt) {
+    if (!G.drag) {
+      // springy return to the resting spot
+      const k = 90, c = 9;
+      G.vx += (-k * G.x - c * G.vx) * dt; G.vy += (-k * G.y - c * G.vy) * dt;
+      G.x += G.vx * dt; G.y += G.vy * dt;
+      G.vr += (-60 * G.r - 6 * G.vr) * dt; G.r += G.vr * dt;
+      if (Math.abs(G.x) < 0.1 && Math.abs(G.vx) < 1) G.x = G.vx = 0;
+      if (Math.abs(G.y) < 0.1 && Math.abs(G.vy) < 1) G.y = G.vy = 0;
+    } else {
+      G.r += (clamp(G.vx / 40, -25, 25) - G.r) * Math.min(1, dt * 10);
+    }
+    const g = $("#guide");
+    g.style.setProperty("--gx", `${G.x.toFixed(1)}px`);
+    g.style.setProperty("--gy", `${G.y.toFixed(1)}px`);
+    g.style.setProperty("--gr", `${G.r.toFixed(2)}deg`);
+    // look toward the pointer
+    if (!reduce) {
+      const r = g.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.35;
+      const px = ((pointer.sx + 1) / 2) * innerWidth, py = ((pointer.sy + 1) / 2) * innerHeight;
+      const ry = clamp((px - cx) / 500, -1, 1) * 22, rx = clamp((cy - py) / 500, -1, 1) * 14;
+      $("#guide-tilt").style.transform = `perspective(900px) rotateY(${ry.toFixed(2)}deg) rotateX(${rx.toFixed(2)}deg)`;
+    }
+  }
+  // a little burst of stars from the guide
+  function burst() {
+    if (reduce) return;
+    const g = $("#guide"), r = g.getBoundingClientRect();
+    const colors = ["#9fe7ff", "#b9a4ff", "#ffffff", "#7cf5b8"];
+    for (let i = 0; i < 14; i++) {
+      const s = document.createElement("span");
+      s.className = "spark";
+      const a = (i / 14) * Math.PI * 2 + Math.random() * 0.4, dist = 70 + Math.random() * 90;
+      s.style.cssText = `left:${r.left + r.width * 0.5}px;top:${r.top + r.height * 0.3}px;--dx:${Math.cos(a) * dist}px;--dy:${Math.sin(a) * dist}px;--c:${colors[i % 4]};--s:${6 + Math.random() * 8}px`;
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 900);
+    }
+  }
+
   // ---------------------------------------------------------------- story on the home page
   function story() {
-    const bars = $("#story-bars"), text = $("#story-text"), metaEl = $("#story-meta");
-    bars.innerHTML = STORY.map(() => "<span><i></i></span>").join("");
-    let k = 0, timer, typing;
-    function show(n) {
+    const text = $("#story-text"), dots = $("#story-dots"), card = $("#story");
+    $("#story-all").textContent = STORY.join(" ");
+    dots.innerHTML = STORY.map(() => "<i></i>").join("");
+    let k = 0, timer, token = 0;
+    const sleep = (ms, t) => new Promise((r) => { timer = setTimeout(() => r(t === token), ms); });
+    async function play(n) {
+      const t = ++token;
+      clearTimeout(timer);
       k = (n + STORY.length) % STORY.length;
-      clearTimeout(timer); clearInterval(typing);
-      metaEl.textContent = STORY[k].meta;
-      $$("span", bars).forEach((s, j) => { s.className = j < k ? "done" : j === k ? "now" : ""; });
-      const full = STORY[k].text;
-      const hold = 4200;
-      if (reduce) { text.textContent = full; timer = setTimeout(() => show(k + 1), 9000); return; }
-      let c = 0;
-      text.textContent = "";
-      text.classList.add("typing");
-      const per = 26;
-      bars.style.setProperty("--dur", `${full.length * per + hold}ms`);
-      typing = setInterval(() => {
-        c = Math.min(full.length, c + 2);
-        text.textContent = full.slice(0, c);
-        if (c >= full.length) { clearInterval(typing); text.classList.remove("typing"); }
-      }, per * 2);
-      timer = setTimeout(() => show(k + 1), full.length * per + hold);
+      $$("i", dots).forEach((d, j) => d.classList.toggle("on", j === k));
+      const line = STORY[k];
+      if (reduce) { text.textContent = line; if (await sleep(4000, t)) play(k + 1); return; }
+      card.classList.add("typing");
+      // type, with a little human unevenness
+      while (text.textContent.length && t === token) { text.textContent = text.textContent.slice(0, -1); if (!(await sleep(16, t))) return; }
+      for (let c = 1; c <= line.length; c++) {
+        text.textContent = line.slice(0, c);
+        const ch = line[c - 1];
+        if (!(await sleep(ch === " " ? 70 : /[.,!]/.test(ch) ? 220 : 38 + Math.random() * 34, t))) return;
+      }
+      card.classList.remove("typing");
+      if (!(await sleep(2300, t))) return;
+      play(k + 1);
     }
-    $("#story").addEventListener("click", () => show(k + 1));
-    show(0);
+    card.addEventListener("click", () => play(k + 1));
+    play(0);
   }
 
   // ---------------------------------------------------------------- floating light motes
@@ -609,7 +690,7 @@
     });
     $("#export-all").addEventListener("click", () => exportZip("all"));
     $("#refresh").addEventListener("click", refreshFromDrive);
-    $("#guide").addEventListener("click", say);
+    guidePlay();
 
     addEventListener("hashchange", () => fromHash(false));
     let rz;
@@ -800,6 +881,7 @@
       const g = $("#guide");
       g.style.setProperty("--mx", `${(pointer.sx * -16).toFixed(2)}px`);
       g.style.setProperty("--my", `${(pointer.sy * -10).toFixed(2)}px`);
+      guideTick(dt);
       halls.forEach((h, k) => h.orbit && h.orbit.tick(dt, deck.index === k + 1 && Math.abs(deck.p - deck.target) < 0.01));
       if (drawMotes) drawMotes(dt, now / 1000);
       requestAnimationFrame(frame);
