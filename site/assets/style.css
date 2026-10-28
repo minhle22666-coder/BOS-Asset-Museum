@@ -61,8 +61,11 @@ h1, h2, h3, p, figure { margin: 0; }
 
 /* ================================================================ the world behind */
 .world { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: var(--night); }
-.world-img { position: absolute; inset: 0; background: url(planet/hall-bg.webp) center / cover no-repeat; transform-origin: 50% 50%; will-change: transform; opacity: 0; transition: opacity 1.4s ease; }
-body.ready .world-img { opacity: 1; }
+.world-img { position: absolute; inset: 0; background: url(planet/hall-bg.webp) center / cover no-repeat; transform-origin: 50% 50%; will-change: transform, filter; opacity: 0; transition: opacity 1.4s ease; }
+body.ready .world-img:not(.world-ghost) { opacity: 1; }
+.world-ghost { transition: none; filter: blur(7px) brightness(1.15); mix-blend-mode: screen; }
+/* edges darken a touch while you travel */
+.world::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(75% 70% at 50% 50%, transparent 55%, rgba(2, 6, 26, calc(var(--rush, 0) * 0.65)) 100%); }
 .motes { position: absolute; inset: 0; width: 100%; height: 100%; }
 .world > .planet { z-index: 2; }
 .planet { position: absolute; right: calc(min(64vw, 1180px) * -0.3); bottom: calc(min(64vw, 1180px) * -0.36); width: min(64vw, 1180px); aspect-ratio: 1; opacity: 0; pointer-events: none;

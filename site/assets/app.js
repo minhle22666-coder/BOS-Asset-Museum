@@ -391,18 +391,53 @@
       pg.style.opacity = String(Math.max(0, 1 - a));
       pg.style.zIndex = String(10 - Math.round(a * 5));
     });
-    // the hall behind you slides and turns as you travel
     const span = Math.max(1, deck.count - 1);
-    const t = deck.p / span;
-    const frac = deck.p - Math.round(deck.p);
-    const img = $(".world-img");
-    const fx = pointer.sx * 14, fy = pointer.sy * 10;
-    img.style.transform = `translate3d(${(-t * 12 + 6).toFixed(3)}%, ${(Math.sin(deck.p * 1.3) * 2).toFixed(3)}%, 0) translate(${fx}px, ${fy}px) scale(${1.32 + Math.abs(frac) * 0.08}) rotate(${(frac * 2.2).toFixed(3)}deg)`;
+    camera();
     $(".progress").style.setProperty("--p", String(deck.p / span));
     const pl = $("#planet");
     pl.style.setProperty("--deck", deck.p.toFixed(4));
     pl.style.setProperty("--fx", `${(pointer.sx * -18).toFixed(2)}px`);
     pl.style.setProperty("--fy", `${(pointer.sy * -12).toFixed(2)}px`);
+  }
+
+  // ---------------------------------------------------------------- the camera walking through the hall
+  // Home shows the whole photo. Every hall walks the camera deeper in, towards a different exhibit.
+  // Each stop: s = zoom, x/y = the spot in the photo (in %) the camera turns towards.
+  const CAM = [
+    { s: 1.0, x: 50, y: 50 },   // Home: the whole hall
+    { s: 1.32, x: 20, y: 34 },  // the big orange sign on the left
+    { s: 1.5, x: 52, y: 58 },   // the globe and the screen
+    { s: 1.66, x: 82, y: 46 },  // "Earth through a cosmic lens"
+    { s: 1.8, x: 95, y: 46 },   // the far corner
+  ];
+  const camAt = (i) => CAM[Math.min(i, CAM.length - 1)];
+  const smooth = (t) => t * t * (3 - 2 * t);
+  let lastP = 0, rush = 0, introZoom = reduce ? 0 : 0.14;
+  function camera() {
+    const p = clamp(deck.p, 0, deck.count - 1);
+    const i = Math.floor(p), f = smooth(p - i);
+    const a = camAt(i), b = camAt(i + 1);
+    const s = a.s + (b.s - a.s) * f + introZoom;
+    const fx = a.x + (b.x - a.x) * f, fy = a.y + (b.y - a.y) * f;
+    const W = innerWidth, H = innerHeight;
+    // swing the chosen spot towards the middle, without ever showing the photo's edge
+    const maxX = ((s - 1) * W) / 2, maxY = ((s - 1) * H) / 2;
+    const now = performance.now() / 1000;
+    const tx = clamp(-(fx / 100 - 0.5) * W * s * 0.85 + pointer.sx * -10 + Math.sin(now * 0.21) * 6 * s, -maxX, maxX);
+    const ty = clamp(-(fy / 100 - 0.5) * H * s * 0.85 + pointer.sy * -7 + Math.cos(now * 0.17) * 4 * s, -maxY, maxY);
+    // how fast we're travelling right now (0 = still, 1 = full speed)
+    rush += (clamp(Math.abs(p - lastP) * 22, 0, 1) - rush) * 0.18;
+    lastP = p;
+    const tilt = (p - Math.round(p)) * 1.6;
+    const img = $("#world-img"), ghost = $("#world-ghost");
+    img.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${(s + 0.012).toFixed(4)}) rotate(${tilt.toFixed(3)}deg)`;
+    // a little depth blur the deeper we go, plus speed blur while moving
+    img.style.filter = `blur(${((s - 1) * 1.1 + rush * 2.2).toFixed(2)}px) saturate(${(1 + rush * 0.25).toFixed(3)})`;
+    // a stretched, faded copy on top reads as rushing forward
+    ghost.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${(s * (1 + rush * 0.09) + 0.012).toFixed(4)}) rotate(${tilt.toFixed(3)}deg)`;
+    ghost.style.opacity = (rush * 0.42).toFixed(3);
+    document.documentElement.style.setProperty("--rush", rush.toFixed(3));
+    if (introZoom > 0) introZoom = Math.max(0, introZoom - 0.0016);
   }
 
   // ---------------------------------------------------------------- the guide
