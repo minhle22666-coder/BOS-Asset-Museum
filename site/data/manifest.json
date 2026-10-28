@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T08:37:43+00:00",
+ "generatedAt": "2026-10-28T09:34:15+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -121,20 +121,92 @@
    "title": "Mascot Materials for Slide Design",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 11,
-   "bytes": 10888739,
+   "count": 23,
+   "bytes": 22932717,
    "items": [
     {
-     "id": "99c30e9a41ed",
-     "name": "all hands q1 2026 BOS (55)",
-     "file": "media/slide-design/all hands q1 2026 BOS (55).png",
+     "id": "05951ddf4f5f",
+     "name": "All Hands 1",
+     "file": "media/slide-design/All Hands 1.png",
      "collection": "",
      "mime": "image/png",
-     "size": 1742455,
-     "hash": "6024470d7b447f6275ca098e894b67506a1a7af9",
-     "w": 1364,
-     "h": 768,
-     "thumb": "thumbs/slide-design/all hands q1 2026 BOS (55).png.webp"
+     "size": 773847,
+     "hash": "e887b2b30d77319243f30abf8b17c7212ec74243",
+     "w": 930,
+     "h": 628,
+     "thumb": "thumbs/slide-design/All Hands 1.png.webp"
+    },
+    {
+     "id": "3d7fb4c06353",
+     "name": "all hands q1 2026 BOS (67)",
+     "file": "media/slide-design/all hands q1 2026 BOS (67).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 668424,
+     "hash": "eb82867932a4ca33bc4563aedfa844a45ca41d9d",
+     "w": 833,
+     "h": 714,
+     "thumb": "thumbs/slide-design/all hands q1 2026 BOS (67).png.webp"
+    },
+    {
+     "id": "8829fee16ab0",
+     "name": "All Hands Q1 2026",
+     "file": "media/slide-design/All Hands Q1 2026.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 532060,
+     "hash": "98c93ea55edb571a2162c89faddd49ba6bcaee7f",
+     "w": 998,
+     "h": 832,
+     "thumb": "thumbs/slide-design/All Hands Q1 2026.png.webp"
+    },
+    {
+     "id": "7983832331f3",
+     "name": "All Hands Q1 (1)",
+     "file": "media/slide-design/All Hands Q1 (1).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 564838,
+     "hash": "ccb1440af8133aefe0722ddb36a7915daf3b7078",
+     "w": 806,
+     "h": 684,
+     "thumb": "thumbs/slide-design/All Hands Q1 (1).png.webp"
+    },
+    {
+     "id": "55e600bd9cb8",
+     "name": "All Hands Q1 (3)",
+     "file": "media/slide-design/All Hands Q1 (3).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 343008,
+     "hash": "d48c563a9e0e14e1eb7f13d578593ad38a643762",
+     "w": 480,
+     "h": 528,
+     "thumb": "thumbs/slide-design/All Hands Q1 (3).png.webp"
+    },
+    {
+     "id": "11c7688ed040",
+     "name": "All Hands Q1-2",
+     "file": "media/slide-design/All Hands Q1-2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 361443,
+     "hash": "fdbd5f0dbfe041a0969c335f86cf66db2bc3c491",
+     "w": 415,
+     "h": 584,
+     "thumb": "thumbs/slide-design/All Hands Q1-2.png.webp"
+    },
+    {
+     "id": "03446e5ec383",
+     "name": "All Hands Q1",
+     "file": "media/slide-design/All Hands Q1.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 911752,
+     "hash": "70df15a96be6630f71124719394f9655778b072a",
+     "w": 1073,
+     "h": 975,
+     "thumb": "thumbs/slide-design/All Hands Q1.png.webp"
     },
     {
      "id": "0b6eeca70977",
@@ -161,6 +233,18 @@
      "thumb": "thumbs/slide-design/All Hands Q4 2026.png.webp"
     },
     {
+     "id": "65627b09f87c",
+     "name": "BOS Theme",
+     "file": "media/slide-design/BOS Theme.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1204264,
+     "hash": "ef04b9383834997320446ed1c37f83ff700fd224",
+     "w": 1124,
+     "h": 1043,
+     "thumb": "thumbs/slide-design/BOS Theme.png.webp"
+    },
+    {
      "id": "f0f2e472124a",
      "name": "BOS Website 1",
      "file": "media/slide-design/BOS Website 1.png",
@@ -183,6 +267,18 @@
      "w": 1298,
      "h": 730,
      "thumb": "thumbs/slide-design/BOS Website.png.webp"
+    },
+    {
+     "id": "70100d80698e",
+     "name": "Explorer 1",
+     "file": "media/slide-design/Explorer 1.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 770080,
+     "hash": "be8f701ff8987eed09972f41023cfa2997133341",
+     "w": 827,
+     "h": 868,
+     "thumb": "thumbs/slide-design/Explorer 1.png.webp"
     },
     {
      "id": "aa327d201243",
@@ -255,6 +351,54 @@
      "w": 1364,
      "h": 768,
      "thumb": "thumbs/slide-design/Performance Review.png.webp"
+    },
+    {
+     "id": "96e47024a855",
+     "name": "Quiz Time (2)",
+     "file": "media/slide-design/Quiz Time (2).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 2659376,
+     "hash": "9526836aebcc339891c4153f08b1c28057fc6489",
+     "w": 1252,
+     "h": 1577,
+     "thumb": "thumbs/slide-design/Quiz Time (2).png.webp"
+    },
+    {
+     "id": "8332b46a9fd8",
+     "name": "Quiz Time",
+     "file": "media/slide-design/Quiz Time.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1659451,
+     "hash": "6706df74c6e7cf0fa7204d9812dd333fb54274bf",
+     "w": 1492,
+     "h": 881,
+     "thumb": "thumbs/slide-design/Quiz Time.png.webp"
+    },
+    {
+     "id": "ba3ab78798cc",
+     "name": "Research",
+     "file": "media/slide-design/Research.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1595435,
+     "hash": "b5515e345f73560dc7dcf22ca8e87388f50f781f",
+     "w": 963,
+     "h": 1139,
+     "thumb": "thumbs/slide-design/Research.png.webp"
+    },
+    {
+     "id": "581957abb665",
+     "name": "Vung Tau & Export",
+     "file": "media/slide-design/Vung Tau & Export.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1742455,
+     "hash": "6024470d7b447f6275ca098e894b67506a1a7af9",
+     "w": 1364,
+     "h": 768,
+     "thumb": "thumbs/slide-design/Vung Tau & Export.png.webp"
     }
    ]
   },
