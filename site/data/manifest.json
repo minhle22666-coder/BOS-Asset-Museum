@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T03:51:30+00:00",
+ "generatedAt": "2026-10-29T06:59:15+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -124,9 +124,34 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 0,
-   "bytes": 0,
-   "items": []
+   "count": 2,
+   "bytes": 6443379,
+   "items": [
+    {
+     "id": "b5cb2c59bb98",
+     "name": "Handover Slides (8)",
+     "file": "media/desktop-background/Handover Slides (8).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 3766258,
+     "hash": "ffab06e34aa32b085ee18ee4bd33602b784b036e",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Handover Slides (8).png.webp"
+    },
+    {
+     "id": "4ed495950bc9",
+     "name": "Handover Slides (9)",
+     "file": "media/desktop-background/Handover Slides (9).png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 2677121,
+     "hash": "678a7161d7556891736c7627956d01a426270966",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Handover Slides (9).png.webp"
+    }
+   ]
   },
   {
    "slug": "slide-design",
