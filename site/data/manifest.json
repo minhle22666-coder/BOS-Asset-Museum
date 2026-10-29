@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T03:50:34+00:00",
+ "generatedAt": "2026-10-29T03:51:30+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -7,7 +7,7 @@
    "description": "The official BOS logo and core mascot artwork. Start here for any deck cover.",
    "frame": "square",
    "count": 9,
-   "bytes": 2335363,
+   "bytes": 2301305,
    "items": [
     {
      "id": "ecb722e01b96",
@@ -70,18 +70,6 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/New Retail Store - Kamemart.png.webp"
     },
     {
-     "id": "00419448155b",
-     "name": "new-bos-logo-white",
-     "file": "media/logo-mascot/Logo KMR & BOS/new-bos-logo-white.png",
-     "collection": "Logo KMR & BOS",
-     "mime": "image/png",
-     "size": 41868,
-     "hash": "96924d2f2b12f6175f347bb061b9bdc3842fc04e",
-     "w": 210,
-     "h": 131,
-     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/new-bos-logo-white.png.webp"
-    },
-    {
      "id": "c4b60ea2c0b7",
      "name": "new-bos-logo",
      "file": "media/logo-mascot/Logo KMR & BOS/new-bos-logo.png",
@@ -104,6 +92,18 @@
      "w": 1302,
      "h": 1302,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png.webp"
+    },
+    {
+     "id": "ab1467754b01",
+     "name": "white-new-bos-logo",
+     "file": "media/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 7810,
+     "hash": "2bf405582c23e1e964d02442b44f88956697f80a",
+     "w": 117,
+     "h": 73,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png.webp"
     },
     {
      "id": "9ae2ecb82e9d",
