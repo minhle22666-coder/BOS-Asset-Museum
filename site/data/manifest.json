@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T07:19:13+00:00",
+ "generatedAt": "2026-10-29T09:07:32+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -124,8 +124,8 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 2,
-   "bytes": 6704360,
+   "count": 3,
+   "bytes": 7046945,
    "items": [
     {
      "id": "83fae80e333e",
@@ -150,6 +150,18 @@
      "w": 3840,
      "h": 2160,
      "thumb": "thumbs/desktop-background/Tet-2027-ver2.png.webp"
+    },
+    {
+     "id": "4a898515c7d2",
+     "name": "Tet-For Phone",
+     "file": "media/desktop-background/Tet-For Phone.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 342585,
+     "hash": "3a65392ce7812226cd561e96dda7e1ebf8fd7300",
+     "w": 1170,
+     "h": 2532,
+     "thumb": "thumbs/desktop-background/Tet-For Phone.png.webp"
     }
    ]
   },
