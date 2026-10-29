@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T06:59:15+00:00",
+ "generatedAt": "2026-10-29T07:19:13+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -125,31 +125,31 @@
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
    "count": 2,
-   "bytes": 6443379,
+   "bytes": 6704360,
    "items": [
     {
-     "id": "b5cb2c59bb98",
-     "name": "Handover Slides (8)",
-     "file": "media/desktop-background/Handover Slides (8).png",
+     "id": "83fae80e333e",
+     "name": "Tet-2027-ver1",
+     "file": "media/desktop-background/Tet-2027-ver1.png",
      "collection": "",
      "mime": "image/png",
-     "size": 3766258,
-     "hash": "ffab06e34aa32b085ee18ee4bd33602b784b036e",
+     "size": 3861331,
+     "hash": "413a6e38eaabc3e43cfce737ab4e823003f8bbad",
      "w": 3840,
      "h": 2160,
-     "thumb": "thumbs/desktop-background/Handover Slides (8).png.webp"
+     "thumb": "thumbs/desktop-background/Tet-2027-ver1.png.webp"
     },
     {
-     "id": "4ed495950bc9",
-     "name": "Handover Slides (9)",
-     "file": "media/desktop-background/Handover Slides (9).png",
+     "id": "44348624d388",
+     "name": "Tet-2027-ver2",
+     "file": "media/desktop-background/Tet-2027-ver2.png",
      "collection": "",
      "mime": "image/png",
-     "size": 2677121,
-     "hash": "678a7161d7556891736c7627956d01a426270966",
+     "size": 2843029,
+     "hash": "eba17cb70d93c69854a110524dd437398f77abff",
      "w": 3840,
      "h": 2160,
-     "thumb": "thumbs/desktop-background/Handover Slides (9).png.webp"
+     "thumb": "thumbs/desktop-background/Tet-2027-ver2.png.webp"
     }
    ]
   },
@@ -501,8 +501,8 @@
    "title": "Slides Mascot",
    "description": "",
    "frame": "square",
-   "count": 23,
-   "bytes": 22932717,
+   "count": 24,
+   "bytes": 24427820,
    "items": [
     {
      "id": "82c187eed223",
@@ -767,6 +767,18 @@
      "w": 963,
      "h": 1139,
      "thumb": "thumbs/slides-mascot/Research.png.webp"
+    },
+    {
+     "id": "a84777ebb3a4",
+     "name": "Tet",
+     "file": "media/slides-mascot/Tet.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1495103,
+     "hash": "bd613d6c4510bf6c52b2d2ce6f7763c533ee03bc",
+     "w": 916,
+     "h": 1256,
+     "thumb": "thumbs/slides-mascot/Tet.png.webp"
     },
     {
      "id": "1d98985f90f6",
