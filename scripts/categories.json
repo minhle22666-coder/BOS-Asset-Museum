@@ -3,10 +3,11 @@
   "categories": [
     {
       "slug": "logo-mascot",
-      "title": "Logo & Mascot",
-      "description": "The official logos and the core BOS mascot artwork. Start here for any deck cover.",
+      "title": "Avatar & Logo",
+      "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
       "frame": "square",
       "drive_names": [
+        "Avatar & Logo",
         "Logo & Mascot",
         "Logo and Mascot"
       ]
@@ -26,22 +27,12 @@
     {
       "slug": "slides-ideas",
       "title": "Slide Ideas for BOS",
-      "description": "Layouts and visual ideas to spark your next BOS deck.",
+      "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
       "frame": "wide",
       "drive_names": [
         "[Slides]-Ideas for BOS",
         "Slides Ideas for BOS",
         "Ideas for BOS"
-      ]
-    },
-    {
-      "slug": "all-hands",
-      "title": "All Hands Template",
-      "description": "Ready-made pieces for the All Hands deck.",
-      "frame": "wide",
-      "drive_names": [
-        "All Hands-Template",
-        "All Hands Template"
       ]
     },
     {

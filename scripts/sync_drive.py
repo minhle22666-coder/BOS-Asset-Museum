@@ -40,7 +40,15 @@ FOLDER = "application/vnd.google-apps.folder"
 SHORTCUT = "application/vnd.google-apps.shortcut"
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
 MASS_DELETE_RATIO = 0.30
-MAX_BYTES = 25 * 1024 * 1024  # Cloudflare Pages refuses any single file above 25 MiB
+MAX_BYTES = 24 * 1024 * 1024  # Cloudflare refuses any single file above 25 MiB; keep a little margin
+
+# Slide decks: Google Slides (exported as PowerPoint), uploaded .pptx and .pdf files.
+GSLIDES = "application/vnd.google-apps.presentation"
+PPTX = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+DECK_EXT = {".pptx": PPTX, ".pdf": "application/pdf"}
+SIDE_PREVIEW = ".preview.png"   # first-slide picture saved next to each deck
+SIDE_LINK = ".link.json"        # written instead of the deck when it is too big even after shrinking
+CREDS = None
 
 BAD_CHARS = re.compile(r'[\\/:*?"<>|#%\x00-\x1f]')
 
@@ -77,7 +85,27 @@ def drive_service():
         import google.auth
 
         creds, _ = google.auth.default(scopes=SCOPES)
+    global CREDS
+    CREDS = creds
     return build("drive", "v3", credentials=creds, cache_discovery=False)
+
+
+def session():
+    from google.auth.transport.requests import AuthorizedSession
+
+    return AuthorizedSession(CREDS)
+
+
+def deck_kind(f: dict) -> str | None:
+    """'gslides' for Google Slides, 'pptx' / 'pdf' for uploaded files, None for anything else."""
+    if f["mimeType"] == GSLIDES:
+        return "gslides"
+    ext = Path(f["name"]).suffix.lower()
+    if f["mimeType"] == PPTX or ext == ".pptx":
+        return "pptx"
+    if f["mimeType"] == "application/pdf" or ext == ".pdf":
+        return "pdf"
+    return None
 
 
 def list_children(svc, folder_id: str) -> list[dict]:
@@ -129,6 +157,20 @@ def walk(svc, folder_id: str, rel: Path, found: dict) -> None:
             walk(svc, f["id"], rel / safe_name(f["name"]), found)
             continue
         ext = Path(f["name"]).suffix.lower()
+        kind = deck_kind(f)
+        if kind:
+            name = safe_name(f["name"])
+            stem = name[: -len(Path(name).suffix)] if Path(name).suffix.lower() in DECK_EXT else name
+            path = rel / f"{stem}.{'pdf' if kind == 'pdf' else 'pptx'}"
+            if str(path) in {v["path"] for v in found.values()}:
+                path = rel / f"{stem}-{f['id'][:6]}{path.suffix}"
+            found[f["id"]] = {
+                "path": str(path).replace("\\", "/"),
+                "md5": f.get("md5Checksum") or f.get("modifiedTime"),
+                "modified": f.get("modifiedTime"),
+                "kind": kind,
+            }
+            continue
         if not (f["mimeType"].startswith("image/") or ext in IMAGE_EXT):
             log(f"  skip (not an image): {rel / f['name']}")
             continue
@@ -164,6 +206,87 @@ def download(svc, file_id: str, dest: Path) -> None:
     tmp = dest.with_suffix(dest.suffix + ".part")
     tmp.write_bytes(buf.getvalue())
     tmp.replace(dest)
+
+
+def shrink_pptx(src: Path, limit: int, side: int = 1920) -> bool:
+    """Re-save the pictures inside a .pptx smaller (max 1920 px, lighter JPEGs). True if it now fits."""
+    import zipfile
+    from PIL import Image
+
+    tmp = src.with_suffix(".shrink.pptx")
+    with zipfile.ZipFile(src) as zin, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
+        for item in zin.infolist():
+            data = zin.read(item.filename)
+            low = item.filename.lower()
+            if low.startswith("ppt/media/") and low.endswith((".png", ".jpg", ".jpeg")) and len(data) > 150_000:
+                try:
+                    with Image.open(io.BytesIO(data)) as im:
+                        im.load()
+                        if max(im.size) > side:
+                            im.thumbnail((side, side), Image.LANCZOS)
+                        out = io.BytesIO()
+                        if low.endswith(".png"):
+                            im.save(out, "PNG", optimize=True)
+                        else:
+                            im.convert("RGB").save(out, "JPEG", quality=80, optimize=True, progressive=True)
+                        if out.tell() < len(data):
+                            data = out.getvalue()
+                except Exception:
+                    pass
+            zout.writestr(item, data)
+    tmp.replace(src)
+    return src.stat().st_size <= limit
+
+
+def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
+    """Save the deck (or a link to it when too big) plus a picture of its first slide."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    s = session()
+    info = svc.files().get(fileId=fid, fields="name, webViewLink, exportLinks, thumbnailLink", supportsAllDrives=True).execute()
+    preview = dest.with_name(dest.name + SIDE_PREVIEW)
+    link = dest.with_name(dest.name + SIDE_LINK)
+
+    # first slide as a picture
+    pic = None
+    if meta["kind"] == "gslides" and (info.get("exportLinks") or {}).get("image/png"):
+        r = s.get(info["exportLinks"]["image/png"], timeout=120)
+        pic = r.content if r.ok else None
+    if not pic and info.get("thumbnailLink"):
+        r = s.get(re.sub(r"=s\d+$", "=s1600", info["thumbnailLink"]), timeout=60)
+        pic = r.content if r.ok else None
+    if pic:
+        preview.write_bytes(pic)
+
+    # the deck itself
+    tmp = dest.with_suffix(dest.suffix + ".part")
+    if meta["kind"] == "gslides":
+        url = (info.get("exportLinks") or {}).get(PPTX)
+        if not url:
+            raise RuntimeError("Google did not offer a PowerPoint export for this deck")
+        with s.get(url, stream=True, timeout=600) as r:
+            r.raise_for_status()
+            with tmp.open("wb") as fh:
+                for chunk in r.iter_content(1 << 20):
+                    fh.write(chunk)
+    else:
+        download(svc, fid, tmp)
+    size = tmp.stat().st_size
+    fits = size <= MAX_BYTES or (dest.suffix == ".pptx" and (shrink_pptx(tmp, MAX_BYTES) or shrink_pptx(tmp, MAX_BYTES, 1280)))
+    if fits:
+        tmp.replace(dest)
+        link.unlink(missing_ok=True)
+        log(f"    deck saved ({tmp.stat().st_size if tmp.exists() else dest.stat().st_size} bytes)")
+    else:
+        tmp.unlink(missing_ok=True)
+        dest.unlink(missing_ok=True)
+        link.write_text(json.dumps({"title": info["name"], "url": info.get("webViewLink"), "bytes": size}, ensure_ascii=False), encoding="utf-8")
+        log(f"    deck is {size // (1024 * 1024)} MB even after shrinking - too big for the website; keeping a preview + link instead")
+
+
+def remove_with_sidecars(rel: str) -> None:
+    p = MEDIA / rel
+    for q in (p, p.with_name(p.name + SIDE_PREVIEW), p.with_name(p.name + SIDE_LINK)):
+        q.unlink(missing_ok=True)
 
 
 def main() -> int:
@@ -206,20 +329,27 @@ def main() -> int:
     for fid, meta in found.items():
         old = state.get(fid)
         dest = MEDIA / meta["path"]
-        if old and old["md5"] == meta["md5"] and old["path"] == meta["path"] and dest.exists():
+        have = dest.exists() or dest.with_name(dest.name + SIDE_LINK).exists()
+        if old and old["md5"] == meta["md5"] and old["path"] == meta["path"] and have:
             continue
         if old and old["path"] != meta["path"]:
-            (MEDIA / old["path"]).unlink(missing_ok=True)  # renamed / moved in Drive
+            remove_with_sidecars(old["path"])  # renamed / moved in Drive
         log(f"  {'update' if old else 'add'}: {meta['path']}")
-        download(svc, fid, dest)
+        try:
+            if meta.get("kind"):
+                fetch_deck(svc, fid, meta, dest)
+            else:
+                download(svc, fid, dest)
+        except Exception as e:
+            log(f"    FAILED ({e.__class__.__name__}: {e}) - will retry next time")
+            continue
         state[fid] = meta
         changed += bool(old)
         added += not old
 
     for fid in removed:
-        p = MEDIA / state[fid]["path"]
         log(f"  delete: {state[fid]['path']}")
-        p.unlink(missing_ok=True)
+        remove_with_sidecars(state[fid]["path"])
         del state[fid]
         deleted += 1
 

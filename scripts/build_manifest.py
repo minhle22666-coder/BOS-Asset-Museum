@@ -27,6 +27,8 @@ CATEGORIES_FILE = ROOT / "scripts" / "categories.json"
 RASTER = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".avif"}
 VECTOR = {".svg"}
 THUMB_MAX = 720  # px, longest side (sharp on retina at ~360px cards)
+DECK = {".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation", ".pdf": "application/pdf"}
+SIDE_PREVIEW, SIDE_LINK = ".preview.png", ".link.json"
 MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp",
         ".gif": "image/gif", ".avif": "image/avif", ".svg": "image/svg+xml"}
 
@@ -63,13 +65,60 @@ def make_thumb(src: Path, dst: Path) -> tuple[int, int]:
     return w, h
 
 
+def deck_entry(p: Path, rel: str, digest: str, collection: str, old: dict, used: set) -> dict | None:
+    """A slide deck: its first-slide picture is the preview; the file (or a link) is the download."""
+    is_link = p.name.lower().endswith(SIDE_LINK)
+    deck_name = p.name[: -len(SIDE_LINK)] if is_link else p.name
+    deck = p.with_name(deck_name)
+    if is_link and deck.exists():
+        return None  # the real file is here too; the link is stale
+    preview = p.with_name(deck_name + SIDE_PREVIEW)
+    entry = {
+        "id": hashlib.sha1(f"{rel}|{digest}".encode()).hexdigest()[:12],
+        "name": Path(deck_name).stem,
+        "kind": "link" if is_link else "deck",
+        "format": Path(deck_name).suffix.lstrip(".").upper(),
+        "file": None if is_link else rel,
+        "collection": collection,
+        "mime": DECK.get(Path(deck_name).suffix.lower(), "application/octet-stream"),
+        "size": 0 if is_link else p.stat().st_size,
+        "hash": digest,
+        "src": rel,
+        "w": None, "h": None, "thumb": None, "preview": None,
+    }
+    if is_link:
+        info = json.loads(p.read_text(encoding="utf-8"))
+        entry.update(href=info.get("url"), fullSize=info.get("bytes"))
+    if preview.exists():
+        entry["preview"] = preview.relative_to(SITE).as_posix()
+        t = THUMBS / preview.relative_to(MEDIA).with_suffix(".webp")
+        pdig = sha1(preview)
+        prev = old.get(rel)
+        if prev and prev.get("previewHash") == pdig and t.exists():
+            entry.update(w=prev["w"], h=prev["h"])
+        else:
+            try:
+                entry["w"], entry["h"] = make_thumb(preview, t)
+                print(f"[thumb] {preview.relative_to(SITE).as_posix()}")
+            except Exception as e:
+                print(f"[thumb] FAILED {preview}: {e}")
+                t = None
+        entry["previewHash"] = pdig
+        if t:
+            entry["thumb"] = t.relative_to(SITE).as_posix()
+            used.add(t)
+    if not entry["thumb"]:
+        entry["thumb"] = "assets/planet/deck-placeholder.svg"
+    return entry
+
+
 def main() -> None:
     cfg = json.loads(CATEGORIES_FILE.read_text(encoding="utf-8"))["categories"]
     old = {}
     if MANIFEST.exists():
         for c in json.loads(MANIFEST.read_text(encoding="utf-8")).get("categories", []):
             for it in c["items"]:
-                old[it["file"]] = it
+                old[it.get("src") or it.get("file") or it["id"]] = it
 
     known = {c["slug"] for c in cfg}
     extra = sorted(d.name for d in MEDIA.iterdir() if d.is_dir() and d.name not in known) if MEDIA.exists() else []
@@ -79,7 +128,14 @@ def main() -> None:
     out = []
     for w in wings:
         base = MEDIA / w["slug"]
-        files = sorted((p for p in base.rglob("*") if p.is_file() and p.suffix.lower() in RASTER | VECTOR),
+        def wanted(p: Path) -> bool:
+            n = p.name.lower()
+            if n.endswith(SIDE_PREVIEW):
+                return False  # a deck's preview picture, shown with the deck
+            if n.endswith(SIDE_LINK):
+                return True   # a deck too big to host: preview + link
+            return p.suffix.lower() in RASTER | VECTOR | set(DECK)
+        files = sorted((p for p in base.rglob("*") if p.is_file() and wanted(p)),
                        key=lambda p: natural_key(str(p.relative_to(base)))) if base.exists() else []
         items = []
         for p in files:
@@ -88,6 +144,11 @@ def main() -> None:
             ext = p.suffix.lower()
             collection = p.parent.relative_to(base).as_posix()
             collection = "" if collection == "." else collection
+            if p.name.lower().endswith(SIDE_LINK) or ext in DECK:
+                entry = deck_entry(p, rel, digest, collection, old, used_thumbs)
+                if entry:
+                    items.append(entry)
+                continue
             entry = {
                 "id": hashlib.sha1(f"{rel}|{digest}".encode()).hexdigest()[:12],
                 "name": p.stem,

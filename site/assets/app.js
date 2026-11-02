@@ -16,9 +16,9 @@
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
-    "logo-mascot": { short: "Logo & Mascot", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Copy a logo, paste it on your cover slide."] },
+    "logo-mascot": { short: "Avatar & Logo", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Logos in one tab, Zalo avatars in the other."] },
     "slides-mascot": { short: "Slides", hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
-    "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Stuck on a layout? Borrow an idea from here.", "Good decks start with a good idea."] },
+    "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Stuck on a layout? Borrow a whole deck from here.", "Download it, open it in PowerPoint, make it yours."] },
     "all-hands": { short: "All Hands", hue: "#9fb4ff", pose: "float", lines: ["Everything for the All Hands deck, in one place.", "See you at All Hands!"] },
     "mini-games": { short: "Mini Games", hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
     "desktop-background": { short: "Wallpapers", hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
@@ -40,6 +40,7 @@
     _: '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M2.5 7A2.5 2.5 0 0 1 5 4.5h4l2 2h8A2.5 2.5 0 0 1 21.5 9v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 18z"/><path class="d2" d="m12 9.5 1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></svg>',
     orbit: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="6" width="7" height="12" rx="1.6"/><path d="M5.5 8v8M2.5 10v4M18.5 8v8M21.5 10v4"/></svg>',
     wall: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.6"/></svg>',
+    open: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>',
     copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
     down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
     zip: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 12 4l7 4.5v8L12 21l-7-4.5z"/><path d="M5 8.5 12 13l7-4.5M12 13v8"/></svg>',
@@ -56,7 +57,22 @@
     if (n < 1073741824) return `${(n / 1048576).toFixed(1)} MB`;
     return `${(n / 1073741824).toFixed(2)} GB`;
   }
-  const meta = (it) => [ext(it.file), it.w ? `${it.w} × ${it.h}` : null, bytes(it.size)].filter(Boolean).join(", ");
+  // Slide decks ("deck") download as files; decks too big to host ("link") open in Google Slides.
+  const isDeck = (it) => it.kind === "deck" || it.kind === "link";
+  const meta = (it) => it.kind === "link" ? `${it.format} slide deck, too big to host here, opens in Google Slides`
+    : it.kind === "deck" ? `${it.format} slide deck, ${bytes(it.size)}`
+    : [ext(it.file), it.w ? `${it.w} × ${it.h}` : null, bytes(it.size)].filter(Boolean).join(", ");
+  const badge = (it) => isDeck(it) ? `<span class="badge">${esc(it.format || "DECK")}</span>` : "";
+  // point a Copy / Download / Open trio at one item
+  function wireActions(it, copyBtn, dlLink, openLink) {
+    if (copyBtn) copyBtn.hidden = isDeck(it);
+    if (dlLink) {
+      dlLink.hidden = !it.file;
+      if (it.file) { dlLink.href = url(it.file); dlLink.setAttribute("download", fileName(it.file)); }
+      const label = $("span", dlLink); if (label) label.textContent = it.kind === "deck" ? `Download ${it.format}` : "Download";
+    }
+    if (openLink) { openLink.hidden = !it.href; if (it.href) openLink.href = it.href; }
+  }
   const pretty = (s) => s.replace(/[-_]+/g, " ").trim();
   const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
   const pad = (n) => String(n).padStart(2, "0");
@@ -143,18 +159,43 @@
         </header>
         <div class="hall-body"></div>`;
       deckEl.appendChild(page);
-      const hall = { cat: c, page, view: "orbit", orbit: null, wall: null };
+      const hall = { cat: c, page, view: pref.get("view", CFG.defaultView === "grid" ? "wall" : "orbit"), orbit: null, wall: null, items: c.items, tabs: tabsOf(c.items), tab: null };
       halls.push(hall);
       const body = $(".hall-body", page);
       if (!c.count) {
         body.innerHTML = `<div class="empty"><b>This hall is still being set up.</b>Add pictures to the matching Drive folder, then press Refresh at the top right. They'll land here in a few minutes.</div>`;
       } else {
-        hall.orbit = new Orbit(body, c.items, c.frame, hall);
-        hall.wall = new Wall(body, c.items, hall);
-        setView(hall, pref.get("view", CFG.defaultView === "grid" ? "wall" : "orbit"), true);
+        // a hall with sub-folders gets one tab per sub-folder instead of mixing them
+        if (hall.tabs.length > 1) {
+          const bar = document.createElement("div");
+          bar.className = "hall-tabs";
+          bar.setAttribute("role", "tablist");
+          bar.setAttribute("aria-label", "Folders in this hall");
+          bar.innerHTML = hall.tabs.map((t, k) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${k === 0}">${esc(t.label)}<span>${t.items.length}</span></button>`).join("");
+          body.before(bar);
+        }
+        setTab(hall, 0, true);
       }
     });
     deck.count = cats.length + 1;
+  }
+  function tabsOf(items) {
+    const groups = new Map();
+    items.forEach((it) => { const k = (it.collection || "").split("/")[0]; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); });
+    return [...groups.keys()]
+      .sort((a, b) => (a === "" ? 1 : b === "" ? -1 : a.localeCompare(b, undefined, { numeric: true })))
+      .map((k) => ({ key: k, label: k ? pretty(k.split("/")[0]) : "Others", items: groups.get(k) }));
+  }
+  function setTab(hall, k, silent) {
+    hall.tab = k;
+    hall.items = hall.tabs.length > 1 ? hall.tabs[k].items : hall.cat.items;
+    $$(".hall-tabs button", hall.page).forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.tab === k)));
+    const body = $(".hall-body", hall.page);
+    body.replaceChildren();
+    hall.orbit = new Orbit(body, hall.items, hall.cat.frame, hall);
+    hall.wall = new Wall(body, hall.items, hall);
+    const v = hall.view; hall.view = null;
+    setView(hall, v, silent);
   }
   const shortTitle = (t) => t.replace(/^Logo & Mascot.*/i, "Logo & Mascot").replace(/^Mascot (Materials )?for /i, "").replace(/^Materials for /i, "");
 
@@ -195,6 +236,7 @@
           <div class="oc-actions">
             <button class="btn-go btn-sm" type="button" data-act="copy">${ICON.copy}<span>Copy</span></button>
             <a class="btn-ghost btn-sm" data-act="download">${ICON.down}<span>Download</span></a>
+            <a class="btn-go btn-sm" data-act="open" target="_blank" rel="noopener" hidden>${ICON.open}<span>Open in Google Slides</span></a>
           </div>
         </div>`;
       parent.appendChild(this.el);
@@ -205,7 +247,7 @@
         b.className = "card";
         b.dataset.i = i;
         b.setAttribute("role", "option");
-        b.innerHTML = `<div class="card-face"><img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async" draggable="false"></div>`;
+        b.innerHTML = `<div class="card-face"><img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async" draggable="false">${badge(it)}</div>`;
         this.helix.appendChild(b);
         return b;
       });
@@ -253,9 +295,7 @@
       $(".oc-count", this.el).textContent = `${pad(i + 1)} / ${pad(this.items.length)}`;
       $(".oc-name", this.el).textContent = it.name;
       $(".oc-meta", this.el).textContent = [it.collection ? pretty(it.collection) : null, meta(it)].filter(Boolean).join(", ");
-      const dl = $('[data-act="download"]', this.el);
-      dl.href = url(it.file);
-      dl.setAttribute("download", fileName(it.file));
+      wireActions(it, $('[data-act="copy"]', this.el), $('[data-act="download"]', this.el), $('[data-act="open"]', this.el));
       this.cards.forEach((c, k) => c.setAttribute("aria-selected", String(k === i)));
     }
     show(animate) {
@@ -316,14 +356,15 @@
         <div class="wall-grid">${groups.get(k).map(([it, i]) => `
           <figure class="tile" data-i="${i}">
             <button class="tile-face" type="button" data-open="${i}" aria-label="Open ${esc(it.name)}">
-              <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">
+              <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">${badge(it)}
               <span class="glare" aria-hidden="true"></span>
             </button>
             <figcaption>
               <span class="tile-name" title="${esc(it.name)}">${esc(it.name)}</span>
               <span class="tile-actions">
-                <button type="button" data-copy="${i}" aria-label="Copy ${esc(it.name)}" title="Copy">${ICON.copy}</button>
-                <a href="${url(it.file)}" download="${esc(fileName(it.file))}" aria-label="Download ${esc(it.name)}" title="Download">${ICON.down}</a>
+                ${isDeck(it) ? "" : `<button type="button" data-copy="${i}" aria-label="Copy ${esc(it.name)}" title="Copy">${ICON.copy}</button>`}
+                ${it.file ? `<a href="${url(it.file)}" download="${esc(fileName(it.file))}" aria-label="Download ${esc(it.name)}" title="Download${isDeck(it) ? " " + esc(it.format) : ""}">${ICON.down}</a>` : ""}
+                ${it.href ? `<a href="${esc(it.href)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.name)} in Google Slides" title="Open in Google Slides">${ICON.open}</a>` : ""}
               </span>
             </figcaption>
           </figure>`).join("")}</div>`).join("");
@@ -331,7 +372,7 @@
       this.el.addEventListener("click", (e) => {
         const o = e.target.closest("[data-open]"), c = e.target.closest("[data-copy]");
         if (o) openViewer(hall, +o.dataset.open);
-        else if (c) copyItem(hall.cat.items[+c.dataset.copy]);
+        else if (c) copyItem(hall.items[+c.dataset.copy]);
       });
       if (fine) {
         let hot = null;
@@ -722,6 +763,8 @@
       if (g) { e.preventDefault(); goChecked(+g.dataset.go); return; }
       const v = e.target.closest("button[data-view]");
       if (v) { setViewAll(v.dataset.view); return; }
+      const tb = e.target.closest(".hall-tabs [data-tab]");
+      if (tb) { const hall = halls[deck.index - 1]; if (hall && +tb.dataset.tab !== hall.tab) setTab(hall, +tb.dataset.tab); return; }
       const z = e.target.closest("[data-zip]");
       if (z) exportZip(z.dataset.zip);
     });
@@ -769,6 +812,7 @@
   }
   async function copyItem(it) {
     if (!it) return;
+    if (isDeck(it)) { toast("Slide decks can't be copied. Use Download instead."); return; }
     if (!window.ClipboardItem || !navigator.clipboard?.write) { toast("This browser can't copy images. Use Download instead."); return; }
     try {
       // The promise goes into ClipboardItem straight away so Safari keeps the click permission.
@@ -791,21 +835,20 @@
     if (!v.open) v.showModal();
   }
   function showViewer() {
-    const items = V.hall.cat.items, it = items[V.i];
+    const items = V.hall.items, it = items[V.i];
     const img = $("#v-img");
     img.classList.remove("in"); void img.offsetWidth;
-    img.src = url(it.file); img.alt = it.name;
+    img.src = url(it.preview || it.file || it.thumb); img.alt = it.name;
     img.classList.add("in");
     $("#v-stage").dataset.frame = V.hall.cat.frame;
     $("#v-where").textContent = V.hall.cat.title + (it.collection ? `, ${pretty(it.collection)}` : "");
     $("#v-name").textContent = it.name;
     $("#v-meta").textContent = `${meta(it)}. ${V.i + 1} of ${items.length}`;
-    $("#v-download").href = url(it.file);
-    $("#v-download").setAttribute("download", fileName(it.file));
+    wireActions(it, $("#v-copy"), $("#v-download"), $("#v-open"));
     $("#v-prev").hidden = $("#v-next").hidden = items.length < 2;
     if (V.hall.view === "orbit" && V.hall.orbit) V.hall.orbit.go(V.i);
   }
-  function stepViewer(d) { const n = V.hall.cat.items.length; V.i = (V.i + d + n) % n; showViewer(); }
+  function stepViewer(d) { const n = V.hall.items.length; V.i = (V.i + d + n) % n; showViewer(); }
   function closeViewer() {
     const v = $("#viewer");
     if (!v.open) return;
@@ -819,7 +862,7 @@
   async function exportZip(slug) {
     if (!window.JSZip) { toast("The ZIP tool is still loading. Try again in a moment."); return; }
     const cats = slug === "all" ? manifest.categories : manifest.categories.filter((c) => c.slug === slug);
-    const items = cats.flatMap((c) => c.items.map((it) => ({ ...it, folder: c.title })));
+    const items = cats.flatMap((c) => c.items.filter((it) => it.file).map((it) => ({ ...it, folder: c.title })));
     if (!items.length) { toast("Nothing to download yet."); return; }
     const total = items.reduce((a, i) => a + i.size, 0);
     if (total > 1.5 * 1073741824 && !confirm(`This ZIP is ${bytes(total)}. Large ZIPs can be slow on older laptops. Continue?`)) return;
@@ -964,7 +1007,7 @@
     $("#v-prev").onclick = () => stepViewer(-1);
     $("#v-next").onclick = () => stepViewer(1);
     $("#v-close").onclick = closeViewer;
-    $("#v-copy").onclick = () => copyItem(V.hall.cat.items[V.i]);
+    $("#v-copy").onclick = () => copyItem(V.hall.items[V.i]);
     $("#viewer").addEventListener("click", (e) => { if (e.target === e.currentTarget || e.target.id === "v-stage") closeViewer(); });
     $("#viewer").addEventListener("cancel", (e) => { e.preventDefault(); closeViewer(); });
     $("#z-cancel").onclick = () => { abortZip && abortZip.abort(); $("#zipper").close(); toast("ZIP cancelled."); };

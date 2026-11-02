@@ -2,6 +2,7 @@
 
 Website nội bộ chứa toàn bộ logo, mascot, hình nền và vật liệu mini game của team BOS.
 Mỗi ảnh có nút **Copy** (dán thẳng vào Google Slides / PowerPoint) và **Download**. Mỗi sảnh có nút tải cả sảnh dạng ZIP, góc phải có nút tải tất cả.
+Sảnh có thư mục con (ví dụ Avatar & Logo) sẽ chia thành từng tab riêng. File slide (Google Slides, PowerPoint, PDF) hiện ảnh bìa và nút **Download PPTX**.
 
 ---
 
@@ -81,20 +82,24 @@ Cũng có thể chạy robot trên GitHub: tab **Actions → Sync gallery → Ru
 1. Repo → **Settings → Secrets and variables → Actions → Variables → New variable**: `DRIVE_SYNC_ENABLED` = `false`.
 2. Thêm ảnh mới trực tiếp vào `site/media/<tên-sảnh>/` trên GitHub (**Add file → Upload files**). Robot tự làm ảnh thu nhỏ và website tự cập nhật, không cần bấm Refresh.
 
-Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `slides-ideas`, `all-hands`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành nhóm nhỏ trong sảnh.
+Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `slides-ideas`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành tab riêng trong sảnh.
 
 Thư mục Drive và sảnh tương ứng (sửa trong `scripts/categories.json`; khi so tên, emoji, ngoặc và dấu cách được bỏ qua):
 
 | Thư mục trên Drive | Sảnh trên website |
 |---|---|
-| Logo & Mascot | Logo & Mascot |
+| Avatar & Logo (thư mục con: Logo KMR & BOS, Zalo Avatar) | Avatar & Logo, chia 2 tab |
 | ☘️ [Slides]-Mascot | Mascot for Slides |
-| 🥰 [Slides]-Ideas for BOS | Slide Ideas for BOS |
-| 🔥All Hands-Template | All Hands Template |
+| 🥰 [Slides]-Ideas for BOS | Slide Ideas for BOS (file slide) |
 | Mascot for Mini Games | Mascot for Mini Games |
 | Desktop Background | Desktop Background |
 
 Thư mục mới không có trong bảng vẫn hiện thành một sảnh riêng, tên lấy theo tên thư mục.
+
+### File slide
+- Google Slides được robot xuất ra PowerPoint (.pptx); file .pptx và .pdf được chép nguyên.
+- Cloudflare chỉ nhận file tối đa 25 MB. File lớn hơn sẽ được robot tự nén ảnh bên trong (giữ nguyên nội dung, ảnh hơi nhẹ hơn).
+- Nén rồi vẫn quá lớn: website chỉ hiện ảnh bìa và nút **Open in Google Slides** (mở file gốc trên Drive). Link này **sẽ hỏng khi account Drive bị tắt**, nên với file kiểu này hãy tách thành nhiều file nhỏ hơn hoặc nén ảnh trước khi upload.
 
 ## 6. Khi có sự cố
 
