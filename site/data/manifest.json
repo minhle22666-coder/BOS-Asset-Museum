@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-02T10:24:49+00:00",
+ "generatedAt": "2026-11-02T10:34:50+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
-   "title": "Logo & Mascot",
-   "description": "The official logos and the core BOS mascot artwork. Start here for any deck cover.",
+   "title": "Avatar & Logo",
+   "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
    "count": 13,
    "bytes": 7030830,
@@ -528,16 +528,7 @@
   {
    "slug": "slides-ideas",
    "title": "Slide Ideas for BOS",
-   "description": "Layouts and visual ideas to spark your next BOS deck.",
-   "frame": "wide",
-   "count": 0,
-   "bytes": 0,
-   "items": []
-  },
-  {
-   "slug": "all-hands",
-   "title": "All Hands Template",
-   "description": "Ready-made pieces for the All Hands deck.",
+   "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
    "count": 0,
    "bytes": 0,
