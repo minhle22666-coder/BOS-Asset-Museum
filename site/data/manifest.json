@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-02T08:50:21+00:00",
+ "generatedAt": "2026-11-02T10:24:49+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Logo & Mascot",
    "description": "The official logos and the core BOS mascot artwork. Start here for any deck cover.",
    "frame": "square",
-   "count": 9,
-   "bytes": 2301305,
+   "count": 13,
+   "bytes": 7030830,
    "items": [
     {
      "id": "ecb722e01b96",
@@ -106,16 +106,64 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png.webp"
     },
     {
-     "id": "9ae2ecb82e9d",
-     "name": "Mid-Autumn",
-     "file": "media/logo-mascot/Zalo Avatar/Mid-Autumn.png",
+     "id": "7e71b4589a31",
+     "name": "MerryXmas-ver1",
+     "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver1.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1110086,
+     "hash": "51ec1b05c7bdaefbb7288b39f60704cfce214a0f",
+     "w": 773,
+     "h": 773,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/MerryXmas-ver1.png.webp"
+    },
+    {
+     "id": "0e7a458ed066",
+     "name": "MerryXmas-ver2",
+     "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver2.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1305474,
+     "hash": "a7f055eb21e9472269cc558a7e3886ca5fc3159e",
+     "w": 1024,
+     "h": 1024,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/MerryXmas-ver2.png.webp"
+    },
+    {
+     "id": "13c5a175d8ed",
+     "name": "MerryXmas-ver3",
+     "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver3.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1163403,
+     "hash": "dcf6c4db75c5aa9d57b0ea3639eca54ad29aa1c2",
+     "w": 773,
+     "h": 773,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/MerryXmas-ver3.png.webp"
+    },
+    {
+     "id": "07b5b972685a",
+     "name": "Mid-Autumn-3D",
+     "file": "media/logo-mascot/Zalo Avatar/Mid-Autumn-3D.png",
      "collection": "Zalo Avatar",
      "mime": "image/png",
      "size": 1344043,
      "hash": "eea128f59ebaffc3f3fe1dd25df4c347bb27b729",
      "w": 1160,
      "h": 1160,
-     "thumb": "thumbs/logo-mascot/Zalo Avatar/Mid-Autumn.png.webp"
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Mid-Autumn-3D.png.webp"
+    },
+    {
+     "id": "180ed28a691f",
+     "name": "Xmas-3D",
+     "file": "media/logo-mascot/Zalo Avatar/Xmas-3D.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1150562,
+     "hash": "9f4ef9644bc990eea0eedabcd72f9ba675c6a319",
+     "w": 773,
+     "h": 773,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas-3D.png.webp"
     }
    ]
   },
