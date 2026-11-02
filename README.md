@@ -81,7 +81,20 @@ Cũng có thể chạy robot trên GitHub: tab **Actions → Sync gallery → Ru
 1. Repo → **Settings → Secrets and variables → Actions → Variables → New variable**: `DRIVE_SYNC_ENABLED` = `false`.
 2. Thêm ảnh mới trực tiếp vào `site/media/<tên-sảnh>/` trên GitHub (**Add file → Upload files**). Robot tự làm ảnh thu nhỏ và website tự cập nhật, không cần bấm Refresh.
 
-Tên thư mục sảnh: `logo-mascot`, `desktop-background`, `slide-design`, `mini-games`. Thư mục con bên trong sẽ thành nhóm nhỏ trong sảnh.
+Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `slides-ideas`, `all-hands`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành nhóm nhỏ trong sảnh.
+
+Thư mục Drive và sảnh tương ứng (sửa trong `scripts/categories.json`; khi so tên, emoji, ngoặc và dấu cách được bỏ qua):
+
+| Thư mục trên Drive | Sảnh trên website |
+|---|---|
+| Logo & Mascot | Logo & Mascot |
+| ☘️ [Slides]-Mascot | Mascot for Slides |
+| 🥰 [Slides]-Ideas for BOS | Slide Ideas for BOS |
+| 🔥All Hands-Template | All Hands Template |
+| Mascot for Mini Games | Mascot for Mini Games |
+| Desktop Background | Desktop Background |
+
+Thư mục mới không có trong bảng vẫn hiện thành một sảnh riêng, tên lấy theo tên thư mục.
 
 ## 6. Khi có sự cố
 

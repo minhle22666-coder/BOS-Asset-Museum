@@ -16,12 +16,15 @@
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
-    "logo-mascot": { hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Copy a logo, paste it on your cover slide."] },
-    "desktop-background": { hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
-    "slide-design": { hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
-    "mini-games": { hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
+    "logo-mascot": { short: "Logo & Mascot", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Copy a logo, paste it on your cover slide."] },
+    "slides-mascot": { short: "Slides", hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
+    "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Stuck on a layout? Borrow an idea from here.", "Good decks start with a good idea."] },
+    "all-hands": { short: "All Hands", hue: "#9fb4ff", pose: "float", lines: ["Everything for the All Hands deck, in one place.", "See you at All Hands!"] },
+    "mini-games": { short: "Mini Games", hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
+    "desktop-background": { short: "Wallpapers", hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
     _: { hue: "#8fe3ff", pose: "float", lines: ["Fresh arrivals from the BOS Drive."] },
   };
+
   const HOME_LINES = ["Hi! I'm your guide. Scroll down to start the tour.", "Psst, every picture here can be copied straight into your slides."];
   const POSE = { wave: [389, 511], hero: [304, 517], fly: [409, 564], tablet: [405, 515], thumbs: [358, 482], float: [409, 513], point: [386, 501] };
 
@@ -30,8 +33,10 @@
     home: '<img src="assets/planet/favicon-64.png" alt="" width="26" height="26">',
     "logo-mascot": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5 20 7v10l-8 4.5L4 17V7z"/><path class="d2" d="m12 7.2 1.45 2.95 3.25.47-2.35 2.3.55 3.24L12 14.63l-2.9 1.53.55-3.24-2.35-2.3 3.25-.47z"/></svg>',
     "desktop-background": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="2.5" y="3.5" width="19" height="13.5" rx="2.6"/><path class="d2" d="M2.5 14.2 7.6 9.6l3.6 3.1 2.9-2.4 7.4 5.5v.6a2.6 2.6 0 0 1-2.6 2.6H5.1a2.6 2.6 0 0 1-2.6-2.6z"/><circle class="d2" cx="16.6" cy="7.6" r="1.6"/><path class="s" d="M9 21h6"/></svg>',
-    "slide-design": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="6.5" y="2.5" width="15" height="11" rx="2.4"/><rect class="d2" x="2.5" y="7" width="15" height="11" rx="2.4"/><path class="k" d="m10 9.4 1 2.1 2.1 1-2.1 1-1 2.1-1-2.1-2.1-1 2.1-1z"/><path class="s" d="M7 21h6"/></svg>',
+    "slides-mascot": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="6.5" y="2.5" width="15" height="11" rx="2.4"/><rect class="d2" x="2.5" y="7" width="15" height="11" rx="2.4"/><path class="k" d="m10 9.4 1 2.1 2.1 1-2.1 1-1 2.1-1-2.1-2.1-1 2.1-1z"/><path class="s" d="M7 21h6"/></svg>',
     "mini-games": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M7.5 5.5h9a5 5 0 0 1 4.9 6l-.9 4.4a2.6 2.6 0 0 1-4.5 1.2L14.6 15H9.4L8 17.1a2.6 2.6 0 0 1-4.5-1.2l-.9-4.4a5 5 0 0 1 4.9-6z"/><path class="d2" d="M7.4 8.6h1.2v1.8h1.8v1.2H8.6v1.8H7.4v-1.8H5.6v-1.2h1.8z"/><circle class="d2" cx="15.6" cy="9.6" r="1.15"/><circle class="d2" cx="17.6" cy="12" r="1.15"/></svg>',
+    "slides-ideas": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5a7 7 0 0 0-4.2 12.6c.8.6 1.2 1.4 1.2 2.4h6c0-1 .4-1.8 1.2-2.4A7 7 0 0 0 12 2.5z"/><path class="d2" d="M9 18.6h6v1.2a1.7 1.7 0 0 1-1.7 1.7h-2.6A1.7 1.7 0 0 1 9 19.8z"/><path class="k" d="m12 6.4.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z"/></svg>',
+    "all-hands": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><circle class="d1" cx="6" cy="8.5" r="2.6"/><circle class="d1" cx="18" cy="8.5" r="2.6"/><path class="d1" d="M1.8 18.5c.4-2.9 2.1-4.6 4.2-4.6s3.8 1.7 4.2 4.6zM13.8 18.5c.4-2.9 2.1-4.6 4.2-4.6s3.8 1.7 4.2 4.6z"/><circle class="d2" cx="12" cy="7" r="3.1"/><path class="d2" d="M6.6 20.5c.5-3.7 2.7-5.9 5.4-5.9s4.9 2.2 5.4 5.9z"/></svg>',
     _: '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M2.5 7A2.5 2.5 0 0 1 5 4.5h4l2 2h8A2.5 2.5 0 0 1 21.5 9v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 18z"/><path class="d2" d="m12 9.5 1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></svg>',
     orbit: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="6" width="7" height="12" rx="1.6"/><path d="M5.5 8v8M2.5 10v4M18.5 8v8M21.5 10v4"/></svg>',
     wall: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.6"/></svg>',
@@ -99,11 +104,11 @@
     const cats = manifest.categories;
     const pill = $("#pill");
     const pills = [{ slug: "home", title: "Home", icon: ICON.home, hue: "#9fb4ff" }].concat(
-      cats.map((c) => ({ slug: c.slug, title: c.title, icon: ICON[c.slug] || ICON._, hue: hallOf(c.slug).hue }))
+      cats.map((c) => ({ slug: c.slug, title: c.title, short: hallOf(c.slug).short, icon: ICON[c.slug] || ICON._, hue: hallOf(c.slug).hue }))
     );
     pill.innerHTML = pills.map((p, i) => `
       <button class="pill-btn" type="button" data-go="${i}" style="--hue:${p.hue}" aria-label="${esc(p.title)}">
-        <span class="pill-ico">${p.icon}</span><span class="pill-label">${esc(i === 0 ? "Home" : shortTitle(p.title))}</span>
+        <span class="pill-ico">${p.icon}</span><span class="pill-label">${esc(i === 0 ? "Home" : p.short || shortTitle(p.title))}</span>
       </button>`).join("");
     $("#progress").innerHTML = pills.map((p, i) => `<span style="--hue:${p.hue}" data-i="${i}"></span>`).join("");
 
@@ -142,7 +147,7 @@
       halls.push(hall);
       const body = $(".hall-body", page);
       if (!c.count) {
-        body.innerHTML = `<div class="empty"><b>This hall is still being set up.</b>Pieces added to the matching Drive folder land here automatically within about an hour.</div>`;
+        body.innerHTML = `<div class="empty"><b>This hall is still being set up.</b>Add pictures to the matching Drive folder, then press Refresh at the top right. They'll land here in a few minutes.</div>`;
       } else {
         hall.orbit = new Orbit(body, c.items, c.frame, hall);
         hall.wall = new Wall(body, c.items, hall);
@@ -151,7 +156,7 @@
     });
     deck.count = cats.length + 1;
   }
-  const shortTitle = (t) => t.replace(/^Logo & Mascot.*/i, "Logo & Mascot").replace(/^Mascot Materials for /i, "").replace(/^Materials for /i, "");
+  const shortTitle = (t) => t.replace(/^Logo & Mascot.*/i, "Logo & Mascot").replace(/^Mascot (Materials )?for /i, "").replace(/^Materials for /i, "");
 
   function setView(hall, view, silent) {
     hall.view = view;
@@ -161,6 +166,14 @@
     else { hall.orbit.hide(); hall.wall.show(!silent); }
     if (!silent) pref.set("view", view);
     if (halls[deck.index - 1] === hall) document.body.dataset.view = view;
+  }
+
+  // Orbit or Wall applies to every hall at once; only the hall you're looking at animates.
+  function setViewAll(view) {
+    const here = halls[deck.index - 1];
+    halls.forEach((h) => { if (h.orbit && h.view !== view) setView(h, view, h !== here); });
+    pref.set("view", view);
+    toast(view === "wall" ? "Wall view on for every hall." : "Orbit view on for every hall.");
   }
 
   // ---------------------------------------------------------------- Orbit: a spiral of pieces you spin like a carousel
@@ -406,6 +419,8 @@
     { s: 1.5, x: 52, y: 58 },   // the globe and the screen
     { s: 1.66, x: 82, y: 46 },  // "Earth through a cosmic lens"
     { s: 1.8, x: 95, y: 46 },   // the far corner
+    { s: 1.62, x: 70, y: 30 },  // up towards the ceiling lights
+    { s: 1.45, x: 35, y: 62 },  // back across the floor
   ];
   const camAt = (i) => CAM[Math.min(i, CAM.length - 1)];
   const smooth = (t) => t * t * (3 - 2 * t);
@@ -706,7 +721,7 @@
       const g = e.target.closest("[data-go]");
       if (g) { e.preventDefault(); goChecked(+g.dataset.go); return; }
       const v = e.target.closest("button[data-view]");
-      if (v) { const hall = halls[deck.index - 1]; if (hall && hall.view !== v.dataset.view) setView(hall, v.dataset.view); return; }
+      if (v) { setViewAll(v.dataset.view); return; }
       const z = e.target.closest("[data-zip]");
       if (z) exportZip(z.dataset.zip);
     });

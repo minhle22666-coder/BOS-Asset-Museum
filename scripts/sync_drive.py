@@ -173,7 +173,8 @@ def main() -> int:
         return 0
 
     cats = load_json(CATEGORIES_FILE, {"categories": []})["categories"]
-    by_name = {n.lower(): c["slug"] for c in cats for n in c.get("drive_names", [])}
+    # compare names by their letters and digits only, so emoji and brackets in Drive folder names don't matter
+    by_name = {slugify(n): c["slug"] for c in cats for n in c.get("drive_names", [])}
     state: dict = load_json(STATE_FILE, {})
 
     try:
@@ -189,7 +190,7 @@ def main() -> int:
         if f["mimeType"] != FOLDER:
             log(f"  skip file at root level (put it inside a wing folder): {f['name']}")
             continue
-        slug = by_name.get(f["name"].strip().lower(), slugify(f["name"]))
+        slug = by_name.get(slugify(f["name"]), slugify(f["name"]))
         log(f"Wing '{f['name']}' -> media/{slug}/")
         walk(svc, f["id"], Path(slug), found)
 
