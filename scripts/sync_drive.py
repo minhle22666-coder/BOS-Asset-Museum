@@ -217,13 +217,16 @@ def deck_report(src: Path, top: int = 6) -> None:
         log(f"      {i.compress_size / 1e6:6.1f} MB  {i.filename}")
 
 
-def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> bool:
+def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80, palette: bool = False) -> bool:
     """Re-save the pictures inside a .pptx smaller. True if it now fits.
 
     Pictures wider than `side` are scaled down. Pictures without transparency become JPEGs
     (renamed, with the slide links and content types fixed to match), since big PNG photos
-    are what usually bloats a deck. Videos and animated GIFs are left alone.
+    are what usually bloats a deck. With `palette`, transparent pictures are also cut down to
+    256 colours (fine for drawings and mascots). Identical pictures are stored once.
+    Videos and animated GIFs are left alone.
     """
+    import hashlib
     import zipfile
     from PIL import Image
 
@@ -245,7 +248,10 @@ def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> b
                         if im.mode in ("RGBA", "LA", "PA") or (im.mode == "P" and "transparency" in im.info):
                             clear = im.convert("RGBA").getchannel("A").getextrema()[0] < 250
                         out = io.BytesIO()
-                        if clear:
+                        if clear and palette:
+                            im.convert("RGBA").quantize(256, method=Image.Quantize.FASTOCTREE).save(out, "PNG", optimize=True)
+                            new_ext = "png"
+                        elif clear:
                             im.save(out, "PNG", optimize=True)
                             new_ext = "png"
                         else:
@@ -261,7 +267,21 @@ def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> b
                     pass
             entries.append((name, data))
 
-    # point slides at the renamed pictures
+    # store identical pictures once
+    seen, dropped, kept = {}, set(), []
+    for name, data in entries:
+        if name.lower().startswith("ppt/media/"):
+            h = hashlib.sha1(data).hexdigest()
+            if h in seen and seen[h].rsplit(".", 1)[-1] == name.rsplit(".", 1)[-1]:
+                first = next((o for o, n in renames.items() if n == name), name)
+                renames[first] = seen[h]
+                dropped.add(name)
+                continue
+            seen[h] = name
+        kept.append((name, data))
+    entries = kept
+
+    # point slides at the renamed / merged pictures
     base = {o.rsplit("/", 1)[-1]: n.rsplit("/", 1)[-1] for o, n in renames.items()}
     fixed = []
     for name, data in entries:
@@ -270,11 +290,11 @@ def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> b
             for o, n in base.items():
                 text = text.replace(f"media/{o}\"", f"media/{n}\"")
             data = text.encode("utf-8")
-        elif renames and name == "[Content_Types].xml":
+        elif (renames or dropped) and name == "[Content_Types].xml":
             text = data.decode("utf-8")
-            for o, n in renames.items():
-                text = re.sub(rf'PartName="/{re.escape(o)}"\s+ContentType="[^"]*"', f'PartName="/{n}" ContentType="image/jpeg"', text)
-            if 'Extension="jpeg"' not in text:
+            for o in list(renames) + list(dropped):
+                text = re.sub(rf'<Override\s+PartName="/{re.escape(o)}"[^>]*/>', "", text)
+            if renames and 'Extension="jpeg"' not in text:
                 text = text.replace("<Default ", '<Default Extension="jpeg" ContentType="image/jpeg"/><Default ', 1)
             data = text.encode("utf-8")
         fixed.append((name, data))
@@ -284,7 +304,8 @@ def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> b
         for name, data in fixed:
             zout.writestr(name, data)
     tmp.replace(src)
-    log(f"    shrunk pictures to {side}px: now {src.stat().st_size / 1e6:.1f} MB")
+    extra = f", {len(dropped)} duplicate pictures merged" if dropped else ""
+    log(f"    shrunk pictures to {side}px{' + 256 colours' if palette else ''}{extra}: now {src.stat().st_size / 1e6:.1f} MB")
     return src.stat().st_size <= limit
 
 
@@ -325,7 +346,10 @@ def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
     if not fits and dest.suffix == ".pptx":
         log(f"    deck is {size / 1e6:.1f} MB, over the {MAX_BYTES // 1_000_000} MB limit. Biggest parts:")
         deck_report(tmp)
-        fits = shrink_pptx(tmp, MAX_BYTES) or shrink_pptx(tmp, MAX_BYTES, 1600, 72) or shrink_pptx(tmp, MAX_BYTES, 1280, 65)
+        fits = (shrink_pptx(tmp, MAX_BYTES)
+                or shrink_pptx(tmp, MAX_BYTES, 1600, 75, palette=True)
+                or shrink_pptx(tmp, MAX_BYTES, 1280, 68, palette=True)
+                or shrink_pptx(tmp, MAX_BYTES, 1024, 62, palette=True))
         if not fits:
             log("    still too big. Biggest parts now:")
             deck_report(tmp)
