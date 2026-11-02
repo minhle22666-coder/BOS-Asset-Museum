@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T10:43:41+00:00",
+ "generatedAt": "2026-11-02T10:48:21+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -531,25 +531,23 @@
    "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
    "count": 1,
-   "bytes": 0,
+   "bytes": 14218547,
    "items": [
     {
-     "id": "d9ff79daa281",
+     "id": "9e50fc9d6d94",
      "name": "Handover Slides (1)",
-     "kind": "link",
+     "kind": "deck",
      "format": "PPTX",
-     "file": null,
+     "file": "media/slides-ideas/Handover Slides (1).pptx",
      "collection": "",
      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 0,
-     "hash": "26e18e7c08a973f879bc1cb539c434fd03ed5849",
-     "src": "media/slides-ideas/Handover Slides (1).pptx.link.json",
+     "size": 14218547,
+     "hash": "b7acbfc2b63e7585edf9cf3c8faf8f76c8129028",
+     "src": "media/slides-ideas/Handover Slides (1).pptx",
      "w": 800,
      "h": 450,
      "thumb": "thumbs/slides-ideas/Handover Slides (1).pptx.preview.webp",
      "preview": "media/slides-ideas/Handover Slides (1).pptx.preview.png",
-     "href": "https://docs.google.com/presentation/d/11SO_slxfcG0MQfE6hB29nzwMgWYKdu7X-JzUhDsQtkw/edit?usp=drivesdk",
-     "fullSize": 63195919,
      "previewHash": "73dfea564e6e90002e55c2e185b3adf22b5b0377"
     }
    ]
