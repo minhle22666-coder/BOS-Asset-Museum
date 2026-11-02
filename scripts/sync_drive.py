@@ -208,6 +208,16 @@ def download(svc, file_id: str, dest: Path) -> None:
     tmp.replace(dest)
 
 
+SHRINK_VERSION = 2  # bump when deck shrinking improves, so decks that didn't fit get another try
+
+
+def link_is_current(link: Path) -> bool:
+    try:
+        return json.loads(link.read_text(encoding="utf-8")).get("shrink", 0) >= SHRINK_VERSION
+    except Exception:
+        return False
+
+
 def deck_report(src: Path, top: int = 6) -> None:
     """Log what takes up the space inside a .pptx, so a too-big deck can be explained."""
     import zipfile
@@ -360,7 +370,7 @@ def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
     else:
         tmp.unlink(missing_ok=True)
         dest.unlink(missing_ok=True)
-        link.write_text(json.dumps({"title": info["name"], "url": info.get("webViewLink"), "bytes": size}, ensure_ascii=False), encoding="utf-8")
+        link.write_text(json.dumps({"title": info["name"], "url": info.get("webViewLink"), "bytes": size, "shrink": SHRINK_VERSION}, ensure_ascii=False), encoding="utf-8")
         log("    too big for the website even after shrinking; keeping a preview + link instead")
 
 
@@ -410,7 +420,7 @@ def main() -> int:
     for fid, meta in found.items():
         old = state.get(fid)
         dest = MEDIA / meta["path"]
-        have = dest.exists() or dest.with_name(dest.name + SIDE_LINK).exists()
+        have = dest.exists() or link_is_current(dest.with_name(dest.name + SIDE_LINK))
         if old and old["md5"] == meta["md5"] and old["path"] == meta["path"] and have:
             continue
         if old and old["path"] != meta["path"]:
