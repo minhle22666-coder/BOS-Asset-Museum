@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T02:56:46+00:00",
+ "generatedAt": "2026-11-02T08:50:21+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -124,8 +124,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 24,
-   "bytes": 24427820,
+   "count": 29,
+   "bytes": 27843420,
    "items": [
     {
      "id": "82c187eed223",
@@ -392,6 +392,54 @@
      "thumb": "thumbs/slides-mascot/Research.png.webp"
     },
     {
+     "id": "80344c3358f0",
+     "name": "Tet-chinese-coin",
+     "file": "media/slides-mascot/Tet-chinese-coin.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 517886,
+     "hash": "08019bcab70656f4a2bb6655405ff4362ef0d91f",
+     "w": 471,
+     "h": 843,
+     "thumb": "thumbs/slides-mascot/Tet-chinese-coin.png.webp"
+    },
+    {
+     "id": "00a1c6a35997",
+     "name": "Tet-latern",
+     "file": "media/slides-mascot/Tet-latern.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 778216,
+     "hash": "029177f7a2b6c702ced109dba32ed4df38874f75",
+     "w": 724,
+     "h": 1297,
+     "thumb": "thumbs/slides-mascot/Tet-latern.png.webp"
+    },
+    {
+     "id": "f17ba3871464",
+     "name": "Tet-lixi-new",
+     "file": "media/slides-mascot/Tet-lixi-new.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 573009,
+     "hash": "4f1ac7c4ab3b878f60811b000ef40a74935d2a16",
+     "w": 648,
+     "h": 746,
+     "thumb": "thumbs/slides-mascot/Tet-lixi-new.png.webp"
+    },
+    {
+     "id": "14cdb7a48aa9",
+     "name": "Tet-lixi",
+     "file": "media/slides-mascot/Tet-lixi.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 548132,
+     "hash": "fb37c05f7a6ff133d26f4cc5a42b2b964538c795",
+     "w": 507,
+     "h": 660,
+     "thumb": "thumbs/slides-mascot/Tet-lixi.png.webp"
+    },
+    {
      "id": "a84777ebb3a4",
      "name": "Tet",
      "file": "media/slides-mascot/Tet.png",
@@ -414,6 +462,18 @@
      "w": 1364,
      "h": 768,
      "thumb": "thumbs/slides-mascot/Vung Tau & Export.png.webp"
+    },
+    {
+     "id": "90874c4ac26a",
+     "name": "Xmas-Elf",
+     "file": "media/slides-mascot/Xmas-Elf.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 998357,
+     "hash": "c8d47f0c0be06f062947319ef824e718117b4da4",
+     "w": 956,
+     "h": 956,
+     "thumb": "thumbs/slides-mascot/Xmas-Elf.png.webp"
     }
    ]
   },
@@ -774,8 +834,8 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 3,
-   "bytes": 7046945,
+   "count": 5,
+   "bytes": 8855842,
    "items": [
     {
      "id": "83fae80e333e",
@@ -800,6 +860,30 @@
      "w": 3840,
      "h": 2160,
      "thumb": "thumbs/desktop-background/Tet-2027-ver2.png.webp"
+    },
+    {
+     "id": "ea10a45039a9",
+     "name": "Tet-2027-ver3",
+     "file": "media/desktop-background/Tet-2027-ver3.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 794517,
+     "hash": "e48feaf4add1b2a040982a661361efab33402248",
+     "w": 1920,
+     "h": 1080,
+     "thumb": "thumbs/desktop-background/Tet-2027-ver3.png.webp"
+    },
+    {
+     "id": "64aa41ce21f0",
+     "name": "Tet-2027-ver4",
+     "file": "media/desktop-background/Tet-2027-ver4.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1014380,
+     "hash": "9d296c68b8832ac20edc58b351d95a8785a580fd",
+     "w": 1920,
+     "h": 1080,
+     "thumb": "thumbs/desktop-background/Tet-2027-ver4.png.webp"
     },
     {
      "id": "4a898515c7d2",
