@@ -208,33 +208,83 @@ def download(svc, file_id: str, dest: Path) -> None:
     tmp.replace(dest)
 
 
-def shrink_pptx(src: Path, limit: int, side: int = 1920) -> bool:
-    """Re-save the pictures inside a .pptx smaller (max 1920 px, lighter JPEGs). True if it now fits."""
+def deck_report(src: Path, top: int = 6) -> None:
+    """Log what takes up the space inside a .pptx, so a too-big deck can be explained."""
+    import zipfile
+    with zipfile.ZipFile(src) as z:
+        parts = sorted(z.infolist(), key=lambda i: i.compress_size, reverse=True)[:top]
+    for i in parts:
+        log(f"      {i.compress_size / 1e6:6.1f} MB  {i.filename}")
+
+
+def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80) -> bool:
+    """Re-save the pictures inside a .pptx smaller. True if it now fits.
+
+    Pictures wider than `side` are scaled down. Pictures without transparency become JPEGs
+    (renamed, with the slide links and content types fixed to match), since big PNG photos
+    are what usually bloats a deck. Videos and animated GIFs are left alone.
+    """
     import zipfile
     from PIL import Image
 
-    tmp = src.with_suffix(".shrink.pptx")
-    with zipfile.ZipFile(src) as zin, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
+    entries, renames = [], {}
+    with zipfile.ZipFile(src) as zin:
         for item in zin.infolist():
-            data = zin.read(item.filename)
-            low = item.filename.lower()
-            if low.startswith("ppt/media/") and low.endswith((".png", ".jpg", ".jpeg")) and len(data) > 150_000:
+            name, data = item.filename, zin.read(item.filename)
+            low = name.lower()
+            ext = low.rsplit(".", 1)[-1]
+            if low.startswith("ppt/media/") and ext in ("png", "jpg", "jpeg", "bmp", "tif", "tiff", "gif") and len(data) > 150_000:
                 try:
                     with Image.open(io.BytesIO(data)) as im:
+                        if getattr(im, "n_frames", 1) > 1:
+                            raise ValueError("animated")
                         im.load()
                         if max(im.size) > side:
                             im.thumbnail((side, side), Image.LANCZOS)
+                        clear = False
+                        if im.mode in ("RGBA", "LA", "PA") or (im.mode == "P" and "transparency" in im.info):
+                            clear = im.convert("RGBA").getchannel("A").getextrema()[0] < 250
                         out = io.BytesIO()
-                        if low.endswith(".png"):
+                        if clear:
                             im.save(out, "PNG", optimize=True)
+                            new_ext = "png"
                         else:
-                            im.convert("RGB").save(out, "JPEG", quality=80, optimize=True, progressive=True)
-                        if out.tell() < len(data):
-                            data = out.getvalue()
+                            im.convert("RGB").save(out, "JPEG", quality=quality, optimize=True, progressive=True)
+                            new_ext = "jpeg"
+                    if out.tell() < len(data) * 0.9:
+                        data = out.getvalue()
+                        if new_ext != ext and not (new_ext == "jpeg" and ext == "jpg"):
+                            new_name = name.rsplit(".", 1)[0] + "." + new_ext
+                            renames[name] = new_name
+                            name = new_name
                 except Exception:
                     pass
-            zout.writestr(item, data)
+            entries.append((name, data))
+
+    # point slides at the renamed pictures
+    base = {o.rsplit("/", 1)[-1]: n.rsplit("/", 1)[-1] for o, n in renames.items()}
+    fixed = []
+    for name, data in entries:
+        if base and name.endswith(".rels"):
+            text = data.decode("utf-8")
+            for o, n in base.items():
+                text = text.replace(f"media/{o}\"", f"media/{n}\"")
+            data = text.encode("utf-8")
+        elif renames and name == "[Content_Types].xml":
+            text = data.decode("utf-8")
+            for o, n in renames.items():
+                text = re.sub(rf'PartName="/{re.escape(o)}"\s+ContentType="[^"]*"', f'PartName="/{n}" ContentType="image/jpeg"', text)
+            if 'Extension="jpeg"' not in text:
+                text = text.replace("<Default ", '<Default Extension="jpeg" ContentType="image/jpeg"/><Default ', 1)
+            data = text.encode("utf-8")
+        fixed.append((name, data))
+
+    tmp = src.with_suffix(".shrink.pptx")
+    with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
+        for name, data in fixed:
+            zout.writestr(name, data)
     tmp.replace(src)
+    log(f"    shrunk pictures to {side}px: now {src.stat().st_size / 1e6:.1f} MB")
     return src.stat().st_size <= limit
 
 
@@ -271,16 +321,23 @@ def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
     else:
         download(svc, fid, tmp)
     size = tmp.stat().st_size
-    fits = size <= MAX_BYTES or (dest.suffix == ".pptx" and (shrink_pptx(tmp, MAX_BYTES) or shrink_pptx(tmp, MAX_BYTES, 1280)))
+    fits = size <= MAX_BYTES
+    if not fits and dest.suffix == ".pptx":
+        log(f"    deck is {size / 1e6:.1f} MB, over the {MAX_BYTES // 1_000_000} MB limit. Biggest parts:")
+        deck_report(tmp)
+        fits = shrink_pptx(tmp, MAX_BYTES) or shrink_pptx(tmp, MAX_BYTES, 1600, 72) or shrink_pptx(tmp, MAX_BYTES, 1280, 65)
+        if not fits:
+            log("    still too big. Biggest parts now:")
+            deck_report(tmp)
     if fits:
         tmp.replace(dest)
         link.unlink(missing_ok=True)
-        log(f"    deck saved ({tmp.stat().st_size if tmp.exists() else dest.stat().st_size} bytes)")
+        log(f"    deck saved ({dest.stat().st_size / 1e6:.1f} MB)")
     else:
         tmp.unlink(missing_ok=True)
         dest.unlink(missing_ok=True)
         link.write_text(json.dumps({"title": info["name"], "url": info.get("webViewLink"), "bytes": size}, ensure_ascii=False), encoding="utf-8")
-        log(f"    deck is {size // (1024 * 1024)} MB even after shrinking - too big for the website; keeping a preview + link instead")
+        log("    too big for the website even after shrinking; keeping a preview + link instead")
 
 
 def remove_with_sidecars(rel: str) -> None:

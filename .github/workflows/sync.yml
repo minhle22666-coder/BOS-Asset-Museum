@@ -59,5 +59,7 @@ jobs:
             echo "Nothing new in Drive."
           else
             git commit -m "Gallery sync $(date -u +'%Y-%m-%d %H:%M UTC')"
+            # someone may have pushed while the robot was working; put this sync on top of it
+            git pull --rebase origin main
             git push
           fi
