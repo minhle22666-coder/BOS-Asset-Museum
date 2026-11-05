@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-02T10:48:21+00:00",
+ "generatedAt": "2026-11-05T07:56:02+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 13,
-   "bytes": 7030830,
+   "count": 17,
+   "bytes": 10650199,
    "items": [
     {
      "id": "ecb722e01b96",
@@ -106,6 +106,42 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png.webp"
     },
     {
+     "id": "20311ba18f11",
+     "name": "BOS Villains",
+     "file": "media/logo-mascot/Zalo Avatar/BOS Villains.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 739887,
+     "hash": "93f1203600caf1e66e6ad0321921243e963de0ef",
+     "w": 594,
+     "h": 594,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS Villains.png.webp"
+    },
+    {
+     "id": "9b862b3ce82a",
+     "name": "BOS-Tet",
+     "file": "media/logo-mascot/Zalo Avatar/BOS-Tet.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 955100,
+     "hash": "1f19927a96c779b0ad1edbf579a5a7a5c824668b",
+     "w": 706,
+     "h": 706,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
+    },
+    {
+     "id": "889a07dc4f9f",
+     "name": "KMR Battle",
+     "file": "media/logo-mascot/Zalo Avatar/KMR Battle.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1279075,
+     "hash": "b67758906989d53bcb69e07fea8e6db35d53ce7f",
+     "w": 1024,
+     "h": 1024,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/KMR Battle.png.webp"
+    },
+    {
      "id": "7e71b4589a31",
      "name": "MerryXmas-ver1",
      "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver1.png",
@@ -164,6 +200,18 @@
      "w": 773,
      "h": 773,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas-3D.png.webp"
+    },
+    {
+     "id": "7b22e728fcd0",
+     "name": "Xmas",
+     "file": "media/logo-mascot/Zalo Avatar/Xmas.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 645307,
+     "hash": "7ece450a6a5c91bd1e61e751af0f4924fca2479c",
+     "w": 717,
+     "h": 706,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas.png.webp"
     }
    ]
   },
