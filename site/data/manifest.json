@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T10:58:46+00:00",
+ "generatedAt": "2026-11-06T11:01:20+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -256,8 +256,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 36,
-   "bytes": 30738506,
+   "count": 37,
+   "bytes": 31420413,
    "items": [
     {
      "id": "82c187eed223",
@@ -450,6 +450,18 @@
      "w": 609,
      "h": 587,
      "thumb": "thumbs/slides-mascot/KMR-Coconut.png.webp"
+    },
+    {
+     "id": "8fa48afc1193",
+     "name": "KMR-Float Ver2",
+     "file": "media/slides-mascot/KMR-Float Ver2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 681907,
+     "hash": "c1bd4a7243cf7c7eb59a12f3765631b04ccf4a29",
+     "w": 2624,
+     "h": 2160,
+     "thumb": "thumbs/slides-mascot/KMR-Float Ver2.png.webp"
     },
     {
      "id": "9195497c7f82",
