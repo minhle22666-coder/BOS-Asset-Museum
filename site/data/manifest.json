@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-05T07:56:02+00:00",
+ "generatedAt": "2026-11-06T08:41:34+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 17,
-   "bytes": 10650199,
+   "count": 18,
+   "bytes": 12248582,
    "items": [
     {
      "id": "ecb722e01b96",
@@ -130,6 +130,18 @@
      "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
     },
     {
+     "id": "3696e1cf09a4",
+     "name": "gpt-image-2-5-sunburst",
+     "file": "media/logo-mascot/Zalo Avatar/gpt-image-2-5-sunburst.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1598383,
+     "hash": "fdb241b0a468cc5082b4434fd784ed006e361602",
+     "w": 1024,
+     "h": 1024,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/gpt-image-2-5-sunburst.png.webp"
+    },
+    {
      "id": "889a07dc4f9f",
      "name": "KMR Battle",
      "file": "media/logo-mascot/Zalo Avatar/KMR Battle.png",
@@ -220,8 +232,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 29,
-   "bytes": 27843420,
+   "count": 32,
+   "bytes": 29082963,
    "items": [
     {
      "id": "82c187eed223",
@@ -390,6 +402,42 @@
      "w": 1364,
      "h": 768,
      "thumb": "thumbs/slides-mascot/Explorer.png.webp"
+    },
+    {
+     "id": "a012879227a7",
+     "name": "KMR-Chat",
+     "file": "media/slides-mascot/KMR-Chat.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 323454,
+     "hash": "f4b50a4eb920c1b28959b67467fa392e355036d2",
+     "w": 640,
+     "h": 575,
+     "thumb": "thumbs/slides-mascot/KMR-Chat.png.webp"
+    },
+    {
+     "id": "6a1651f10f3a",
+     "name": "KMR-Coconut",
+     "file": "media/slides-mascot/KMR-Coconut.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 328878,
+     "hash": "b91b8eba4ff550fad679168689c4ea15fa00206f",
+     "w": 609,
+     "h": 587,
+     "thumb": "thumbs/slides-mascot/KMR-Coconut.png.webp"
+    },
+    {
+     "id": "3794c864c5f3",
+     "name": "KMR-Summer",
+     "file": "media/slides-mascot/KMR-Summer.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 587211,
+     "hash": "a582ba3406e33191bca3071be9174ac0577e8785",
+     "w": 874,
+     "h": 756,
+     "thumb": "thumbs/slides-mascot/KMR-Summer.png.webp"
     },
     {
      "id": "b7ec89e2d68a",
@@ -939,8 +987,8 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 5,
-   "bytes": 8855842,
+   "count": 6,
+   "bytes": 10317507,
    "items": [
     {
      "id": "83fae80e333e",
@@ -1001,6 +1049,18 @@
      "w": 1170,
      "h": 2532,
      "thumb": "thumbs/desktop-background/Tet-For Phone.png.webp"
+    },
+    {
+     "id": "6571f6d6d7f9",
+     "name": "Đồng cỏ hiền hòa",
+     "file": "media/desktop-background/Đồng cỏ hiền hòa.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 1461665,
+     "hash": "afdce1f34fdc2054b768817715a41215c740ae61",
+     "w": 1374,
+     "h": 767,
+     "thumb": "thumbs/desktop-background/Đồng cỏ hiền hòa.png.webp"
     }
    ]
   }
