@@ -1,14 +1,38 @@
 {
- "generatedAt": "2026-11-06T08:41:34+00:00",
+ "generatedAt": "2026-11-06T10:50:46+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 18,
-   "bytes": 12248582,
+   "count": 20,
+   "bytes": 12948398,
    "items": [
+    {
+     "id": "9957535a53f8",
+     "name": "All High GMV Label",
+     "file": "media/logo-mascot/Logo KMR & BOS/All High GMV Label.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 464498,
+     "hash": "2691c960950c1b199778206fee9e1882a817249a",
+     "w": 654,
+     "h": 654,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/All High GMV Label.png.webp"
+    },
+    {
+     "id": "fc8c0157a721",
+     "name": "All High GMV-Low Opacity",
+     "file": "media/logo-mascot/Logo KMR & BOS/All High GMV-Low Opacity.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 235318,
+     "hash": "b0b50e36bde7a0efede16fd99644ca8129ec89a2",
+     "w": 654,
+     "h": 654,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/All High GMV-Low Opacity.png.webp"
+    },
     {
      "id": "ecb722e01b96",
      "name": "BOS Planet",
@@ -130,18 +154,6 @@
      "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
     },
     {
-     "id": "3696e1cf09a4",
-     "name": "gpt-image-2-5-sunburst",
-     "file": "media/logo-mascot/Zalo Avatar/gpt-image-2-5-sunburst.png",
-     "collection": "Zalo Avatar",
-     "mime": "image/png",
-     "size": 1598383,
-     "hash": "fdb241b0a468cc5082b4434fd784ed006e361602",
-     "w": 1024,
-     "h": 1024,
-     "thumb": "thumbs/logo-mascot/Zalo Avatar/gpt-image-2-5-sunburst.png.webp"
-    },
-    {
      "id": "889a07dc4f9f",
      "name": "KMR Battle",
      "file": "media/logo-mascot/Zalo Avatar/KMR Battle.png",
@@ -224,6 +236,18 @@
      "w": 717,
      "h": 706,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas.png.webp"
+    },
+    {
+     "id": "5b29fbdf1d18",
+     "name": "Đồng cỏ hiền hòa",
+     "file": "media/logo-mascot/Zalo Avatar/Đồng cỏ hiền hòa.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1598383,
+     "hash": "fdb241b0a468cc5082b4434fd784ed006e361602",
+     "w": 1024,
+     "h": 1024,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Đồng cỏ hiền hòa.png.webp"
     }
    ]
   },
@@ -232,8 +256,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 32,
-   "bytes": 29082963,
+   "count": 34,
+   "bytes": 29625270,
    "items": [
     {
      "id": "82c187eed223",
@@ -404,16 +428,16 @@
      "thumb": "thumbs/slides-mascot/Explorer.png.webp"
     },
     {
-     "id": "a012879227a7",
-     "name": "KMR-Chat",
-     "file": "media/slides-mascot/KMR-Chat.png",
+     "id": "d8bec982257d",
+     "name": "Holding-Trophy",
+     "file": "media/slides-mascot/Holding-Trophy.png",
      "collection": "",
      "mime": "image/png",
-     "size": 323454,
-     "hash": "f4b50a4eb920c1b28959b67467fa392e355036d2",
-     "w": 640,
-     "h": 575,
-     "thumb": "thumbs/slides-mascot/KMR-Chat.png.webp"
+     "size": 263309,
+     "hash": "a64b7ece6fdd2a433712e8bf92c2b83ac1f966bd",
+     "w": 556,
+     "h": 500,
+     "thumb": "thumbs/slides-mascot/Holding-Trophy.png.webp"
     },
     {
      "id": "6a1651f10f3a",
@@ -426,6 +450,18 @@
      "w": 609,
      "h": 587,
      "thumb": "thumbs/slides-mascot/KMR-Coconut.png.webp"
+    },
+    {
+     "id": "9195497c7f82",
+     "name": "KMR-Floatie",
+     "file": "media/slides-mascot/KMR-Floatie.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 278998,
+     "hash": "3ef6777cfe7592751a172e002398b9906fbdec09",
+     "w": 580,
+     "h": 527,
+     "thumb": "thumbs/slides-mascot/KMR-Floatie.png.webp"
     },
     {
      "id": "3794c864c5f3",
@@ -534,6 +570,18 @@
      "w": 963,
      "h": 1139,
      "thumb": "thumbs/slides-mascot/Research.png.webp"
+    },
+    {
+     "id": "bb5e1cec32da",
+     "name": "Say-hi",
+     "file": "media/slides-mascot/Say-hi.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 323454,
+     "hash": "f4b50a4eb920c1b28959b67467fa392e355036d2",
+     "w": 640,
+     "h": 575,
+     "thumb": "thumbs/slides-mascot/Say-hi.png.webp"
     },
     {
      "id": "80344c3358f0",
@@ -987,9 +1035,21 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 6,
-   "bytes": 10317507,
+   "count": 7,
+   "bytes": 13573921,
    "items": [
+    {
+     "id": "7f82dc475caa",
+     "name": "Khối nghỉ hè",
+     "file": "media/desktop-background/Khối nghỉ hè.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 3256414,
+     "hash": "144a06f48ae35e874161a224032fb297c3ded051",
+     "w": 2624,
+     "h": 1472,
+     "thumb": "thumbs/desktop-background/Khối nghỉ hè.png.webp"
+    },
     {
      "id": "83fae80e333e",
      "name": "Tet-2027-ver1",
