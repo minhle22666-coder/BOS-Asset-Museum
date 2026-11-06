@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T10:53:30+00:00",
+ "generatedAt": "2026-11-06T10:58:46+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -7,7 +7,7 @@
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
    "count": 20,
-   "bytes": 12948398,
+   "bytes": 13079648,
    "items": [
     {
      "id": "9957535a53f8",
@@ -44,6 +44,30 @@
      "w": 927,
      "h": 339,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/BOS Planet.png.webp"
+    },
+    {
+     "id": "5ee01d5b453e",
+     "name": "BOS-New-White",
+     "file": "media/logo-mascot/Logo KMR & BOS/BOS-New-White.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 103167,
+     "hash": "c02469f98fb41fc44d60ab51c013cc8e9c5e50f6",
+     "w": 1028,
+     "h": 642,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/BOS-New-White.png.webp"
+    },
+    {
+     "id": "213b4d8a63a8",
+     "name": "BOS-New",
+     "file": "media/logo-mascot/Logo KMR & BOS/BOS-New.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 126582,
+     "hash": "e7a68e71bad0914f03c4a2c7a502acd415b51f03",
+     "w": 1087,
+     "h": 676,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/BOS-New.png.webp"
     },
     {
      "id": "b31ca46416c3",
@@ -94,18 +118,6 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/New Retail Store - Kamemart.png.webp"
     },
     {
-     "id": "c4b60ea2c0b7",
-     "name": "new-bos-logo",
-     "file": "media/logo-mascot/Logo KMR & BOS/new-bos-logo.png",
-     "collection": "Logo KMR & BOS",
-     "mime": "image/png",
-     "size": 90689,
-     "hash": "845b271a89d4e6d978f340e5aecd3f8b81f638f6",
-     "w": 516,
-     "h": 322,
-     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/new-bos-logo.png.webp"
-    },
-    {
      "id": "e7282e4c2936",
      "name": "white-logo-kamereo",
      "file": "media/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png",
@@ -116,18 +128,6 @@
      "w": 1302,
      "h": 1302,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png.webp"
-    },
-    {
-     "id": "ab1467754b01",
-     "name": "white-new-bos-logo",
-     "file": "media/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png",
-     "collection": "Logo KMR & BOS",
-     "mime": "image/png",
-     "size": 7810,
-     "hash": "2bf405582c23e1e964d02442b44f88956697f80a",
-     "w": 117,
-     "h": 73,
-     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-new-bos-logo.png.webp"
     },
     {
      "id": "20311ba18f11",
