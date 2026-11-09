@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-06T11:01:20+00:00",
+ "generatedAt": "2026-11-09T04:04:46+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 20,
-   "bytes": 13079648,
+   "count": 21,
+   "bytes": 13181577,
    "items": [
     {
      "id": "9957535a53f8",
@@ -94,16 +94,28 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/green-logo-kamereo.png.webp"
     },
     {
-     "id": "18eec3cae49f",
-     "name": "kamereologo",
-     "file": "media/logo-mascot/Logo KMR & BOS/kamereologo.png",
+     "id": "15dbad846263",
+     "name": "KMR-white",
+     "file": "media/logo-mascot/Logo KMR & BOS/KMR-white.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 101929,
+     "hash": "01f3f0b2dddd5a94c5fe1bbb5f340454015b80d5",
+     "w": 1254,
+     "h": 238,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/KMR-white.png.webp"
+    },
+    {
+     "id": "fe7e3d8a0e15",
+     "name": "KMR",
+     "file": "media/logo-mascot/Logo KMR & BOS/KMR.png",
      "collection": "Logo KMR & BOS",
      "mime": "image/png",
      "size": 49340,
      "hash": "a94064338e9cb863a486e8b3ffed60a5b62ced26",
      "w": 886,
      "h": 168,
-     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/kamereologo.png.webp"
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/KMR.png.webp"
     },
     {
      "id": "cdf46eb74165",
@@ -257,7 +269,7 @@
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
    "count": 37,
-   "bytes": 31420413,
+   "bytes": 31185834,
    "items": [
     {
      "id": "82c187eed223",
@@ -428,6 +440,18 @@
      "thumb": "thumbs/slides-mascot/Explorer.png.webp"
     },
     {
+     "id": "ec03c7629dd8",
+     "name": "Floatie",
+     "file": "media/slides-mascot/Floatie.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 388390,
+     "hash": "8cb60cd11e4b279fbfe30a42d93c7e3f1b8f3ff9",
+     "w": 630,
+     "h": 518,
+     "thumb": "thumbs/slides-mascot/Floatie.png.webp"
+    },
+    {
      "id": "d8bec982257d",
      "name": "Holding-Trophy",
      "file": "media/slides-mascot/Holding-Trophy.png",
@@ -450,30 +474,6 @@
      "w": 609,
      "h": 587,
      "thumb": "thumbs/slides-mascot/KMR-Coconut.png.webp"
-    },
-    {
-     "id": "8fa48afc1193",
-     "name": "KMR-Float Ver2",
-     "file": "media/slides-mascot/KMR-Float Ver2.png",
-     "collection": "",
-     "mime": "image/png",
-     "size": 681907,
-     "hash": "c1bd4a7243cf7c7eb59a12f3765631b04ccf4a29",
-     "w": 2624,
-     "h": 2160,
-     "thumb": "thumbs/slides-mascot/KMR-Float Ver2.png.webp"
-    },
-    {
-     "id": "9195497c7f82",
-     "name": "KMR-Floatie",
-     "file": "media/slides-mascot/KMR-Floatie.png",
-     "collection": "",
-     "mime": "image/png",
-     "size": 278998,
-     "hash": "3ef6777cfe7592751a172e002398b9906fbdec09",
-     "w": 580,
-     "h": 527,
-     "thumb": "thumbs/slides-mascot/KMR-Floatie.png.webp"
     },
     {
      "id": "3794c864c5f3",
@@ -654,6 +654,18 @@
      "w": 916,
      "h": 1256,
      "thumb": "thumbs/slides-mascot/Tet.png.webp"
+    },
+    {
+     "id": "09afd925eaea",
+     "name": "Unicorn",
+     "file": "media/slides-mascot/Unicorn.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 337936,
+     "hash": "85e1a9e7b0c587eef0bfee825d19e68656024bd1",
+     "w": 633,
+     "h": 576,
+     "thumb": "thumbs/slides-mascot/Unicorn.png.webp"
     },
     {
      "id": "1d98985f90f6",
@@ -1072,19 +1084,19 @@
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
    "count": 7,
-   "bytes": 13573921,
+   "bytes": 12111187,
    "items": [
     {
-     "id": "7f82dc475caa",
-     "name": "Khối nghỉ hè",
-     "file": "media/desktop-background/Khối nghỉ hè.png",
+     "id": "6ce5b8744145",
+     "name": "Khối Nghỉ Hè",
+     "file": "media/desktop-background/Khối Nghỉ Hè.jpg",
      "collection": "",
-     "mime": "image/png",
-     "size": 3256414,
-     "hash": "144a06f48ae35e874161a224032fb297c3ded051",
-     "w": 2624,
-     "h": 1472,
-     "thumb": "thumbs/desktop-background/Khối nghỉ hè.png.webp"
+     "mime": "image/jpeg",
+     "size": 1793680,
+     "hash": "2323bf334dc0daf2ea54ce3d5c92101a97e19959",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Khối Nghỉ Hè.jpg.webp"
     },
     {
      "id": "83fae80e333e",
@@ -1147,16 +1159,16 @@
      "thumb": "thumbs/desktop-background/Tet-For Phone.png.webp"
     },
     {
-     "id": "6571f6d6d7f9",
-     "name": "Đồng cỏ hiền hòa",
-     "file": "media/desktop-background/Đồng cỏ hiền hòa.png",
+     "id": "32700a27ddb6",
+     "name": "Đồng Cỏ Hiền Hòa",
+     "file": "media/desktop-background/Đồng Cỏ Hiền Hòa.png",
      "collection": "",
      "mime": "image/png",
      "size": 1461665,
      "hash": "afdce1f34fdc2054b768817715a41215c740ae61",
      "w": 1374,
      "h": 767,
-     "thumb": "thumbs/desktop-background/Đồng cỏ hiền hòa.png.webp"
+     "thumb": "thumbs/desktop-background/Đồng Cỏ Hiền Hòa.png.webp"
     }
    ]
   }

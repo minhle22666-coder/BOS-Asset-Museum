@@ -30,6 +30,11 @@
   "modified": "2026-10-23T11:02:27.147Z",
   "path": "mini-games/BOS 12.png"
  },
+ "16OTtaHm9Y98s06k_9_3F15Vo7Dj6XTiB": {
+  "md5": "540bda05423f4e6d87db66bf5e4f8030",
+  "modified": "2026-11-09T03:41:21.818Z",
+  "path": "desktop-background/Khối Nghỉ Hè.jpg"
+ },
  "16j5_OlvjoHThXkPJJnqJB_si6Ohb13em": {
   "md5": "b882ab2d56f2f4a9e49d7766aaa7c15c",
   "modified": "2026-11-02T08:49:05.298Z",
@@ -89,11 +94,6 @@
   "md5": "45c29164041caf07c9f3bba0c1e8f0ec",
   "modified": "2026-11-06T10:49:25.466Z",
   "path": "slides-mascot/Holding-Trophy.png"
- },
- "1FR1xNtG4v07vzG1BcsdwRO9h6eNeN1za": {
-  "md5": "8f517ba5f6e3ff7ac76ca7cffa353542",
-  "modified": "2026-11-06T10:31:34.023Z",
-  "path": "desktop-background/Khối nghỉ hè.png"
  },
  "1GUQJOKQ5af6fTemcLe6792keW8mVsnMs": {
   "md5": "3f42f6e9f30eb12f35f9ac9d47c45b48",
@@ -170,6 +170,11 @@
   "modified": "2026-10-13T07:10:57.144Z",
   "path": "mini-games/B O S (5).png"
  },
+ "1RA4o2eEljIWMHRiKWLQEWgOTBtp1EoYW": {
+  "md5": "9f838ade0f3e1bb070902a9f5cf4fa68",
+  "modified": "2026-11-09T04:04:00.458Z",
+  "path": "logo-mascot/Logo KMR & BOS/KMR-white.png"
+ },
  "1Si_jJgvFzeXk8pzFfDM-GsC3Af9B0lfi": {
   "md5": "313060e9872d85eef63225cbd6c78990",
   "modified": "2026-10-28T08:34:34.947Z",
@@ -225,6 +230,11 @@
   "modified": "2026-10-28T08:34:25.389Z",
   "path": "slides-mascot/All Hands Q4 2026.png"
  },
+ "1_O94ewvD8mIyST7bb3DpygjZpA7UxbGQ": {
+  "md5": "4a3cafef1ddf8e60a4f7000e4337dfb6",
+  "modified": "2026-11-09T04:04:06.595Z",
+  "path": "logo-mascot/Logo KMR & BOS/KMR.png"
+ },
  "1_keQuBHwuEvSjk27hOkwrmjM1IdHeVL7": {
   "md5": "81a4479d0ebe0a04ec6aa2dee4f5aa52",
   "modified": "2026-10-28T07:32:50.210Z",
@@ -247,8 +257,8 @@
  },
  "1cne_AgqtWoKQd1SS0PbFeuVj0hz2C2fx": {
   "md5": "3326b9bd833f99cd81de5c26f1bb6e44",
-  "modified": "2026-11-06T08:41:06.225Z",
-  "path": "desktop-background/Đồng cỏ hiền hòa.png"
+  "modified": "2026-11-09T03:41:35.249Z",
+  "path": "desktop-background/Đồng Cỏ Hiền Hòa.png"
  },
  "1eDiw2scFQcWqQMRLcncayesW2m1ZdVOX": {
   "md5": "5b3871618c0ab8a013b43bb019231653",
@@ -269,11 +279,6 @@
   "md5": "7fcf09b7c80751d472375b6872033718",
   "modified": "2026-11-03T09:36:51.972Z",
   "path": "logo-mascot/Zalo Avatar/BOS-Tet.png"
- },
- "1epVcwE0QAC3oAEGxhAB_we2Ed_u9AeMf": {
-  "md5": "3d64773dd9c557ffd23d93f06048c6d7",
-  "modified": "2026-11-06T11:00:37.156Z",
-  "path": "slides-mascot/KMR-Float Ver2.png"
  },
  "1fbvqsxVxBoPkNeffDbr5ZLt0462XD4K8": {
   "md5": "6d4a982035b984298993dfdd8fdc1799",
@@ -360,11 +365,6 @@
   "modified": "2026-10-28T09:09:23.855Z",
   "path": "slides-mascot/Explorer 1.png"
  },
- "1qdcRa056DhE7KXgn8I1_bof2sUVpdtHw": {
-  "md5": "8dba836a174631db96c67bf9838fd0d0",
-  "modified": "2026-11-06T10:48:55.051Z",
-  "path": "slides-mascot/KMR-Floatie.png"
- },
  "1roQ4mEz2STFv9_2GjDw3l1Jtf72pquzx": {
   "md5": "23609c41ebed04f92401edd9c19a8738",
   "modified": "2026-11-02T08:48:49.526Z",
@@ -380,6 +380,11 @@
   "modified": "2026-10-28T09:10:58.271Z",
   "path": "slides-mascot/All Hands 1.png"
  },
+ "1sY1g-otJRbMhDyLdaVRLZ9Y4Mboom5xM": {
+  "md5": "f3a4a992af749de08bcb72b1d0c06266",
+  "modified": "2026-11-09T03:42:40.267Z",
+  "path": "slides-mascot/Floatie.png"
+ },
  "1t3dDsqinFxRXJWQBYmyWeew2xnp_HVIc": {
   "md5": "c973ee3a167b4aa9a7d7696a099a1358",
   "modified": "2026-11-02T10:13:20.010Z",
@@ -390,15 +395,15 @@
   "modified": "2026-10-28T09:10:04.813Z",
   "path": "slides-mascot/All Hands Q1 (1).png"
  },
- "1todjstq07YRwGsO5f054cTIwG3wGtfr8": {
-  "md5": "4a3cafef1ddf8e60a4f7000e4337dfb6",
-  "modified": "2026-10-12T08:49:42.813Z",
-  "path": "logo-mascot/Logo KMR & BOS/kamereologo.png"
- },
  "1tsdUIXVdtaRxT5ockDfmXwwTFRc0jOnZ": {
   "md5": "f92f1b3f7f67588e040b6cc00f347722",
   "modified": "2026-10-28T09:10:32.238Z",
   "path": "slides-mascot/All Hands Q1 (3).png"
+ },
+ "1tuUyYv4Fz_yCANOeqg7-DQfNezvTDkPm": {
+  "md5": "77992135cea55a8e8b293e1a03d2b78e",
+  "modified": "2026-11-09T03:42:46.536Z",
+  "path": "slides-mascot/Unicorn.png"
  },
  "1uhXKXS2yzxY8CWegi7XpJqm9SXlCNQX6": {
   "md5": "620ad270056c9b79ec3066467ae53219",
