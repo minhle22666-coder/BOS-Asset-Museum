@@ -16,7 +16,7 @@
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
-    "logo-mascot": { short: "Avatar & Logo", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Logos in one tab, Zalo avatars in the other."] },
+    "logo-mascot": { short: "Avatar & Logo", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Click any logo to copy it. Zalo avatars are right below."] },
     "slides-mascot": { short: "Slides", hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
     "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Stuck on a layout? Borrow a whole deck from here.", "Download it, open it in PowerPoint, make it yours."] },
     "all-hands": { short: "All Hands", hue: "#9fb4ff", pose: "float", lines: ["Everything for the All Hands deck, in one place.", "See you at All Hands!"] },
@@ -42,6 +42,8 @@
     wall: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.6"/></svg>',
     open: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>',
     copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+    expand: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></svg>',
+    check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
     down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
     zip: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 12 4l7 4.5v8L12 21l-7-4.5z"/><path d="M5 8.5 12 13l7-4.5M12 13v8"/></svg>',
   };
@@ -159,43 +161,27 @@
         </header>
         <div class="hall-body"></div>`;
       deckEl.appendChild(page);
-      const hall = { cat: c, page, view: pref.get("view", CFG.defaultView === "grid" ? "wall" : "orbit"), orbit: null, wall: null, items: c.items, tabs: tabsOf(c.items), tab: null };
+      const groups = groupsOf(c.items);
+      const hall = { cat: c, page, view: pref.get("view", CFG.defaultView === "carousel" ? "orbit" : "wall"), orbit: null, wall: null, groups, items: groups.flatMap((g) => g.items) };
       halls.push(hall);
       const body = $(".hall-body", page);
       if (!c.count) {
         body.innerHTML = `<div class="empty"><b>This hall is still being set up.</b>Add pictures to the matching Drive folder, then press Refresh at the top right. They'll land here in a few minutes.</div>`;
       } else {
-        // a hall with sub-folders gets one tab per sub-folder instead of mixing them
-        if (hall.tabs.length > 1) {
-          const bar = document.createElement("div");
-          bar.className = "hall-tabs";
-          bar.setAttribute("role", "tablist");
-          bar.setAttribute("aria-label", "Folders in this hall");
-          bar.innerHTML = hall.tabs.map((t, k) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${k === 0}">${esc(t.label)}<span>${t.items.length}</span></button>`).join("");
-          body.before(bar);
-        }
-        setTab(hall, 0, true);
+        hall.orbit = new Orbit(body, hall.items, c.frame, hall);
+        hall.wall = new Wall(body, hall);
+        const v = hall.view; hall.view = null;
+        setView(hall, v, true);
       }
     });
     deck.count = cats.length + 1;
   }
-  function tabsOf(items) {
+  // Sub-folders stay together but each gets its own heading; loose files come last as "Others".
+  function groupsOf(items) {
     const groups = new Map();
-    items.forEach((it) => { const k = (it.collection || "").split("/")[0]; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); });
-    return [...groups.keys()]
-      .sort((a, b) => (a === "" ? 1 : b === "" ? -1 : a.localeCompare(b, undefined, { numeric: true })))
-      .map((k) => ({ key: k, label: k ? pretty(k.split("/")[0]) : "Others", items: groups.get(k) }));
-  }
-  function setTab(hall, k, silent) {
-    hall.tab = k;
-    hall.items = hall.tabs.length > 1 ? hall.tabs[k].items : hall.cat.items;
-    $$(".hall-tabs button", hall.page).forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.tab === k)));
-    const body = $(".hall-body", hall.page);
-    body.replaceChildren();
-    hall.orbit = new Orbit(body, hall.items, hall.cat.frame, hall);
-    hall.wall = new Wall(body, hall.items, hall);
-    const v = hall.view; hall.view = null;
-    setView(hall, v, silent);
+    items.forEach((it) => { const k = it.collection || ""; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); });
+    const keys = [...groups.keys()].sort((a, b) => (a === "" ? 1 : b === "" ? -1 : a.localeCompare(b, undefined, { numeric: true })));
+    return keys.map((k) => ({ key: k, label: k ? pretty(k) : keys.length > 1 ? "Others" : "", items: groups.get(k) }));
   }
   const shortTitle = (t) => t.replace(/^Logo & Mascot.*/i, "Logo & Mascot").replace(/^Mascot (Materials )?for /i, "").replace(/^Materials for /i, "");
 
@@ -234,9 +220,10 @@
           <p class="oc-name"></p>
           <p class="oc-meta"></p>
           <div class="oc-actions">
-            <button class="btn-go btn-sm" type="button" data-act="copy">${ICON.copy}<span>Copy</span></button>
-            <a class="btn-ghost btn-sm" data-act="download">${ICON.down}<span>Download</span></a>
-            <a class="btn-go btn-sm" data-act="open" target="_blank" rel="noopener" hidden>${ICON.open}<span>Open in Google Slides</span></a>
+            <span class="oc-hint"></span>
+            <a class="icon-btn" data-act="download" title="Download" aria-label="Download">${ICON.down}</a>
+            <a class="icon-btn" data-act="open" target="_blank" rel="noopener" title="Open in Google Slides" aria-label="Open in Google Slides" hidden>${ICON.open}</a>
+            <button class="icon-btn" type="button" data-act="view" title="See it big" aria-label="See it big">${ICON.expand}</button>
           </div>
         </div>`;
       parent.appendChild(this.el);
@@ -251,16 +238,16 @@
         this.helix.appendChild(b);
         return b;
       });
-      $('[data-act="copy"]', this.el).onclick = () => copyItem(this.items[this.index]);
+      $('[data-act="view"]', this.el).onclick = () => openViewer(this.hall, this.index);
       this.stage.addEventListener("click", (e) => {
         if (this.justDragged) return;
         const c = e.target.closest(".card");
         if (!c) return;
         const i = +c.dataset.i;
-        if (i === this.index) openViewer(this.hall, i); else this.go(i);
+        if (i === this.index) pick(this.items[i], $(".card-face", c)); else this.go(i);
       });
       this.stage.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openViewer(this.hall, this.index); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(this.items[this.index], $(".card-face", this.cards[this.index])); }
       });
       this.measure();
       // open a few pieces in, so the spiral fans out on both sides
@@ -273,7 +260,7 @@
       this.K = W < 760 ? 2 : 4;                       // pieces shown on each side of the front one
       const room = (this.stage.clientWidth || (W < 760 ? W - 28 : W - 118)) - 24;
       const span = 2 * (this.fx(this.K) + this.sc(this.K) / 2 + 0.06); // strip width in card-widths
-      const w = Math.min(clamp(H * (W < 760 ? 0.34 : 0.36), 170, 330) * ratio, room / span);
+      const w = Math.min(clamp(H * (W < 760 ? 0.27 : 0.27), 130, 250) * ratio, room / span);
       this.w = w; this.h = w / ratio;
       this.el.style.setProperty("--cw", `${w}px`);
       this.el.style.setProperty("--ch", `${this.h}px`);
@@ -292,10 +279,11 @@
     nudge(d) { this.touched = true; this.go(this.index + d); }
     caption() {
       const i = this.index, it = this.items[i];
-      $(".oc-count", this.el).textContent = `${pad(i + 1)} / ${pad(this.items.length)}`;
+      $(".oc-count", this.el).textContent = [it.collection && this.hall.groups.length > 1 ? pretty(it.collection) : null, `${pad(i + 1)} / ${pad(this.items.length)}`].filter(Boolean).join("  ·  ");
       $(".oc-name", this.el).textContent = it.name;
-      $(".oc-meta", this.el).textContent = [it.collection ? pretty(it.collection) : null, meta(it)].filter(Boolean).join(", ");
-      wireActions(it, $('[data-act="copy"]', this.el), $('[data-act="download"]', this.el), $('[data-act="open"]', this.el));
+      $(".oc-meta", this.el).textContent = meta(it);
+      $(".oc-hint", this.el).textContent = it.kind === "link" ? "Too big to host, open it in Google Slides" : isDeck(it) ? "Click the slide to download it" : "Click the picture to copy it";
+      wireActions(it, null, $('[data-act="download"]', this.el), $('[data-act="open"]', this.el));
       this.cards.forEach((c, k) => c.setAttribute("aria-selected", String(k === i)));
     }
     show(animate) {
@@ -343,36 +331,34 @@
 
   // ---------------------------------------------------------------- Wall: every piece at once
   class Wall {
-    constructor(parent, items, hall) {
+    constructor(parent, hall) {
       this.hall = hall;
       this.el = document.createElement("div");
       this.el.className = "wall";
       this.el.hidden = true;
-      const groups = new Map();
-      items.forEach((it, i) => { const k = it.collection; if (!groups.has(k)) groups.set(k, []); groups.get(k).push([it, i]); });
-      const keys = [...groups.keys()].sort((a, b) => (a === "" ? -1 : b === "" ? 1 : a.localeCompare(b, undefined, { numeric: true })));
-      this.el.innerHTML = keys.map((k) => `
-        ${k ? `<h3 class="wall-group">${esc(pretty(k))}<span>${groups.get(k).length}</span></h3>` : ""}
-        <div class="wall-grid">${groups.get(k).map(([it, i]) => `
+      let n = 0;
+      this.el.innerHTML = hall.groups.map((g) => `
+        ${g.label ? `<h3 class="wall-group"><b>${esc(g.label)}</b><span>${plural(g.items.length, "piece")}</span></h3>` : ""}
+        <div class="wall-grid">${g.items.map((it) => { const i = n++; return `
           <figure class="tile" data-i="${i}">
-            <button class="tile-face" type="button" data-open="${i}" aria-label="Open ${esc(it.name)}">
+            <button class="tile-face" type="button" data-pick="${i}" aria-label="${isDeck(it) ? "Download" : "Copy"} ${esc(it.name)}" title="${isDeck(it) ? "Click to download" : "Click to copy"}">
               <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">${badge(it)}
               <span class="glare" aria-hidden="true"></span>
             </button>
             <figcaption>
               <span class="tile-name" title="${esc(it.name)}">${esc(it.name)}</span>
               <span class="tile-actions">
-                ${isDeck(it) ? "" : `<button type="button" data-copy="${i}" aria-label="Copy ${esc(it.name)}" title="Copy">${ICON.copy}</button>`}
                 ${it.file ? `<a href="${url(it.file)}" download="${esc(fileName(it.file))}" aria-label="Download ${esc(it.name)}" title="Download${isDeck(it) ? " " + esc(it.format) : ""}">${ICON.down}</a>` : ""}
                 ${it.href ? `<a href="${esc(it.href)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.name)} in Google Slides" title="Open in Google Slides">${ICON.open}</a>` : ""}
+                <button type="button" data-open="${i}" aria-label="See ${esc(it.name)} big" title="See it big">${ICON.expand}</button>
               </span>
             </figcaption>
-          </figure>`).join("")}</div>`).join("");
+          </figure>`; }).join("")}</div>`).join("");
       parent.appendChild(this.el);
       this.el.addEventListener("click", (e) => {
-        const o = e.target.closest("[data-open]"), c = e.target.closest("[data-copy]");
+        const o = e.target.closest("[data-open]"), p = e.target.closest("[data-pick]");
         if (o) openViewer(hall, +o.dataset.open);
-        else if (c) copyItem(hall.items[+c.dataset.copy]);
+        else if (p) pick(hall.items[+p.dataset.pick], p);
       });
       if (fine) {
         let hot = null;
@@ -763,8 +749,6 @@
       if (g) { e.preventDefault(); goChecked(+g.dataset.go); return; }
       const v = e.target.closest("button[data-view]");
       if (v) { setViewAll(v.dataset.view); return; }
-      const tb = e.target.closest(".hall-tabs [data-tab]");
-      if (tb) { const hall = halls[deck.index - 1]; if (hall && +tb.dataset.tab !== hall.tab) setTab(hall, +tb.dataset.tab); return; }
       const z = e.target.closest("[data-zip]");
       if (z) exportZip(z.dataset.zip);
     });
@@ -793,6 +777,27 @@
     go(Math.max(0, i), instant);
   }
 
+  // ---------------------------------------------------------------- one click: pictures copy, slide decks download
+  function downloadItem(it) {
+    if (it.file) {
+      const a = document.createElement("a");
+      a.href = url(it.file); a.download = fileName(it.file);
+      document.body.appendChild(a); a.click(); a.remove();
+      toast(`Downloading “${it.name}”.`);
+    } else if (it.href) open(it.href, "_blank", "noopener");
+  }
+  function flash(el, label) {
+    if (!el) return;
+    el.dataset.done = label;
+    el.classList.remove("done"); void el.offsetWidth; el.classList.add("done");
+    clearTimeout(el._done); el._done = setTimeout(() => el.classList.remove("done"), 1300);
+  }
+  async function pick(it, el) {
+    if (!it) return;
+    if (isDeck(it)) { downloadItem(it); flash(el, "Downloading"); return; }
+    if (await copyItem(it)) flash(el, "Copied");
+  }
+
   // ---------------------------------------------------------------- copy
   function toPng(blob) {
     if (blob.type === "image/png") return Promise.resolve(blob);
@@ -811,17 +816,19 @@
     });
   }
   async function copyItem(it) {
-    if (!it) return;
-    if (isDeck(it)) { toast("Slide decks can't be copied. Use Download instead."); return; }
-    if (!window.ClipboardItem || !navigator.clipboard?.write) { toast("This browser can't copy images. Use Download instead."); return; }
+    if (!it) return false;
+    if (isDeck(it)) { toast("Slide decks can't be copied. Use Download instead."); return false; }
+    if (!window.ClipboardItem || !navigator.clipboard?.write) { toast("This browser can't copy images. Use the download button instead."); return false; }
     try {
       // The promise goes into ClipboardItem straight away so Safari keeps the click permission.
       const png = fetch(url(it.file)).then((r) => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then(toPng);
       await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
       toast(`Copied “${it.name}”. Paste it into your slide.`);
+      return true;
     } catch (e) {
       console.warn(e);
-      toast("Couldn't copy this one. Use Download instead.");
+      toast("Couldn't copy this one. Use the download button instead.");
+      return false;
     }
   }
 

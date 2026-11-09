@@ -10,7 +10,7 @@ window.BOS_CONFIG = {
 
   // How each hall opens the first time: "carousel" (Orbit, the spinning spiral) or "grid" (Wall, everything at once).
   // After that, each person's last choice is remembered in their browser.
-  defaultView: "carousel",
+  defaultView: "grid",
 
   // Used only by "google-signin".
   allowedEmails: ["bos@kamereo.vn"],

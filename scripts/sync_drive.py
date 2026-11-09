@@ -42,10 +42,12 @@ IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
 MASS_DELETE_RATIO = 0.30
 MAX_BYTES = 24 * 1024 * 1024  # Cloudflare refuses any single file above 25 MiB; keep a little margin
 
-# Slide decks: Google Slides (exported as PowerPoint), uploaded .pptx and .pdf files.
+# Slide decks: uploaded .pptx and .pdf files, a .pptx packed in a .zip (Drive never converts a .zip,
+# so the fonts and layout stay exactly as made), and Google Slides (exported as PowerPoint, only
+# when no real .pptx of the same name sits next to it).
 GSLIDES = "application/vnd.google-apps.presentation"
 PPTX = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-DECK_EXT = {".pptx": PPTX, ".pdf": "application/pdf"}
+DECK_EXT = {".pptx": PPTX, ".pdf": "application/pdf", ".zip": "application/zip"}
 SIDE_PREVIEW = ".preview.png"   # first-slide picture saved next to each deck
 SIDE_LINK = ".link.json"        # written instead of the deck when it is too big even after shrinking
 CREDS = None
@@ -97,7 +99,7 @@ def session():
 
 
 def deck_kind(f: dict) -> str | None:
-    """'gslides' for Google Slides, 'pptx' / 'pdf' for uploaded files, None for anything else."""
+    """'gslides' for Google Slides, 'pptx' / 'pdf' / 'zip' for uploaded files, None for anything else."""
     if f["mimeType"] == GSLIDES:
         return "gslides"
     ext = Path(f["name"]).suffix.lower()
@@ -105,6 +107,8 @@ def deck_kind(f: dict) -> str | None:
         return "pptx"
     if f["mimeType"] == "application/pdf" or ext == ".pdf":
         return "pdf"
+    if ext == ".zip":
+        return "zip"
     return None
 
 
@@ -149,10 +153,10 @@ def resolve_shortcut(svc, f: dict) -> dict | None:
 
 
 def walk(svc, folder_id: str, rel: Path, found: dict) -> None:
-    for f in list_children(svc, folder_id):
-        f = resolve_shortcut(svc, f)
-        if not f:
-            continue
+    kids = [k for k in (resolve_shortcut(svc, f) for f in list_children(svc, folder_id)) if k]
+    # real PowerPoint files first, so a Google Slides copy with the same name loses to the original
+    kids.sort(key=lambda f: deck_kind(f) == "gslides")
+    for f in kids:
         if f["mimeType"] == FOLDER:
             walk(svc, f["id"], rel / safe_name(f["name"]), found)
             continue
@@ -162,7 +166,10 @@ def walk(svc, folder_id: str, rel: Path, found: dict) -> None:
             name = safe_name(f["name"])
             stem = name[: -len(Path(name).suffix)] if Path(name).suffix.lower() in DECK_EXT else name
             path = rel / f"{stem}.{'pdf' if kind == 'pdf' else 'pptx'}"
-            if str(path) in {v["path"] for v in found.values()}:
+            if str(path).replace("\\", "/") in {v["path"] for v in found.values()}:
+                if kind == "gslides":
+                    log(f"  skip Google Slides copy (the original PowerPoint is used): {rel / f['name']}")
+                    continue
                 path = rel / f"{stem}-{f['id'][:6]}{path.suffix}"
             found[f["id"]] = {
                 "path": str(path).replace("\\", "/"),
@@ -319,6 +326,42 @@ def shrink_pptx(src: Path, limit: int, side: int = 1920, quality: int = 80, pale
     return src.stat().st_size <= limit
 
 
+def unzip_deck(svc, fid: str, out: Path) -> None:
+    """A .zip holding a .pptx: take the PowerPoint out (the biggest one, if there are several)."""
+    import zipfile
+
+    z = out.with_suffix(".zip.part")
+    download(svc, fid, z)
+    try:
+        with zipfile.ZipFile(z) as zf:
+            decks = [i for i in zf.infolist() if i.filename.lower().endswith(".pptx") and "__MACOSX" not in i.filename]
+            if not decks:
+                raise RuntimeError("this .zip has no .pptx inside")
+            best = max(decks, key=lambda i: i.file_size)
+            with zf.open(best) as src, out.open("wb") as dst:
+                while chunk := src.read(1 << 20):
+                    dst.write(chunk)
+    finally:
+        z.unlink(missing_ok=True)
+
+
+def pptx_thumbnail(path: Path) -> bytes | None:
+    import zipfile
+    from PIL import Image
+
+    try:
+        with zipfile.ZipFile(path) as zf:
+            name = next((n for n in zf.namelist() if n.lower().startswith("docprops/thumbnail.")), None)
+            if not name:
+                return None
+            with Image.open(io.BytesIO(zf.read(name))) as im:
+                out = io.BytesIO()
+                im.convert("RGB").save(out, "PNG")
+                return out.getvalue()
+    except Exception:
+        return None
+
+
 def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
     """Save the deck (or a link to it when too big) plus a picture of its first slide."""
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -335,8 +378,6 @@ def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
     if not pic and info.get("thumbnailLink"):
         r = s.get(re.sub(r"=s\d+$", "=s1600", info["thumbnailLink"]), timeout=60)
         pic = r.content if r.ok else None
-    if pic:
-        preview.write_bytes(pic)
 
     # the deck itself
     tmp = dest.with_suffix(dest.suffix + ".part")
@@ -349,8 +390,14 @@ def fetch_deck(svc, fid: str, meta: dict, dest: Path) -> None:
             with tmp.open("wb") as fh:
                 for chunk in r.iter_content(1 << 20):
                     fh.write(chunk)
+    elif meta["kind"] == "zip":
+        unzip_deck(svc, fid, tmp)
     else:
         download(svc, fid, tmp)
+    if not pic and dest.suffix == ".pptx":
+        pic = pptx_thumbnail(tmp)  # PowerPoint keeps a small picture of slide 1 inside the file
+    if pic:
+        preview.write_bytes(pic)
     size = tmp.stat().st_size
     fits = size <= MAX_BYTES
     if not fits and dest.suffix == ".pptx":
