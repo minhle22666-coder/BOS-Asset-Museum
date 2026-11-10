@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T04:04:46+00:00",
+ "generatedAt": "2026-11-10T07:33:00+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -268,8 +268,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 37,
-   "bytes": 31185834,
+   "count": 42,
+   "bytes": 33081543,
    "items": [
     {
      "id": "82c187eed223",
@@ -416,6 +416,54 @@
      "thumb": "thumbs/slides-mascot/BOS Website.png.webp"
     },
     {
+     "id": "c498fc992c43",
+     "name": "Cầu Lông Ver1",
+     "file": "media/slides-mascot/Cầu Lông Ver1.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 311564,
+     "hash": "00e55c3e786e83ac84ca28dbf90b7792515e5ac7",
+     "w": 475,
+     "h": 619,
+     "thumb": "thumbs/slides-mascot/Cầu Lông Ver1.png.webp"
+    },
+    {
+     "id": "3f8d1b540ea2",
+     "name": "Cầu Lông Ver2",
+     "file": "media/slides-mascot/Cầu Lông Ver2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 413740,
+     "hash": "5a984e2baba59e2386e9b215ea8c9779aeff34e8",
+     "w": 557,
+     "h": 726,
+     "thumb": "thumbs/slides-mascot/Cầu Lông Ver2.png.webp"
+    },
+    {
+     "id": "70635ad8be7f",
+     "name": "Cầu Lông Ver3",
+     "file": "media/slides-mascot/Cầu Lông Ver3.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 457650,
+     "hash": "52ce8365f5a8fb3fc46c8c4843a03634f17bc1b3",
+     "w": 797,
+     "h": 797,
+     "thumb": "thumbs/slides-mascot/Cầu Lông Ver3.png.webp"
+    },
+    {
+     "id": "e32c8c995239",
+     "name": "Cầu Lông Ver4",
+     "file": "media/slides-mascot/Cầu Lông Ver4.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 356322,
+     "hash": "2d375ccee64ba05d27c481cf04eb89f2a476e7f2",
+     "w": 576,
+     "h": 710,
+     "thumb": "thumbs/slides-mascot/Cầu Lông Ver4.png.webp"
+    },
+    {
      "id": "403df3613352",
      "name": "Explorer 1",
      "file": "media/slides-mascot/Explorer 1.png",
@@ -498,6 +546,18 @@
      "w": 290,
      "h": 367,
      "thumb": "thumbs/slides-mascot/KMR-Tet.png.webp"
+    },
+    {
+     "id": "f3e3944d98aa",
+     "name": "Mid-Autumn",
+     "file": "media/slides-mascot/Mid-Autumn.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 356433,
+     "hash": "68e1cc59316f1d8a3bb7e27878a431a9278199a7",
+     "w": 480,
+     "h": 581,
+     "thumb": "thumbs/slides-mascot/Mid-Autumn.png.webp"
     },
     {
      "id": "a8ee80a2d26a",
@@ -722,27 +782,9 @@
    "title": "Slide Ideas for BOS",
    "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
-   "count": 1,
-   "bytes": 14218547,
-   "items": [
-    {
-     "id": "9e50fc9d6d94",
-     "name": "Handover Slides (1)",
-     "kind": "deck",
-     "format": "PPTX",
-     "file": "media/slides-ideas/Handover Slides (1).pptx",
-     "collection": "",
-     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 14218547,
-     "hash": "b7acbfc2b63e7585edf9cf3c8faf8f76c8129028",
-     "src": "media/slides-ideas/Handover Slides (1).pptx",
-     "w": 800,
-     "h": 450,
-     "thumb": "thumbs/slides-ideas/Handover Slides (1).pptx.preview.webp",
-     "preview": "media/slides-ideas/Handover Slides (1).pptx.preview.png",
-     "previewHash": "73dfea564e6e90002e55c2e185b3adf22b5b0377"
-    }
-   ]
+   "count": 0,
+   "bytes": 0,
+   "items": []
   },
   {
    "slug": "mini-games",
@@ -1083,9 +1125,33 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 7,
-   "bytes": 12111187,
+   "count": 11,
+   "bytes": 30541585,
    "items": [
+    {
+     "id": "1a2f29547785",
+     "name": "Cầu Lông Ver1",
+     "file": "media/desktop-background/Cầu Lông Ver1.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 2313780,
+     "hash": "15c67198b22a9bbdf315dd6fb8b3cafa343d1cd1",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Cầu Lông Ver1.png.webp"
+    },
+    {
+     "id": "a6ce4710a7a8",
+     "name": "Cầu Lông Ver2",
+     "file": "media/desktop-background/Cầu Lông Ver2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 3681498,
+     "hash": "1328a08911dbaae78c90acc7dc98b2c7e2557fd5",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Cầu Lông Ver2.png.webp"
+    },
     {
      "id": "6ce5b8744145",
      "name": "Khối Nghỉ Hè",
@@ -1157,6 +1223,30 @@
      "w": 1170,
      "h": 2532,
      "thumb": "thumbs/desktop-background/Tet-For Phone.png.webp"
+    },
+    {
+     "id": "9dcb99a73c29",
+     "name": "Thể Thao - Màu Trầm",
+     "file": "media/desktop-background/Thể Thao - Màu Trầm.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 6018739,
+     "hash": "f660965da330acf97b69ed147e0964cfcd25a29b",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Thể Thao - Màu Trầm.png.webp"
+    },
+    {
+     "id": "be6fac22924a",
+     "name": "Thể Thao - Vui Tươi",
+     "file": "media/desktop-background/Thể Thao - Vui Tươi.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 6416381,
+     "hash": "4a16deb7d71ac76ac10f97c58a6f1120d99175d8",
+     "w": 3840,
+     "h": 2160,
+     "thumb": "thumbs/desktop-background/Thể Thao - Vui Tươi.png.webp"
     },
     {
      "id": "32700a27ddb6",
