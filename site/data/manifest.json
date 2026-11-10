@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-10T07:33:00+00:00",
+ "generatedAt": "2026-11-10T10:41:36+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -268,8 +268,8 @@
    "title": "Mascot for Slides",
    "description": "Poses, avatars and props ready to drop straight into a slide.",
    "frame": "square",
-   "count": 42,
-   "bytes": 33081543,
+   "count": 44,
+   "bytes": 34628207,
    "items": [
     {
      "id": "82c187eed223",
@@ -762,6 +762,30 @@
      "w": 767,
      "h": 689,
      "thumb": "thumbs/slides-mascot/Xmas-Presents.png.webp"
+    },
+    {
+     "id": "efd948f4177c",
+     "name": "Xmas-Santa",
+     "file": "media/slides-mascot/Xmas-Santa.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 721271,
+     "hash": "86e16bee1275c52bf6a29172eb750a16ca1d39d7",
+     "w": 706,
+     "h": 706,
+     "thumb": "thumbs/slides-mascot/Xmas-Santa.png.webp"
+    },
+    {
+     "id": "91b6a908c785",
+     "name": "Xmas-Sleigh",
+     "file": "media/slides-mascot/Xmas-Sleigh.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 825393,
+     "hash": "e16dd65f375072168dbd2e730e6a40a5aea98f3d",
+     "w": 762,
+     "h": 762,
+     "thumb": "thumbs/slides-mascot/Xmas-Sleigh.png.webp"
     },
     {
      "id": "0b245f36ad5d",
