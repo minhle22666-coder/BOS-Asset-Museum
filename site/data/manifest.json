@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-10T10:41:36+00:00",
+ "generatedAt": "2026-11-16T05:27:02+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 21,
-   "bytes": 13181577,
+   "count": 23,
+   "bytes": 14719613,
    "items": [
     {
      "id": "9957535a53f8",
@@ -224,6 +224,30 @@
      "w": 1160,
      "h": 1160,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Mid-Autumn-3D.png.webp"
+    },
+    {
+     "id": "04be6bd176fa",
+     "name": "Trung Thu-Thỏ",
+     "file": "media/logo-mascot/Zalo Avatar/Trung Thu-Thỏ.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 884295,
+     "hash": "8b3c835a06254229a490b7c8b8cd96f275bf76de",
+     "w": 773,
+     "h": 773,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Trung Thu-Thỏ.png.webp"
+    },
+    {
+     "id": "a883df37d58d",
+     "name": "Trung Thu",
+     "file": "media/logo-mascot/Zalo Avatar/Trung Thu.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 653741,
+     "hash": "644dfc1a50499100f47b4c60622493e003b4ba2b",
+     "w": 776,
+     "h": 776,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Trung Thu.png.webp"
     },
     {
      "id": "180ed28a691f",
@@ -1149,8 +1173,8 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 11,
-   "bytes": 30541585,
+   "count": 12,
+   "bytes": 32612587,
    "items": [
     {
      "id": "1a2f29547785",
@@ -1187,6 +1211,18 @@
      "w": 3840,
      "h": 2160,
      "thumb": "thumbs/desktop-background/Khối Nghỉ Hè.jpg.webp"
+    },
+    {
+     "id": "06dbc92d86ae",
+     "name": "Mid-Autumn",
+     "file": "media/desktop-background/Mid-Autumn.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 2071002,
+     "hash": "22a710cf5755430d0accf47ed59cf302c4fb5b50",
+     "w": 1536,
+     "h": 864,
+     "thumb": "thumbs/desktop-background/Mid-Autumn.png.webp"
     },
     {
      "id": "83fae80e333e",
