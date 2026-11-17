@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T04:45:39+00:00",
+ "generatedAt": "2026-11-17T04:53:44+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -301,9 +301,26 @@
    "title": "Slide Ideas for BOS",
    "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
-   "count": 2,
-   "bytes": 11820569,
+   "count": 3,
+   "bytes": 35845112,
    "items": [
+    {
+     "id": "0a2437928127",
+     "name": "Banner-LunarNewYear",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Banner-LunarNewYear.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 24024543,
+     "hash": "c737b51beac61dfda88ab47fffc99c89b6e7df70",
+     "src": "media/slides-ideas/Banner-LunarNewYear.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
+     "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
+     "previewHash": "8b4636b54fdebfae8cbfb3b073202dc197924799"
+    },
     {
      "id": "4e1addbfbec0",
      "name": "Banner-Summer",
