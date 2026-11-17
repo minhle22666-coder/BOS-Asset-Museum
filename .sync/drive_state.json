@@ -7,22 +7,22 @@
  "10PwWmAtpBDBM9cJFlo0gvte2Cpm26Omv": {
   "md5": "deae222491f5c65ddde3c8f35b0b49dc",
   "modified": "2026-11-10T10:03:39.082Z",
-  "path": "slides-mascot/Xmas-Sleigh.png"
+  "path": "mascot/Xmas-Sleigh.png"
  },
  "10RqGs9B8Hkj-8o3_AEabpRPzrsYmt731": {
   "md5": "5dac499b2f11c614c1e780c648a5dd94",
   "modified": "2026-11-10T07:31:28.789Z",
-  "path": "slides-mascot/Cầu Lông Ver4.png"
+  "path": "mascot/Cầu Lông Ver4.png"
  },
  "10qSagyZl9_d4NLgw6odsMmkVyWAR7XR5": {
   "md5": "3f33e6565fe5e6ab9dacf40846dde43d",
   "modified": "2026-10-28T08:35:06.672Z",
-  "path": "slides-mascot/Explorer.png"
+  "path": "mascot/Explorer.png"
  },
  "12a1hv_RdWXZ7OZraDstXIHcH8R7D8rys": {
   "md5": "7db0a9de3831426e981ebdb66069b95d",
   "modified": "2026-11-10T07:30:46.211Z",
-  "path": "slides-mascot/Cầu Lông Ver2.png"
+  "path": "mascot/Cầu Lông Ver2.png"
  },
  "14NlSw1ndTGMr2wNvtJHXIBbcy8r-a6ZR": {
   "md5": "ea076024a8455364150ae3026638f8bd",
@@ -54,6 +54,12 @@
   "modified": "2026-11-02T08:49:05.298Z",
   "path": "desktop-background/Tet-2027-ver4.png"
  },
+ "173MZwsGO31rYQJ075JoI4k0MBHJGZIAe": {
+  "kind": "pptx",
+  "md5": "9e688a6912f1d5fca26a1f073439ea64",
+  "modified": "2026-11-16T05:29:30.617Z",
+  "path": "slides-ideas/Banner-Xmas.pptx"
+ },
  "178j03t6wvCq0NoCeRFEzYMo0h6dei1k5": {
   "md5": "1174f1302c203de7aac4e9cfbe9b69e3",
   "modified": "2026-10-14T04:12:40.166Z",
@@ -82,12 +88,12 @@
  "1BBziwMxENvYeALPbAfR3mvQCCx8OMv8b": {
   "md5": "df62d2a3eed79cf64bab38cb395a225e",
   "modified": "2026-11-06T10:49:36.852Z",
-  "path": "slides-mascot/Say-hi.png"
+  "path": "mascot/Say-hi.png"
  },
  "1CDUU9wTrZnvrq7-NiUbp8Sx7nK8rn27c": {
   "md5": "165b5a86762750a15997ff4702c80516",
   "modified": "2026-11-02T08:42:30.564Z",
-  "path": "slides-mascot/Tet-lixi-new.png"
+  "path": "mascot/Tet-lixi-new.png"
  },
  "1CE5jvL3Ys3MMZQC-DOuVJ_eOST0moMex": {
   "md5": "a6607c49dab9e2f1c373ccdc2f173ef3",
@@ -117,12 +123,12 @@
  "1FQyyqj2OYX0L7v2uMOywTEXRn8CGWV4W": {
   "md5": "45c29164041caf07c9f3bba0c1e8f0ec",
   "modified": "2026-11-06T10:49:25.466Z",
-  "path": "slides-mascot/Holding-Trophy.png"
+  "path": "mascot/Holding-Trophy.png"
  },
  "1GUQJOKQ5af6fTemcLe6792keW8mVsnMs": {
   "md5": "3f42f6e9f30eb12f35f9ac9d47c45b48",
   "modified": "2026-10-28T09:09:33.244Z",
-  "path": "slides-mascot/All Hands Q1 2026.png"
+  "path": "mascot/All Hands Q1 2026.png"
  },
  "1Gr2knMleV0tRcfaN2oxKJuHILx_TyfbD": {
   "md5": "50e38ef16d7733db716ff927454f15ad",
@@ -147,12 +153,12 @@
  "1IyonT3X4Ss0yWOGS8QEZkQjkzDYVJBrY": {
   "md5": "3f41ffdbc7981e61f2281f87c2b3213b",
   "modified": "2026-10-28T09:11:21.710Z",
-  "path": "slides-mascot/Vung Tau & Export.png"
+  "path": "mascot/Vung Tau & Export.png"
  },
  "1KUV7_tVh6nT9Q21ZO7-Ac9Dhvh7bdl0r": {
   "md5": "f38814e3f66cfe9d2c4cbc7bc5cef6a0",
   "modified": "2026-11-06T04:43:04.425Z",
-  "path": "slides-mascot/KMR-Coconut.png"
+  "path": "mascot/KMR-Coconut.png"
  },
  "1Kjp6VMzdlITPJrW4bPkfUHrMib3sZHz7": {
   "md5": "e83591f8629999323c7aaf8e4c603816",
@@ -162,17 +168,17 @@
  "1M3LetJ-_RwvBJLFqTZ0dvTVA2KEvz72r": {
   "md5": "99364f6233f2811d899ec8c4f763e98a",
   "modified": "2026-10-28T08:35:18.517Z",
-  "path": "slides-mascot/Performance Review.png"
+  "path": "mascot/Performance Review.png"
  },
  "1M_A2MI1O-tHuRb7R9mBDgIZNg9kU3lPa": {
   "md5": "48b0c701b016e140879a93bd9ffac788",
   "modified": "2026-10-28T08:35:54.230Z",
-  "path": "slides-mascot/Performance Review (1).png"
+  "path": "mascot/Performance Review (1).png"
  },
  "1OUD6zfRyA0B1W-v4jgrAgHsdVgWps-8s": {
   "md5": "43466d8c2febf8a0df3ac314a62110f4",
   "modified": "2026-10-28T09:10:49.754Z",
-  "path": "slides-mascot/BOS Theme.png"
+  "path": "mascot/BOS Theme.png"
  },
  "1OvTy96xALhNwF9PIk2HI-7pZBhzV2Sxi": {
   "md5": "4576dea95b4375c9f15aec0931f34a7d",
@@ -187,7 +193,7 @@
  "1QSCpnnO3cZB8oKevlbWB681ghsVGYe0Y": {
   "md5": "9b6ff71bc4be73190bd4509e618c449b",
   "modified": "2026-10-28T09:10:13.169Z",
-  "path": "slides-mascot/All Hands Q1-2.png"
+  "path": "mascot/All Hands Q1-2.png"
  },
  "1QhgWTtS5FzVKAj3xwX9EiBgEdnm-ea5B": {
   "md5": "017edfc034db6ea58718a178ab157814",
@@ -204,15 +210,20 @@
   "modified": "2026-11-09T04:04:00.458Z",
   "path": "logo-mascot/Logo KMR & BOS/KMR-white.png"
  },
+ "1RSDE3ZszYTmhVP-07LCXB4yg1OiZPucq": {
+  "md5": "fb89b8568f45312e1e5b5eda3d584878",
+  "modified": "2026-11-17T04:14:05.556Z",
+  "path": "mascot/AI.png"
+ },
  "1Si_jJgvFzeXk8pzFfDM-GsC3Af9B0lfi": {
   "md5": "313060e9872d85eef63225cbd6c78990",
   "modified": "2026-10-28T08:34:34.947Z",
-  "path": "slides-mascot/All Hands Q3 2026.png"
+  "path": "mascot/All Hands Q3 2026.png"
  },
  "1TnGD1OGI0XJpvoSgs9vB6cJ4OWF4WUlM": {
   "md5": "31eab9ebc60d7b46ae94095ebd469dcb",
   "modified": "2026-10-28T08:36:16.297Z",
-  "path": "slides-mascot/BOS Website 1.png"
+  "path": "mascot/BOS Website 1.png"
  },
  "1UcKZmnAKnxkw4VYq8PPtDfdN4gmtdoit": {
   "md5": "b1ca26efeae51698fe53777281aab929",
@@ -242,12 +253,12 @@
  "1WoDKKZObuQK8pwD5_jebiZGU4-C8AcHf": {
   "md5": "6a83d237011b761738bf8bfcfb78432c",
   "modified": "2026-10-29T07:18:44.679Z",
-  "path": "slides-mascot/Tet.png"
+  "path": "mascot/Tet.png"
  },
  "1XprdzY7aQVpA-Vc9L_kPDX-5r-kCochz": {
   "md5": "e89f9d241249e218f373622aaa3ccd21",
   "modified": "2026-10-28T09:09:13.553Z",
-  "path": "slides-mascot/Quiz Time.png"
+  "path": "mascot/Quiz Time.png"
  },
  "1YCwrRywA4-3qEBlEneyXF1pwI_Ks7muq": {
   "md5": "0e0bffbb8906f9ee27018a8a302d87a0",
@@ -262,12 +273,12 @@
  "1ZAbkJHt9Si2gmoAxrWUD5pYoqn3z6tdM": {
   "md5": "f7cfe1ad361d0acc699eaddbf3caad12",
   "modified": "2026-10-28T09:11:05.929Z",
-  "path": "slides-mascot/Quiz Time (2).png"
+  "path": "mascot/Quiz Time (2).png"
  },
  "1_JoIMNqJSoOsWrdz_xxk4gGSMsep0Ayd": {
   "md5": "56a613facd95a94d24424a4fd644f814",
   "modified": "2026-10-28T08:34:25.389Z",
-  "path": "slides-mascot/All Hands Q4 2026.png"
+  "path": "mascot/All Hands Q4 2026.png"
  },
  "1_O94ewvD8mIyST7bb3DpygjZpA7UxbGQ": {
   "md5": "4a3cafef1ddf8e60a4f7000e4337dfb6",
@@ -287,12 +298,12 @@
  "1_uOA8nN4Ijz3RtzrW8EcqO4VZKuN9ZsZ": {
   "md5": "6566d7c4981b7847d802d2d7ca29807d",
   "modified": "2026-11-06T10:52:45.524Z",
-  "path": "slides-mascot/Xmas.png"
+  "path": "mascot/Xmas.png"
  },
  "1aDZ6BTK4oe6Yys17wwHQ2McGfpNHXcE_": {
   "md5": "9774bb317cc698e8818bbc20e5d0cc7f",
   "modified": "2026-11-10T07:29:51.404Z",
-  "path": "slides-mascot/Cầu Lông Ver1.png"
+  "path": "mascot/Cầu Lông Ver1.png"
  },
  "1azFohJwGpeMcHb-rsiYNVeZ2gkaaYbm2": {
   "md5": "5744a089d40841c486c440f9ce705171",
@@ -307,7 +318,7 @@
  "1eDiw2scFQcWqQMRLcncayesW2m1ZdVOX": {
   "md5": "5b3871618c0ab8a013b43bb019231653",
   "modified": "2026-11-06T04:35:12.244Z",
-  "path": "slides-mascot/KMR-Summer.png"
+  "path": "mascot/KMR-Summer.png"
  },
  "1eEwuSArFAGZVymsD30qKfB8qIr9-qfcL": {
   "md5": "0126d7feea573e5b605e6e2bccfc96dd",
@@ -317,7 +328,7 @@
  "1eQ25nMTvW16Pnszr9QdC53LOgFSvWywU": {
   "md5": "9c1e83b5f3e98d15280cbdffd83ec169",
   "modified": "2026-11-06T10:53:04.777Z",
-  "path": "slides-mascot/Xmas-Presents.png"
+  "path": "mascot/Xmas-Presents.png"
  },
  "1eS1Qq-gH2lOZ4LQrSnPNrPjDrSViI-nZ": {
   "md5": "7fcf09b7c80751d472375b6872033718",
@@ -332,7 +343,7 @@
  "1fiZb6Ystn_u-5jzsWLMeuEWrFJ9ogvvI": {
   "md5": "3c524d1834dd151d1af4104b38e11af4",
   "modified": "2026-11-02T08:44:20.933Z",
-  "path": "slides-mascot/Tet-chinese-coin.png"
+  "path": "mascot/Tet-chinese-coin.png"
  },
  "1g_Lk6ppd2GFZxNpukrbS-QuElMDGfxqB": {
   "md5": "e66f1c6b27874bd91c8db8843f6e7f28",
@@ -352,7 +363,7 @@
  "1jEFMAFTy2Hp_uuRfz1fzsNWpIOiN8D6l": {
   "md5": "206d32b346e4ee884234f5b26415edf9",
   "modified": "2026-10-28T09:08:55.599Z",
-  "path": "slides-mascot/Research.png"
+  "path": "mascot/Research.png"
  },
  "1jL1oVpqIksG6X5M6tbt2oiKM5GlOSb9e": {
   "md5": "3c1833e2ae953a59179bfc4e938bda53",
@@ -362,12 +373,12 @@
  "1jPLBftk-gBJqbCTOFtAymnu34rwlNrsf": {
   "md5": "e42eec0cca7bc06b9ae365936da1c6c4",
   "modified": "2026-11-10T07:31:04.368Z",
-  "path": "slides-mascot/Cầu Lông Ver3.png"
+  "path": "mascot/Cầu Lông Ver3.png"
  },
  "1jgc62m-bgxyJY-Glyb_sKAa2u_mWhb9p": {
   "md5": "e5fdb90cbac0d01e75cbd29302ebd05f",
   "modified": "2026-10-20T04:14:24.534Z",
-  "path": "slides-mascot/KMR-Tet.png"
+  "path": "mascot/KMR-Tet.png"
  },
  "1kHGKVYCQiC8XthB69hxdg-ExfoWteoHE": {
   "md5": "ebefd0632da49818bd672bc955370fdf",
@@ -379,6 +390,11 @@
   "modified": "2026-11-02T10:13:00.796Z",
   "path": "logo-mascot/Zalo Avatar/Mid-Autumn-3D.png"
  },
+ "1l9lB9tgUTWe2BzyWKOakjwccErC6wEPK": {
+  "md5": "291c156be587c637e8155f7f566d46ae",
+  "modified": "2026-11-16T05:44:48.407Z",
+  "path": "mascot/Yellow-Floatie.png"
+ },
  "1lHRnIKFVFRrCiIM1sI_LVEh4WDG3SX7J": {
   "md5": "5eea3762f9a4d4fe0768ec6f51761c97",
   "modified": "2026-11-06T10:54:42.794Z",
@@ -387,7 +403,7 @@
  "1lM3j4NL_Fv3e_xZ9Ws1PumqBsXqg3l4U": {
   "md5": "e19905537c924a9f353b80f39703b742",
   "modified": "2026-10-28T08:36:01.577Z",
-  "path": "slides-mascot/New Function.png"
+  "path": "mascot/New Function.png"
  },
  "1la28edKJ4CsHd0a58GawmH3ANM4u-NE-": {
   "md5": "3d7ded96f69ae6a5d3921712232280e3",
@@ -397,7 +413,7 @@
  "1m2wUcX4Ifz43jKLbBAHDESaMn5i8WHou": {
   "md5": "aa0f793e5acdf1e7ab84b514d36f6761",
   "modified": "2026-10-28T08:35:32.691Z",
-  "path": "slides-mascot/New Kaizen Discussion.png"
+  "path": "mascot/New Kaizen Discussion.png"
  },
  "1mA8x7S6VCNT62sTr1V6j6cj0t6Nd3C7W": {
   "md5": "e728b46b839ec6e08ba17a2181aeb82a",
@@ -412,12 +428,12 @@
  "1q3FYsDMje2hR-hLl3xaP-yrVAN6gxdiJ": {
   "md5": "49a6276596bee8d6f4cc238e6c14abf1",
   "modified": "2026-11-02T08:42:18.028Z",
-  "path": "slides-mascot/Tet-lixi.png"
+  "path": "mascot/Tet-lixi.png"
  },
  "1qTNo3PbKUMDsGVUppS_rfe0RoEjCIOUI": {
   "md5": "5d7e4b8aee7cf30800f7c88f47ffc78c",
   "modified": "2026-10-28T09:09:23.855Z",
-  "path": "slides-mascot/Explorer 1.png"
+  "path": "mascot/Explorer 1.png"
  },
  "1roQ4mEz2STFv9_2GjDw3l1Jtf72pquzx": {
   "md5": "23609c41ebed04f92401edd9c19a8738",
@@ -432,12 +448,12 @@
  "1sO6Y_iGYq4l5-P6HbXpT7YKDfD3B-ojy": {
   "md5": "1e9ce75ec09097dbcff3e0608e9c11e0",
   "modified": "2026-10-28T09:10:58.271Z",
-  "path": "slides-mascot/All Hands 1.png"
+  "path": "mascot/All Hands 1.png"
  },
  "1sY1g-otJRbMhDyLdaVRLZ9Y4Mboom5xM": {
   "md5": "f3a4a992af749de08bcb72b1d0c06266",
   "modified": "2026-11-09T03:42:40.267Z",
-  "path": "slides-mascot/Floatie.png"
+  "path": "mascot/Floatie.png"
  },
  "1t3dDsqinFxRXJWQBYmyWeew2xnp_HVIc": {
   "md5": "c973ee3a167b4aa9a7d7696a099a1358",
@@ -447,17 +463,17 @@
  "1tf-5N88g6WSxMNhPBxXcrOr0kxXltc3j": {
   "md5": "afe059e141028644c84be4cf6a61e556",
   "modified": "2026-10-28T09:10:04.813Z",
-  "path": "slides-mascot/All Hands Q1 (1).png"
+  "path": "mascot/All Hands Q1 (1).png"
  },
  "1tsdUIXVdtaRxT5ockDfmXwwTFRc0jOnZ": {
   "md5": "f92f1b3f7f67588e040b6cc00f347722",
   "modified": "2026-10-28T09:10:32.238Z",
-  "path": "slides-mascot/All Hands Q1 (3).png"
+  "path": "mascot/All Hands Q1 (3).png"
  },
  "1tuUyYv4Fz_yCANOeqg7-DQfNezvTDkPm": {
   "md5": "77992135cea55a8e8b293e1a03d2b78e",
   "modified": "2026-11-09T03:42:46.536Z",
-  "path": "slides-mascot/Unicorn.png"
+  "path": "mascot/Unicorn.png"
  },
  "1uhXKXS2yzxY8CWegi7XpJqm9SXlCNQX6": {
   "md5": "620ad270056c9b79ec3066467ae53219",
@@ -467,27 +483,27 @@
  "1ujDAHJGxVZCeTH1VL-2x3Dp9_LbbTNev": {
   "md5": "af4da22e03c1cf5a757736dcafcdc6f8",
   "modified": "2026-11-02T08:42:09.396Z",
-  "path": "slides-mascot/Tet-latern.png"
+  "path": "mascot/Tet-latern.png"
  },
  "1v15RGm4JYICAOE8swkrh5WR59Itezg8_": {
   "md5": "9ac949f506e2eefdfa842619c3643fc5",
   "modified": "2026-10-28T08:48:46.782Z",
-  "path": "slides-mascot/all hands q1 2026 BOS (67).png"
+  "path": "mascot/all hands q1 2026 BOS (67).png"
  },
  "1vnkfUi0UKtxUNVngws1Ynfnuv7lddAns": {
   "md5": "5eefbb04ebd3e0b47fa2a69dd40c3e4e",
   "modified": "2026-11-10T07:32:12.502Z",
-  "path": "slides-mascot/Mid-Autumn.png"
+  "path": "mascot/Mid-Autumn.png"
  },
  "1vrR8D1HxEOFCX-aCJGH7gAGo8XC6F0Es": {
   "md5": "7b6b8b2e30ee6354b78de2a636aa1807",
   "modified": "2026-10-28T08:36:09.040Z",
-  "path": "slides-mascot/BOS Website.png"
+  "path": "mascot/BOS Website.png"
  },
  "1xJ_2Io7tfAFF9riEZ2kSf6yNlZV1jXYm": {
   "md5": "a9581b3da78c0afb9d725c757039e56d",
   "modified": "2026-11-10T10:03:32.250Z",
-  "path": "slides-mascot/Xmas-Santa.png"
+  "path": "mascot/Xmas-Santa.png"
  },
  "1yTfxEULH7esrcXrv8e5hzocJ95lUGvoK": {
   "md5": "fed3cadb272b00424d86dc94c0be1eb8",
@@ -497,7 +513,7 @@
  "1yin8RoM0mp47SS-fXSpLgKcyNOqNpGVX": {
   "md5": "119f102b56c2d7c1975df9fda76f04c4",
   "modified": "2026-11-02T08:45:20.460Z",
-  "path": "slides-mascot/Xmas-Elf.png"
+  "path": "mascot/Xmas-Elf.png"
  },
  "1yxw-Rj_o0UpIckx3TUSDP6w2PJxKP1UC": {
   "md5": "57e158c51af36945870e7e5dcbaeada4",
@@ -507,7 +523,7 @@
  "1z5ELrf5drxwhn5ODtNpwUXyEUXe814WK": {
   "md5": "604ae2bdebb9282e82edd996caa4b275",
   "modified": "2026-10-28T09:09:47.026Z",
-  "path": "slides-mascot/All Hands Q1.png"
+  "path": "mascot/All Hands Q1.png"
  },
  "1zFncS6hEwnl-TwDddJtXKFHst5aoW03C": {
   "md5": "1ed32a242325043502957531f2eff7cc",
@@ -518,6 +534,12 @@
   "md5": "14f88e6cef63339b037577f1bc89064b",
   "modified": "2026-10-27T10:39:41.911Z",
   "path": "mini-games/float.png"
+ },
+ "1zqGICHsQUBB4UiwdR1ZLPMoFtSp0LJTV": {
+  "kind": "pptx",
+  "md5": "e3d598c25ba755cd09087da2d429660b",
+  "modified": "2026-11-16T05:28:39.205Z",
+  "path": "slides-ideas/Banner-Summer.pptx"
  },
  "1zyb36IjR7GJUGLaa8M-ngrlgJYCSNang": {
   "md5": "5ab27693d1cb4708635d465289f5a16c",
