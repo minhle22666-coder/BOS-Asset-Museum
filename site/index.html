@@ -10,7 +10,7 @@
   <link rel="icon" href="assets/planet/favicon-64.png" sizes="64x64" type="image/png">
   <link rel="apple-touch-icon" href="assets/planet/favicon-180.png">
   <link rel="preload" href="assets/planet/hall-bg.webp" as="image">
-  <link rel="preload" href="assets/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
   <script src="config.js"></script>
 </head>
@@ -35,11 +35,13 @@
     <div class="top-right">
       <button class="orb-btn" id="refresh" type="button" aria-label="Get the latest pieces from Drive">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2"/></svg>
-        <span class="hint">Get the latest from Drive</span>
+        <span class="orb-label">Refresh</span>
+        <span class="hint">Get the latest pieces from Drive</span>
       </button>
       <button class="orb-btn" id="export-all" type="button" aria-label="Download everything as one ZIP">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
-        <span class="hint">Download everything</span>
+        <span class="orb-label">Download all</span>
+        <span class="hint">Every hall in one ZIP</span>
       </button>
       <a class="me" id="me" href="/cdn-cgi/access/logout" hidden><span id="me-initial"></span><span class="hint" id="me-hint">Sign out</span></a>
     </div>

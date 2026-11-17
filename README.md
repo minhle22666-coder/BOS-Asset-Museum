@@ -3,6 +3,7 @@
 Website nội bộ chứa toàn bộ logo, mascot, hình nền và vật liệu mini game của team BOS.
 **Bấm vào ảnh là copy** (dán thẳng vào Google Slides / PowerPoint). Muốn tải file thì bấm icon mũi tên tải xuống, muốn xem to thì bấm icon phóng to. Mỗi sảnh có nút tải cả sảnh dạng ZIP, góc phải có nút tải tất cả.
 Sảnh có thư mục con (ví dụ Avatar & Logo) hiện tất cả trên cùng một trang, mỗi thư mục con một tiêu đề riêng. File slide hiện ảnh bìa, bấm vào là tải file PowerPoint.
+Mỗi sảnh có hai cách xem: **Grid** (thấy hết mọi ảnh) và **Focus** (một ảnh to, bên dưới là dải ảnh nhỏ của cả sảnh để bấm chọn). Sảnh chưa có ảnh nào thì tự ẩn khỏi website.
 
 ---
 
@@ -82,19 +83,23 @@ Cũng có thể chạy robot trên GitHub: tab **Actions → Sync gallery → Ru
 1. Repo → **Settings → Secrets and variables → Actions → Variables → New variable**: `DRIVE_SYNC_ENABLED` = `false`.
 2. Thêm ảnh mới trực tiếp vào `site/media/<tên-sảnh>/` trên GitHub (**Add file → Upload files**). Robot tự làm ảnh thu nhỏ và website tự cập nhật, không cần bấm Refresh.
 
-Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `slides-ideas`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành một nhóm có tiêu đề riêng trong sảnh.
+Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `mascot`, `slides-ideas`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành một nhóm có tiêu đề riêng trong sảnh.
 
 Thư mục Drive và sảnh tương ứng (sửa trong `scripts/categories.json`; khi so tên, emoji, ngoặc và dấu cách được bỏ qua):
 
 | Thư mục trên Drive | Sảnh trên website |
 |---|---|
-| Avatar & Logo (thư mục con: Logo KMR & BOS, Zalo Avatar) | Avatar & Logo, chia 2 tab |
+| Avatar & Logo (thư mục con: Logo KMR & BOS, Zalo Avatar) | Avatar & Logo, chia 2 nhóm |
+| Mascot | Mascot |
 | ☘️ [Slides]-Mascot | Mascot for Slides |
 | 🥰 [Slides]-Ideas for BOS | Slide Ideas for BOS (file slide) |
 | Mascot for Mini Games | Mascot for Mini Games |
 | Desktop Background | Desktop Background |
 
 Thư mục mới không có trong bảng vẫn hiện thành một sảnh riêng, tên lấy theo tên thư mục.
+
+### Link ghim ở đầu sảnh (link Canva của Slide Ideas)
+Trong `scripts/categories.json`, sảnh `slides-ideas` có mục `pin` gồm `title` (tiêu đề), `note` (chú thích), `label` (chữ trên nút) và `url` (link). Muốn đổi link Canva hay sửa chú thích thì sửa ở đó rồi lưu; website tự cập nhật. Sảnh nào cũng thêm được mục `pin` như vậy.
 
 ### File slide
 **Quan trọng:** Drive mặc định có thể tự đổi file PowerPoint thành Google Slides khi upload, làm hỏng font và bố cục. Để giữ nguyên file gốc, chọn một trong hai cách:

@@ -1,5 +1,5 @@
 {
-  "_comment": "Maps each Drive sub-folder to a hall on the website. 'drive_names' are compared ignoring emoji, brackets, spaces and capital letters, so '☘️ [Slides]-Mascot' matches 'Slides Mascot'. Order here = order on the website. 'frame' is 'square' or 'wide' (16:10, good for wallpapers).",
+  "_comment": "Maps each Drive sub-folder to a hall on the website. 'drive_names' are compared ignoring emoji, brackets, spaces and capital letters, so '☘️ [Slides]-Mascot' matches 'Slides Mascot'. Order here = order on the website. 'frame' is 'square' or 'wide' (16:10, good for wallpapers). 'pin' (optional) adds a big link at the top of a hall: {title, note, label, url}. Halls with no pictures are hidden on the website.",
   "categories": [
     {
       "slug": "logo-mascot",
@@ -13,27 +13,31 @@
       ]
     },
     {
-      "slug": "slides-mascot",
-      "title": "Mascot for Slides",
-      "description": "Poses, avatars and props ready to drop straight into a slide.",
+      "slug": "mascot",
+      "title": "Mascot",
+      "description": "Every pose of the BOS mascot. Click one to copy it into your slide.",
       "frame": "square",
       "drive_names": [
-        "[Slides]-Mascot",
-        "Slides Mascot",
-        "Mascot-Slide Design",
-        "Mascot Slide Design"
+        "Mascot",
+        "Mascots"
       ]
     },
     {
       "slug": "slides-ideas",
       "title": "Slide Ideas for BOS",
-      "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
+      "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
       "frame": "wide",
       "drive_names": [
         "[Slides]-Ideas for BOS",
         "Slides Ideas for BOS",
         "Ideas for BOS"
-      ]
+      ],
+      "pin": {
+        "title": "Edit the BOS slides in Canva",
+        "note": "Every BOS slide lives in one Canva file. Sign in to Canva and edit any slide right in your browser. Edits are shared with everyone, so use File > Make a copy first if you only want to try something.",
+        "label": "Open in Canva",
+        "url": "https://www.canva.com/design/DAHZW_GUruY/SS8nJzb1BVXXhocZ54GJeA/edit"
+      }
     },
     {
       "slug": "mini-games",
@@ -53,6 +57,18 @@
       "drive_names": [
         "Desktop Background",
         "Desktop Backgrounds"
+      ]
+    },
+    {
+      "slug": "slides-mascot",
+      "title": "Mascot for Slides",
+      "description": "Poses, avatars and props ready to drop straight into a slide.",
+      "frame": "square",
+      "drive_names": [
+        "[Slides]-Mascot",
+        "Slides Mascot",
+        "Mascot-Slide Design",
+        "Mascot Slide Design"
       ]
     }
   ]

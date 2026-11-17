@@ -15,15 +15,18 @@
     "Welcome aboard, explorer. Take whatever you need for your next mission.",
   ];
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
+  const ACCENT = "#8fd8ff";
   const HALL = {
-    "logo-mascot": { short: "Avatar & Logo", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Click any logo to copy it. Zalo avatars are right below."] },
-    "slides-mascot": { short: "Slides", hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
-    "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Stuck on a layout? Borrow a whole deck from here.", "Download it, open it in PowerPoint, make it yours."] },
-    "all-hands": { short: "All Hands", hue: "#9fb4ff", pose: "float", lines: ["Everything for the All Hands deck, in one place.", "See you at All Hands!"] },
-    "mini-games": { short: "Mini Games", hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
-    "desktop-background": { short: "Wallpapers", hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
-    _: { hue: "#8fe3ff", pose: "float", lines: ["Fresh arrivals from the BOS Drive."] },
+    "logo-mascot": { short: "Avatar & Logo", pose: "hero", lines: ["Click any logo to copy it, then paste it into your slide.", "Zalo avatars are right below the logos."] },
+    mascot: { short: "Mascot", pose: "float", lines: ["That's me, in every pose. Click one to copy it.", "Need a bigger look? Switch to Focus."] },
+    "slides-mascot": { short: "Slides", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy."] },
+    "slides-ideas": { short: "Slide Ideas", pose: "point", lines: ["Want to edit the slides? Use the Canva link at the top.", "Or download a deck and open it in PowerPoint."] },
+    "all-hands": { short: "All Hands", pose: "float", lines: ["Everything for the All Hands deck, in one place."] },
+    "mini-games": { short: "Mini Games", pose: "thumbs", lines: ["Game night? Grab the whole set with Download all.", "Good luck, players!"] },
+    "desktop-background": { short: "Wallpapers", pose: "fly", lines: ["Pick a sky for your screen.", "Use the download icon to save one as your wallpaper."] },
+    _: { pose: "float", lines: ["Fresh arrivals from the BOS Drive."] },
   };
+  Object.values(HALL).forEach((h) => (h.hue = ACCENT));
 
   const HOME_LINES = ["Hi! I'm your guide. Scroll down to start the tour.", "Psst, every picture here can be copied straight into your slides."];
   const POSE = { wave: [389, 511], hero: [304, 517], fly: [409, 564], tablet: [405, 515], thumbs: [358, 482], float: [409, 513], point: [386, 501] };
@@ -38,7 +41,10 @@
     "slides-ideas": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5a7 7 0 0 0-4.2 12.6c.8.6 1.2 1.4 1.2 2.4h6c0-1 .4-1.8 1.2-2.4A7 7 0 0 0 12 2.5z"/><path class="d2" d="M9 18.6h6v1.2a1.7 1.7 0 0 1-1.7 1.7h-2.6A1.7 1.7 0 0 1 9 19.8z"/><path class="k" d="m12 6.4.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z"/></svg>',
     "all-hands": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><circle class="d1" cx="6" cy="8.5" r="2.6"/><circle class="d1" cx="18" cy="8.5" r="2.6"/><path class="d1" d="M1.8 18.5c.4-2.9 2.1-4.6 4.2-4.6s3.8 1.7 4.2 4.6zM13.8 18.5c.4-2.9 2.1-4.6 4.2-4.6s3.8 1.7 4.2 4.6z"/><circle class="d2" cx="12" cy="7" r="3.1"/><path class="d2" d="M6.6 20.5c.5-3.7 2.7-5.9 5.4-5.9s4.9 2.2 5.4 5.9z"/></svg>',
     _: '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M2.5 7A2.5 2.5 0 0 1 5 4.5h4l2 2h8A2.5 2.5 0 0 1 21.5 9v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 18z"/><path class="d2" d="m12 9.5 1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></svg>',
-    orbit: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="6" width="7" height="12" rx="1.6"/><path d="M5.5 8v8M2.5 10v4M18.5 8v8M21.5 10v4"/></svg>',
+    orbit: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="11" rx="2"/><path d="M4.5 19h2.5M10.8 19h2.5M17 19h2.5"/></svg>',
+    prev: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+    next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
+    edit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17z"/><path d="m14.5 7.5 3 3"/></svg>',
     wall: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.6"/></svg>',
     open: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>',
     copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
@@ -119,14 +125,14 @@
 
   // ---------------------------------------------------------------- build
   function build() {
-    const cats = manifest.categories;
+    const cats = manifest.categories.filter((c) => c.count); // a hall with nothing in it stays hidden
     const pill = $("#pill");
-    const pills = [{ slug: "home", title: "Home", icon: ICON.home, hue: "#9fb4ff" }].concat(
+    const pills = [{ slug: "home", title: "Home", icon: ICON.home, hue: ACCENT }].concat(
       cats.map((c) => ({ slug: c.slug, title: c.title, short: hallOf(c.slug).short, icon: ICON[c.slug] || ICON._, hue: hallOf(c.slug).hue }))
     );
     pill.innerHTML = pills.map((p, i) => `
       <button class="pill-btn" type="button" data-go="${i}" style="--hue:${p.hue}" aria-label="${esc(p.title)}">
-        <span class="pill-ico">${p.icon}</span><span class="pill-label">${esc(i === 0 ? "Home" : p.short || shortTitle(p.title))}</span>
+        ${i === 0 ? `<span class="pill-ico">${p.icon}</span>` : ""}<span class="pill-label">${esc(i === 0 ? "Home" : p.short || shortTitle(p.title))}</span>
       </button>`).join("");
     $("#progress").innerHTML = pills.map((p, i) => `<span style="--hue:${p.hue}" data-i="${i}"></span>`).join("");
 
@@ -140,39 +146,36 @@
       page.dataset.frame = c.frame;
       page.style.setProperty("--hue", h.hue);
       page.setAttribute("aria-label", c.title);
+      const pin = c.pin && /^https:\/\//.test(c.pin.url || "") ? c.pin : null;
       page.innerHTML = `
         <header class="hall-head">
           <div class="hall-id">
-            <span class="hall-badge">${ICON[c.slug] || ICON._}</span>
-            <div>
-              <p class="hall-no">Hall ${pad(k + 1)}<span>${plural(c.count, "piece")}</span></p>
-              <h2 class="hall-title">${esc(c.title)}</h2>
-              ${c.description ? `<p class="hall-desc">${esc(c.description)}</p>` : ""}
-            </div>
+            <h2 class="hall-title">${esc(c.title)}<span class="hall-count" aria-label="${plural(c.count, "piece")}">${c.count}</span></h2>
+            ${c.description ? `<p class="hall-desc">${esc(c.description)}</p>` : ""}
           </div>
-          ${c.count ? `<div class="hall-tools">
+          <div class="hall-tools">
             <div class="switch" role="group" aria-label="How to show this hall">
-              <button type="button" data-view="orbit" aria-pressed="true">${ICON.orbit}<span>Orbit</span></button>
-              <button type="button" data-view="wall" aria-pressed="false">${ICON.wall}<span>Wall</span></button>
+              <button type="button" data-view="wall" aria-pressed="true" title="See every piece at once">${ICON.wall}<span>Grid</span></button>
+              <button type="button" data-view="orbit" aria-pressed="false" title="See one piece big">${ICON.orbit}<span>Focus</span></button>
               <i class="switch-glider" aria-hidden="true"></i>
             </div>
-            <button class="orb-btn" type="button" data-zip="${esc(c.slug)}" aria-label="Download this hall as a ZIP">${ICON.zip}<span class="hint">Download this hall (${bytes(c.bytes)})</span></button>
-          </div>` : ""}
+            <button class="btn-ghost btn-sm" type="button" data-zip="${esc(c.slug)}" title="Download this whole hall as one ZIP">${ICON.down}<span>Download all</span><small>${bytes(c.bytes)}</small></button>
+          </div>
         </header>
+        ${pin ? `<aside class="pin" aria-label="${esc(pin.title)}">
+          <div class="pin-text"><h3>${esc(pin.title)}</h3><p>${esc(pin.note || "")}</p></div>
+          <a class="btn-go" href="${esc(pin.url)}" target="_blank" rel="noopener">${ICON.edit}<span>${esc(pin.label || "Open")}</span></a>
+        </aside>` : ""}
         <div class="hall-body"></div>`;
       deckEl.appendChild(page);
       const groups = groupsOf(c.items);
       const hall = { cat: c, page, view: pref.get("view", CFG.defaultView === "carousel" ? "orbit" : "wall"), orbit: null, wall: null, groups, items: groups.flatMap((g) => g.items) };
       halls.push(hall);
       const body = $(".hall-body", page);
-      if (!c.count) {
-        body.innerHTML = `<div class="empty"><b>This hall is still being set up.</b>Add pictures to the matching Drive folder, then press Refresh at the top right. They'll land here in a few minutes.</div>`;
-      } else {
-        hall.orbit = new Orbit(body, hall.items, c.frame, hall);
-        hall.wall = new Wall(body, hall);
-        const v = hall.view; hall.view = null;
-        setView(hall, v, true);
-      }
+      hall.orbit = new Orbit(body, hall.items, c.frame, hall);
+      hall.wall = new Wall(body, hall);
+      const v = hall.view; hall.view = null;
+      setView(hall, v, true);
     });
     deck.count = cats.length + 1;
   }
@@ -195,138 +198,98 @@
     if (halls[deck.index - 1] === hall) document.body.dataset.view = view;
   }
 
-  // Orbit or Wall applies to every hall at once; only the hall you're looking at animates.
+  // Grid or Focus applies to every hall at once; only the hall you're looking at animates.
   function setViewAll(view) {
     const here = halls[deck.index - 1];
     halls.forEach((h) => { if (h.orbit && h.view !== view) setView(h, view, h !== here); });
     pref.set("view", view);
-    toast(view === "wall" ? "Wall view on for every hall." : "Orbit view on for every hall.");
+    toast(view === "wall" ? "Grid view: every piece at once." : "Focus view: one piece big, the rest in the strip below.");
   }
 
-  // ---------------------------------------------------------------- Orbit: a spiral of pieces you spin like a carousel
+  // ---------------------------------------------------------------- Focus: one piece big, every piece in a strip underneath
+  // (kept under the name "orbit" so people's saved view choice still works)
   class Orbit {
     constructor(parent, items, frame, hall) {
-      this.items = items; this.hall = hall; this.frame = frame;
-      this.pos = 0; this.target = 0; this.intro = 0; this.dirty = true; this.touched = false;
+      this.items = items; this.hall = hall; this.i = 0; this.touched = false;
       this.el = document.createElement("div");
-      this.el.className = "orbit";
+      this.el.className = "focus";
+      let n = 0;
+      const rail = hall.groups.map((g) => `${g.label ? `<span class="rail-label">${esc(g.label)}</span>` : ""}${g.items.map((it) => { const i = n++; return `
+        <button class="rail-item" type="button" role="option" data-i="${i}" title="${esc(it.name)}" aria-label="${esc(it.name)}"><img src="${url(it.thumb)}" alt="" loading="lazy" decoding="async" draggable="false"></button>`; }).join("")}`).join("");
       this.el.innerHTML = `
-        <div class="orbit-stage" tabindex="0" role="listbox" aria-label="Pieces in this hall. Use the left and right arrow keys to turn.">
-          <div class="helix"></div>
-          <div class="orbit-floor" aria-hidden="true"></div>
+        <div class="orbit-stage focus-stage" tabindex="0" aria-label="The piece you picked. Left and right arrow keys move to the next one.">
+          <button class="focus-nav" type="button" data-step="-1" aria-label="Previous piece">${ICON.prev}</button>
+          <div class="focus-pic"><img alt="" draggable="false"></div>
+          <button class="focus-nav" type="button" data-step="1" aria-label="Next piece">${ICON.next}</button>
         </div>
-        <div class="orbit-caption">
-          <p class="oc-count"></p>
-          <p class="oc-name"></p>
-          <p class="oc-meta"></p>
+        <div class="focus-info">
+          <div class="focus-text"><p class="oc-name"></p><p class="oc-meta"></p></div>
           <div class="oc-actions">
-            <span class="oc-hint"></span>
+            <button class="btn-go btn-sm" type="button" data-act="main"><span class="main-ico"></span><span class="main-label"></span></button>
             <a class="icon-btn" data-act="download" title="Download" aria-label="Download">${ICON.down}</a>
-            <a class="icon-btn" data-act="open" target="_blank" rel="noopener" title="Open in Google Slides" aria-label="Open in Google Slides" hidden>${ICON.open}</a>
-            <button class="icon-btn" type="button" data-act="view" title="See it big" aria-label="See it big">${ICON.expand}</button>
+            <button class="icon-btn" type="button" data-act="view" title="See it full screen" aria-label="See it full screen">${ICON.expand}</button>
           </div>
-        </div>`;
+        </div>
+        <div class="focus-rail" role="listbox" aria-label="Every piece in this hall">${rail}</div>`;
       parent.appendChild(this.el);
-      this.stage = $(".orbit-stage", this.el);
-      this.helix = $(".helix", this.el);
-      this.cards = items.map((it, i) => {
-        const b = document.createElement("div");
-        b.className = "card";
-        b.dataset.i = i;
-        b.setAttribute("role", "option");
-        b.innerHTML = `<div class="card-face"><img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async" draggable="false">${badge(it)}</div>`;
-        this.helix.appendChild(b);
-        return b;
-      });
-      $('[data-act="view"]', this.el).onclick = () => openViewer(this.hall, this.index);
+      this.stage = $(".focus-stage", this.el);
+      this.pic = $(".focus-pic", this.el);
+      this.rail = $(".focus-rail", this.el);
+      this.thumbs = $$(".rail-item", this.el);
+      $$(".focus-nav", this.el).forEach((b) => (b.hidden = items.length < 2));
+      $('[data-act="view"]', this.el).onclick = () => openViewer(this.hall, this.i);
+      $('[data-act="main"]', this.el).onclick = () => pick(this.items[this.i], this.pic);
       this.stage.addEventListener("click", (e) => {
         if (this.justDragged) return;
-        const c = e.target.closest(".card");
-        if (!c) return;
-        const i = +c.dataset.i;
-        if (i === this.index) pick(this.items[i], $(".card-face", c)); else this.go(i);
+        const step = e.target.closest("[data-step]");
+        if (step) this.nudge(+step.dataset.step);
+        else if (e.target.closest(".focus-pic")) pick(this.items[this.i], this.pic);
       });
       this.stage.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(this.items[this.index], $(".card-face", this.cards[this.index])); }
+        if (e.target === this.stage && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pick(this.items[this.i], this.pic); }
       });
-      this.measure();
-      // open a few pieces in, so the spiral fans out on both sides
-      this.go(Math.min(Math.floor((items.length - 1) / 2), 3), true);
+      this.rail.addEventListener("click", (e) => { const t = e.target.closest(".rail-item"); if (t) this.go(+t.dataset.i); });
+      this.go(0, true);
     }
-    // Film strip: the front piece is biggest, the rest shrink and turn away towards both ends.
-    measure() {
-      const W = innerWidth, H = innerHeight;
-      const ratio = this.frame === "wide" ? 1.6 : 0.86;
-      this.K = W < 760 ? 2 : 4;                       // pieces shown on each side of the front one
-      const room = (this.stage.clientWidth || (W < 760 ? W - 28 : W - 118)) - 24;
-      const span = 2 * (this.fx(this.K) + this.sc(this.K) / 2 + 0.06); // strip width in card-widths
-      const w = Math.min(clamp(H * (W < 760 ? 0.27 : 0.27), 130, 250) * ratio, room / span);
-      this.w = w; this.h = w / ratio;
-      this.el.style.setProperty("--cw", `${w}px`);
-      this.el.style.setProperty("--ch", `${this.h}px`);
-      this.helix.style.transform = "none";
-      this.dirty = true;
-    }
-    sc(a) { return Math.max(0.42, 1 - 0.115 * a); }          // size at distance a from the front
-    fx(a) { return 0.76 + (a - 1) * 0.64 - (a - 1) * (a - 1) * 0.05; } // centre position in card-widths (a ≥ 1)
-    get index() { return clamp(Math.round(this.target), 0, this.items.length - 1); }
+    get index() { return this.i; }
     go(i, instant) {
-      this.target = clamp(i, 0, this.items.length - 1);
-      if (instant) this.pos = this.target;
-      this.dirty = true;
-      this.caption();
-    }
-    nudge(d) { this.touched = true; this.go(this.index + d); }
-    caption() {
-      const i = this.index, it = this.items[i];
-      $(".oc-count", this.el).textContent = [it.collection && this.hall.groups.length > 1 ? pretty(it.collection) : null, `${pad(i + 1)} / ${pad(this.items.length)}`].filter(Boolean).join("  ·  ");
+      this.i = clamp(Math.round(i), 0, this.items.length - 1);
+      const it = this.items[this.i];
+      const img = $("img", this.pic);
+      const sharp = it.preview || (!isDeck(it) && it.file && it.size < 3 * 1048576 && (it.w || 0) > 720 ? it.file : null);
+      img.alt = it.name;
+      img.src = url(it.thumb);
+      // the small picture shows at once; a sharper one replaces it when it has loaded
+      if (sharp) { const big = new Image(); big.onload = () => { if (this.items[this.i] === it) img.src = big.src; }; big.src = url(sharp); }
+      this.pic.title = isDeck(it) ? "Click to download" : "Click to copy";
       $(".oc-name", this.el).textContent = it.name;
-      $(".oc-meta", this.el).textContent = meta(it);
-      $(".oc-hint", this.el).textContent = it.kind === "link" ? "Too big to host, open it in Google Slides" : isDeck(it) ? "Click the slide to download it" : "Click the picture to copy it";
-      wireActions(it, null, $('[data-act="download"]', this.el), $('[data-act="open"]', this.el));
-      this.cards.forEach((c, k) => c.setAttribute("aria-selected", String(k === i)));
+      $(".oc-meta", this.el).textContent = `${meta(it)}. ${this.i + 1} of ${this.items.length}`;
+      $(".main-ico", this.el).innerHTML = it.kind === "link" ? ICON.open : isDeck(it) ? ICON.down : ICON.copy;
+      $(".main-label", this.el).textContent = it.kind === "link" ? "Open in Google Slides" : isDeck(it) ? `Download ${it.format}` : "Copy";
+      const dl = $('[data-act="download"]', this.el);
+      dl.hidden = !it.file || isDeck(it);
+      if (it.file) { dl.href = url(it.file); dl.setAttribute("download", fileName(it.file)); }
+      this.thumbs.forEach((t, k) => t.setAttribute("aria-selected", String(k === this.i)));
+      this.center(!instant);
     }
-    show(animate) {
-      this.el.hidden = false;
-      this.measure();
-      this.intro = animate && !reduce ? 1 : 0;
-      this.dirty = true;
+    // keep the chosen thumbnail in the middle of the strip
+    center(smoothly) {
+      const t = this.thumbs[this.i];
+      if (!t || this.el.hidden) return;
+      this.rail.scrollTo({ left: t.offsetLeft - (this.rail.clientWidth - t.offsetWidth) / 2, behavior: smoothly && !reduce ? "smooth" : "auto" });
     }
+    nudge(d) { const n = this.items.length; this.go((this.i + d + n) % n); }
+    show() { this.el.hidden = false; this.center(false); }
     hide() { this.el.hidden = true; }
-    // drag support (called by the deck's pointer router)
-    dragStart() { this.drag0 = this.pos; this.touched = true; }
-    dragMove(dx) { this.target = this.pos = clamp(this.drag0 - dx / (this.w * 0.55), -0.4, this.items.length - 0.6); this.dirty = true; }
-    dragEnd(vx) {
+    measure() { this.center(false); }
+    // swipe sideways on the picture to move on (called by the deck's pointer router)
+    dragStart() { this.dx = 0; }
+    dragMove(dx) { this.dx = dx; }
+    dragEnd() {
       this.justDragged = true; setTimeout(() => (this.justDragged = false), 0);
-      this.go(Math.round(this.pos - vx * 6));
+      if (Math.abs(this.dx) > 50) this.nudge(this.dx < 0 ? 1 : -1);
     }
-    tick(dt, active) {
-      if (this.el.hidden) return;
-      // gentle self-turning until someone touches it, so the hall feels alive
-      if (active && !this.touched && !reduce) {
-        this.idle = (this.idle || 0) + dt;
-        if (this.idle > 3.8 && this.items.length > 1) { this.idle = 0; this.go((this.index + 1) % this.items.length); }
-      }
-      const k = 1 - Math.pow(0.0008, dt);
-      if (Math.abs(this.target - this.pos) > 0.0005) { this.pos += (this.target - this.pos) * k; this.dirty = true; }
-      if (this.intro > 0) { this.intro = Math.max(0, this.intro - dt / 1.1); this.dirty = true; }
-      if (!this.dirty) return;
-      this.dirty = false;
-      const e = 1 - Math.pow(1 - this.intro, 3); // 1 → 0, eased
-      const front = this.index, K = this.K;
-      this.cards.forEach((c, i) => {
-        const d = i - this.pos, a = Math.abs(d);
-        if (a > K + 1) { c.style.visibility = "hidden"; return; }
-        c.style.visibility = "visible";
-        const x = (a < 1 ? d * 0.62 : Math.sign(d) * this.fx(a)) * this.w * (1 - e);
-        const scale = this.sc(a) * (1 - e * 0.3);
-        const ry = clamp(-d * 17, -52, 52);
-        c.style.transform = `translateX(${x.toFixed(1)}px) translateZ(${(-a * 60).toFixed(1)}px) rotateY(${ry.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
-        c.style.zIndex = String(100 - Math.round(a * 10));
-        c.style.opacity = String(((a <= K ? 1 - a * 0.07 : (K + 1 - a) * (1 - K * 0.07))) * (1 - e * 0.6));
-        c.classList.toggle("is-front", i === front);
-      });
-    }
+    tick() {}
   }
 
   // ---------------------------------------------------------------- Wall: every piece at once
@@ -343,7 +306,6 @@
           <figure class="tile" data-i="${i}">
             <button class="tile-face" type="button" data-pick="${i}" aria-label="${isDeck(it) ? "Download" : "Copy"} ${esc(it.name)}" title="${isDeck(it) ? "Click to download" : "Click to copy"}">
               <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">${badge(it)}
-              <span class="glare" aria-hidden="true"></span>
             </button>
             <figcaption>
               <span class="tile-name" title="${esc(it.name)}">${esc(it.name)}</span>
@@ -360,30 +322,11 @@
         if (o) openViewer(hall, +o.dataset.open);
         else if (p) pick(hall.items[+p.dataset.pick], p);
       });
-      if (fine) {
-        let hot = null;
-        const cool = () => { if (hot) { hot.classList.remove("hot"); hot.style.cssText = ""; hot = null; } };
-        this.el.addEventListener("pointermove", (e) => {
-          const t = e.target.closest(".tile");
-          if (t !== hot) { cool(); if (t) { hot = t; t.classList.add("hot"); } }
-          if (!t) return;
-          const r = t.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-          t.style.setProperty("--gx", `${px * 100}%`);
-          t.style.setProperty("--gy", `${py * 100}%`);
-          if (!reduce) { t.style.setProperty("--rx", `${(0.5 - py) * 12}deg`); t.style.setProperty("--ry", `${(px - 0.5) * 14}deg`); }
-        });
-        this.el.addEventListener("pointerleave", cool);
-        this.el.addEventListener("scroll", cool, { passive: true });
-      }
     }
     show(animate) {
       this.el.hidden = false;
       this.el.scrollTop = 0;
-      if (animate && !reduce) {
-        this.el.classList.remove("enter"); void this.el.offsetWidth; this.el.classList.add("enter");
-        $$(".tile", this.el).forEach((t, k) => t.style.setProperty("--d", `${Math.min(k, 24) * 35}ms`));
-      }
+      if (animate && !reduce) { this.el.classList.remove("enter"); void this.el.offsetWidth; this.el.classList.add("enter"); }
     }
     hide() { this.el.hidden = true; }
   }
@@ -403,11 +346,13 @@
       pg.classList.toggle("is-current", on);
     });
     $$(".pill-btn").forEach((b) => b.setAttribute("aria-current", String(+b.dataset.go === i)));
+    const cur = $(`.pill-btn[data-go="${i}"]`), bar = $("#pill");
+    if (cur && bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: cur.offsetLeft - (bar.clientWidth - cur.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
     $$("#progress span").forEach((s) => s.classList.toggle("on", +s.dataset.i === i));
     const hall = halls[i - 1];
     const hash = hall ? `#hall-${hall.cat.slug}` : "#home";
     if (location.hash !== hash) history.replaceState(null, "", hash);
-    document.documentElement.style.setProperty("--hue", hall ? hallOf(hall.cat.slug).hue : "#9fb4ff");
+    document.documentElement.style.setProperty("--hue", ACCENT);
     document.body.dataset.view = hall ? hall.view : "home";
     if (changed || instant) guideTo(i);
   }
@@ -738,7 +683,7 @@
       }
       if (e.altKey || e.ctrlKey || e.metaKey) return;
       const hall = halls[deck.index - 1];
-      if (["ArrowDown", "PageDown"].includes(e.key) || (e.key === " " && !e.target.closest("button, a, [role=listbox]"))) { e.preventDefault(); next(1); }
+      if (["ArrowDown", "PageDown"].includes(e.key) || (e.key === " " && !e.target.closest("button, a, [role=listbox], .focus-stage"))) { e.preventDefault(); next(1); }
       else if (["ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); next(-1); }
       else if (e.key === "Home") go(0);
       else if (hall?.view === "orbit" && hall.orbit && (e.key === "ArrowLeft" || e.key === "ArrowRight")) { e.preventDefault(); hall.orbit.nudge(e.key === "ArrowLeft" ? -1 : 1); }

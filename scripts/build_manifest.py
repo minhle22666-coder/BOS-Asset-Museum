@@ -180,6 +180,7 @@ def main() -> None:
             "slug": w["slug"], "title": w["title"], "description": w.get("description", ""),
             "frame": w.get("frame", "square"), "count": len(items),
             "bytes": sum(i["size"] for i in items), "items": items,
+            **({"pin": w["pin"]} if w.get("pin") else {}),
         })
 
     # drop thumbnails whose source image is gone
