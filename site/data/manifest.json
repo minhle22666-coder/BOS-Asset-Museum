@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T05:02:51+00:00",
+ "generatedAt": "2026-11-17T05:15:04+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -301,8 +301,8 @@
    "title": "Slide Ideas for BOS",
    "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
-   "count": 2,
-   "bytes": 45313323,
+   "count": 3,
+   "bytes": 52453682,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -337,6 +337,23 @@
      "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
      "previewHash": "8b4636b54fdebfae8cbfb3b073202dc197924799"
+    },
+    {
+     "id": "425b2e29916d",
+     "name": "Banner-Summer (1)",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Banner-Summer (1).pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 7140359,
+     "hash": "b875968df4c21f32c0b86076e82db8adabe7f0d0",
+     "src": "media/slides-ideas/Banner-Summer (1).pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Banner-Summer (1).pptx.preview.webp",
+     "preview": "media/slides-ideas/Banner-Summer (1).pptx.preview.png",
+     "previewHash": "e7ffb112d6d5e1e99abff83c7f514c1264f72c87"
     }
    ]
   },
