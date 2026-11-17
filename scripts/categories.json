@@ -13,11 +13,13 @@
       ]
     },
     {
-      "slug": "slides-mascot",
-      "title": "Mascot for Slides",
-      "description": "Poses, avatars and props ready to drop straight into a slide.",
+      "slug": "mascot",
+      "title": "Mascot",
+      "description": "Every pose of the BOS mascot. Click one to copy it straight into your slide.",
       "frame": "square",
       "drive_names": [
+        "Mascot",
+        "Mascots",
         "[Slides]-Mascot",
         "Slides Mascot",
         "Mascot-Slide Design",
@@ -59,16 +61,6 @@
       "drive_names": [
         "Desktop Background",
         "Desktop Backgrounds"
-      ]
-    },
-    {
-      "slug": "mascot",
-      "title": "Mascot",
-      "description": "Every pose of the BOS mascot. Click one to copy it into your slide.",
-      "frame": "square",
-      "drive_names": [
-        "Mascot",
-        "Mascots"
       ]
     }
   ]

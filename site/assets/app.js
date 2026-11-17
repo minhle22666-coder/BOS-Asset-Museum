@@ -17,12 +17,12 @@
   // Each hall has its own colour, icon, guide pose and guide lines. Unknown halls fall back to "_".
   const HALL = {
     "logo-mascot": { short: "Avatar & Logo", hue: "#74f0b4", pose: "hero", lines: ["These are the originals. Handle with care!", "Click any logo to copy it. Zalo avatars are right below."] },
-    "slides-mascot": { short: "Slides", hue: "#a994ff", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
+    "slides-mascot": { short: "Slides", hue: "#86f08f", pose: "tablet", lines: ["Copy a pose, paste it into your slide. Easy.", "Switch to Wall to see every pose at once."] },
     "slides-ideas": { short: "Ideas", hue: "#7fe0d4", pose: "point", lines: ["Want to edit the slides? Use the Canva link at the top.", "Or download a deck and open it in PowerPoint."] },
     "all-hands": { short: "All Hands", hue: "#9fb4ff", pose: "float", lines: ["Everything for the All Hands deck, in one place.", "See you at All Hands!"] },
     "mini-games": { short: "Mini Games", hue: "#f2a2ff", pose: "thumbs", lines: ["Game night? Grab the whole set with one ZIP.", "Good luck, players!"] },
     "desktop-background": { short: "Wallpapers", hue: "#7cc4ff", pose: "fly", lines: ["Pick a sky for your screen.", "Download one and set it as your wallpaper."] },
-    mascot: { short: "Mascot", hue: "#86f08f", pose: "float", lines: ["That's me, in every pose. Click one to copy it.", "Spin the orbit, or use the strip below to jump around."] },
+    mascot: { short: "Mascot", hue: "#a994ff", pose: "tablet", lines: ["That's me, in every pose. Click one to copy it.", "Spin the orbit, or use the strip below to jump around."] },
     _: { hue: "#8fe3ff", pose: "float", lines: ["Fresh arrivals from the BOS Drive."] },
   };
 
@@ -34,6 +34,7 @@
     home: '<img src="assets/planet/favicon-64.png" alt="" width="26" height="26">',
     "logo-mascot": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5 20 7v10l-8 4.5L4 17V7z"/><path class="d2" d="m12 7.2 1.45 2.95 3.25.47-2.35 2.3.55 3.24L12 14.63l-2.9 1.53.55-3.24-2.35-2.3 3.25-.47z"/></svg>',
     "desktop-background": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="2.5" y="3.5" width="19" height="13.5" rx="2.6"/><path class="d2" d="M2.5 14.2 7.6 9.6l3.6 3.1 2.9-2.4 7.4 5.5v.6a2.6 2.6 0 0 1-2.6 2.6H5.1a2.6 2.6 0 0 1-2.6-2.6z"/><circle class="d2" cx="16.6" cy="7.6" r="1.6"/><path class="s" d="M9 21h6"/></svg>',
+
     "slides-mascot": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><rect class="d1" x="6.5" y="2.5" width="15" height="11" rx="2.4"/><rect class="d2" x="2.5" y="7" width="15" height="11" rx="2.4"/><path class="k" d="m10 9.4 1 2.1 2.1 1-2.1 1-1 2.1-1-2.1-2.1-1 2.1-1z"/><path class="s" d="M7 21h6"/></svg>',
     "mini-games": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M7.5 5.5h9a5 5 0 0 1 4.9 6l-.9 4.4a2.6 2.6 0 0 1-4.5 1.2L14.6 15H9.4L8 17.1a2.6 2.6 0 0 1-4.5-1.2l-.9-4.4a5 5 0 0 1 4.9-6z"/><path class="d2" d="M7.4 8.6h1.2v1.8h1.8v1.2H8.6v1.8H7.4v-1.8H5.6v-1.2h1.8z"/><circle class="d2" cx="15.6" cy="9.6" r="1.15"/><circle class="d2" cx="17.6" cy="12" r="1.15"/></svg>',
     "slides-ideas": '<svg class="duo" viewBox="0 0 24 24" aria-hidden="true"><path class="d1" d="M12 2.5a7 7 0 0 0-4.2 12.6c.8.6 1.2 1.4 1.2 2.4h6c0-1 .4-1.8 1.2-2.4A7 7 0 0 0 12 2.5z"/><path class="d2" d="M9 18.6h6v1.2a1.7 1.7 0 0 1-1.7 1.7h-2.6A1.7 1.7 0 0 1 9 19.8z"/><path class="k" d="m12 6.4.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z"/></svg>',
@@ -49,6 +50,8 @@
     down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
     zip: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 12 4l7 4.5v8L12 21l-7-4.5z"/><path d="M5 8.5 12 13l7-4.5M12 13v8"/></svg>',
   };
+
+  ICON.mascot = ICON["slides-mascot"]; // the Mascot hall took over from "Mascot for Slides"
 
   // ---------------------------------------------------------------- utils
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
