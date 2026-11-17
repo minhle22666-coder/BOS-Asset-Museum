@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T04:53:44+00:00",
+ "generatedAt": "2026-11-17T05:02:51+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -301,9 +301,26 @@
    "title": "Slide Ideas for BOS",
    "description": "Slide decks full of ideas for BOS. Download any of them as PowerPoint.",
    "frame": "wide",
-   "count": 3,
-   "bytes": 35845112,
+   "count": 2,
+   "bytes": 45313323,
    "items": [
+    {
+     "id": "6c5d753bdace",
+     "name": "Awards",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Awards.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 21288780,
+     "hash": "b5007a102058cbe85904605b421399197f2c78e7",
+     "src": "media/slides-ideas/Awards.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Awards.pptx.preview.webp",
+     "preview": "media/slides-ideas/Awards.pptx.preview.png",
+     "previewHash": "00896b6fd8c501a66d038ae93ad5f5d66ed278ef"
+    },
     {
      "id": "0a2437928127",
      "name": "Banner-LunarNewYear",
@@ -320,40 +337,6 @@
      "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
      "previewHash": "8b4636b54fdebfae8cbfb3b073202dc197924799"
-    },
-    {
-     "id": "4e1addbfbec0",
-     "name": "Banner-Summer",
-     "kind": "deck",
-     "format": "PPTX",
-     "file": "media/slides-ideas/Banner-Summer.pptx",
-     "collection": "",
-     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 6065055,
-     "hash": "7cc540dab9720a2d0a6509cfea3578aa61114544",
-     "src": "media/slides-ideas/Banner-Summer.pptx",
-     "w": 1024,
-     "h": 576,
-     "thumb": "thumbs/slides-ideas/Banner-Summer.pptx.preview.webp",
-     "preview": "media/slides-ideas/Banner-Summer.pptx.preview.png",
-     "previewHash": "d4c661e906e4497f6c6ca4d341c34d3a50d91058"
-    },
-    {
-     "id": "2d2759ec03b3",
-     "name": "Banner-Xmas",
-     "kind": "deck",
-     "format": "PPTX",
-     "file": "media/slides-ideas/Banner-Xmas.pptx",
-     "collection": "",
-     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 5755514,
-     "hash": "4627ecc2f4243a4b9c4c42d828bd826d97d1766c",
-     "src": "media/slides-ideas/Banner-Xmas.pptx",
-     "w": 1024,
-     "h": 576,
-     "thumb": "thumbs/slides-ideas/Banner-Xmas.pptx.preview.webp",
-     "preview": "media/slides-ideas/Banner-Xmas.pptx.preview.png",
-     "previewHash": "551127a5e0564a1a78f4b360753efe082c5d30f4"
     }
    ]
   },
