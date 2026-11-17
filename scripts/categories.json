@@ -1,5 +1,5 @@
 {
-  "_comment": "Maps each Drive sub-folder to a hall on the website. 'drive_names' are compared ignoring emoji, brackets, spaces and capital letters, so '☘️ [Slides]-Mascot' matches 'Slides Mascot'. Order here = order on the website. 'frame' is 'square' or 'wide' (16:10, good for wallpapers). 'pin' (optional) adds a big link at the top of a hall: {title, note, label, url}. Halls with no pictures are hidden on the website.",
+  "_comment": "Maps each Drive sub-folder to a hall on the website. 'drive_names' are compared ignoring emoji, brackets, spaces and capital letters, so '☘️ [Slides]-Mascot' matches 'Slides Mascot'. Order here = order on the website. 'frame' is 'square' or 'wide' (16:10, good for wallpapers). 'pin' (optional) adds a big link at the top of a hall: {title, note, label, url}.",
   "categories": [
     {
       "slug": "logo-mascot",
@@ -13,13 +13,15 @@
       ]
     },
     {
-      "slug": "mascot",
-      "title": "Mascot",
-      "description": "Every pose of the BOS mascot. Click one to copy it into your slide.",
+      "slug": "slides-mascot",
+      "title": "Mascot for Slides",
+      "description": "Poses, avatars and props ready to drop straight into a slide.",
       "frame": "square",
       "drive_names": [
-        "Mascot",
-        "Mascots"
+        "[Slides]-Mascot",
+        "Slides Mascot",
+        "Mascot-Slide Design",
+        "Mascot Slide Design"
       ]
     },
     {
@@ -60,15 +62,13 @@
       ]
     },
     {
-      "slug": "slides-mascot",
-      "title": "Mascot for Slides",
-      "description": "Poses, avatars and props ready to drop straight into a slide.",
+      "slug": "mascot",
+      "title": "Mascot",
+      "description": "Every pose of the BOS mascot. Click one to copy it into your slide.",
       "frame": "square",
       "drive_names": [
-        "[Slides]-Mascot",
-        "Slides Mascot",
-        "Mascot-Slide Design",
-        "Mascot Slide Design"
+        "Mascot",
+        "Mascots"
       ]
     }
   ]

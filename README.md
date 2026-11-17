@@ -3,7 +3,6 @@
 Website nội bộ chứa toàn bộ logo, mascot, hình nền và vật liệu mini game của team BOS.
 **Bấm vào ảnh là copy** (dán thẳng vào Google Slides / PowerPoint). Muốn tải file thì bấm icon mũi tên tải xuống, muốn xem to thì bấm icon phóng to. Mỗi sảnh có nút tải cả sảnh dạng ZIP, góc phải có nút tải tất cả.
 Sảnh có thư mục con (ví dụ Avatar & Logo) hiện tất cả trên cùng một trang, mỗi thư mục con một tiêu đề riêng. File slide hiện ảnh bìa, bấm vào là tải file PowerPoint.
-Mỗi sảnh có hai cách xem: **Grid** (thấy hết mọi ảnh) và **Focus** (một ảnh to, bên dưới là dải ảnh nhỏ của cả sảnh để bấm chọn). Sảnh chưa có ảnh nào thì tự ẩn khỏi website.
 
 ---
 
@@ -83,7 +82,7 @@ Cũng có thể chạy robot trên GitHub: tab **Actions → Sync gallery → Ru
 1. Repo → **Settings → Secrets and variables → Actions → Variables → New variable**: `DRIVE_SYNC_ENABLED` = `false`.
 2. Thêm ảnh mới trực tiếp vào `site/media/<tên-sảnh>/` trên GitHub (**Add file → Upload files**). Robot tự làm ảnh thu nhỏ và website tự cập nhật, không cần bấm Refresh.
 
-Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `mascot`, `slides-ideas`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành một nhóm có tiêu đề riêng trong sảnh.
+Tên thư mục sảnh: `logo-mascot`, `slides-mascot`, `slides-ideas`, `mascot`, `mini-games`, `desktop-background`. Thư mục con bên trong sẽ thành một nhóm có tiêu đề riêng trong sảnh.
 
 Thư mục Drive và sảnh tương ứng (sửa trong `scripts/categories.json`; khi so tên, emoji, ngoặc và dấu cách được bỏ qua):
 
