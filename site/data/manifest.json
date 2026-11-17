@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T05:43:52+00:00",
+ "generatedAt": "2026-11-17T10:04:49+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -854,8 +854,8 @@
    "title": "Slide Ideas for BOS",
    "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
    "frame": "wide",
-   "count": 3,
-   "bytes": 52453682,
+   "count": 4,
+   "bytes": 56960095,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -875,21 +875,21 @@
      "previewHash": "00896b6fd8c501a66d038ae93ad5f5d66ed278ef"
     },
     {
-     "id": "0a2437928127",
+     "id": "e6b8339e781f",
      "name": "Banner-LunarNewYear",
      "kind": "deck",
      "format": "PPTX",
      "file": "media/slides-ideas/Banner-LunarNewYear.pptx",
      "collection": "",
      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 24024543,
-     "hash": "c737b51beac61dfda88ab47fffc99c89b6e7df70",
+     "size": 22626969,
+     "hash": "763e021b1cc491db9ac7b1f7f381f59ac64e0ef8",
      "src": "media/slides-ideas/Banner-LunarNewYear.pptx",
      "w": 1024,
      "h": 576,
      "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
-     "previewHash": "8b4636b54fdebfae8cbfb3b073202dc197924799"
+     "previewHash": "8bb42071ccdacd9045c32a4ab2aa894345484a4a"
     },
     {
      "id": "425b2e29916d",
@@ -907,6 +907,23 @@
      "thumb": "thumbs/slides-ideas/Banner-Summer (1).pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-Summer (1).pptx.preview.png",
      "previewHash": "e7ffb112d6d5e1e99abff83c7f514c1264f72c87"
+    },
+    {
+     "id": "dea4a72a4d9d",
+     "name": "Banner-Xmas",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Banner-Xmas.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 5903987,
+     "hash": "21f7a918a741e1ca5ea9de920936b1cd1b2f5858",
+     "src": "media/slides-ideas/Banner-Xmas.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Banner-Xmas.pptx.preview.webp",
+     "preview": "media/slides-ideas/Banner-Xmas.pptx.preview.png",
+     "previewHash": "1bd5d1fbe70f7a33cbf8cbb92995440b2ac4d7da"
     }
    ],
    "pin": {
