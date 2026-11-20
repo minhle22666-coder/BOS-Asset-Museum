@@ -19,16 +19,16 @@
   "modified": "2026-10-28T08:35:06.672Z",
   "path": "mascot/Explorer.png"
  },
- "11rwSAG2zB4yi2lN52arnsy05ZzQggMhL": {
-  "kind": "pptx",
-  "md5": "6b3e44abf4a7fdb43a87834947a79957",
-  "modified": "2026-11-17T05:07:33.282Z",
-  "path": "slides-ideas/Banner-Summer (1).pptx"
- },
  "12a1hv_RdWXZ7OZraDstXIHcH8R7D8rys": {
   "md5": "7db0a9de3831426e981ebdb66069b95d",
   "modified": "2026-11-10T07:30:46.211Z",
   "path": "mascot/Cầu Lông Ver2.png"
+ },
+ "1479c27UtTV2QRbpV6artoGw8PzKewcTE": {
+  "kind": "pptx",
+  "md5": "0cb3d3fe10f3837db68af71348b3dde0",
+  "modified": "2026-11-20T09:33:43.498Z",
+  "path": "slides-ideas/Mid-Autumn.pptx"
  },
  "14KB_e4ZmOYC2sQXCWGk9RNm8NBfijstn": {
   "md5": "da8bf7c6a14c08555e24d9ed7859c4fd",
@@ -90,12 +90,6 @@
   "modified": "2026-10-28T08:36:44.443Z",
   "path": "mini-games/BOS Quiz.png"
  },
- "19uFrobhR7vOje3eLrQE-KwH5DR0BE4rq": {
-  "kind": "pptx",
-  "md5": "7e9d841f1622e7230a7fb3289b3b4378",
-  "modified": "2026-11-17T05:10:08.862Z",
-  "path": "slides-ideas/Banner-Xmas.pptx"
- },
  "1AJxa2TZYeOwg9_T45UaOuif1ty0b-7BG": {
   "md5": "b97df4dcea9f4aae7e59779d7cefabd0",
   "modified": "2026-11-20T08:13:33.048Z",
@@ -115,6 +109,12 @@
   "md5": "a6607c49dab9e2f1c373ccdc2f173ef3",
   "modified": "2026-10-14T04:13:03.760Z",
   "path": "mini-games/B O S (24).png"
+ },
+ "1CHgjOffVaVhNiLPgV9OY4FpNndTO8l_J": {
+  "kind": "pptx",
+  "md5": "036eb3cb589f4c8a0bc9b1f24e351a4c",
+  "modified": "2026-11-20T09:35:05.913Z",
+  "path": "slides-ideas/Banner-Summer.pptx"
  },
  "1COPUdmaWwjimGMynjDASf9mMNpBHWQE5": {
   "md5": "7f419982a7aca4c35a81462dd22904c4",
@@ -256,6 +256,12 @@
   "modified": "2026-10-28T08:36:16.297Z",
   "path": "mascot/BOS Website 1.png"
  },
+ "1UKvKkBt0SZo3DU_aGF80pg0yS1eHS-h1": {
+  "kind": "pptx",
+  "md5": "a433df56199afdaa5c4d63bb02b564a7",
+  "modified": "2026-11-20T09:29:04.157Z",
+  "path": "slides-ideas/Banner-LunarNewYear.pptx"
+ },
  "1UcKZmnAKnxkw4VYq8PPtDfdN4gmtdoit": {
   "md5": "b1ca26efeae51698fe53777281aab929",
   "modified": "2026-11-03T08:30:24.914Z",
@@ -290,12 +296,6 @@
   "md5": "e89f9d241249e218f373622aaa3ccd21",
   "modified": "2026-10-28T09:09:13.553Z",
   "path": "mascot/Quiz Time.png"
- },
- "1Y2CBbQomjq51k9OJzEbsD9h4XJWgXaal": {
-  "kind": "pptx",
-  "md5": "72d63266d4bdeb494f7e38f4b7e0c5f1",
-  "modified": "2026-11-17T05:15:29.048Z",
-  "path": "slides-ideas/Banner-LunarNewYear.pptx"
  },
  "1YCwrRywA4-3qEBlEneyXF1pwI_Ks7muq": {
   "md5": "0e0bffbb8906f9ee27018a8a302d87a0",
@@ -397,6 +397,12 @@
   "md5": "15c0ad9cda14eff5fd90c5cc2752ce69",
   "modified": "2026-11-06T10:46:14.521Z",
   "path": "logo-mascot/Logo KMR & BOS/All High GMV Label.png"
+ },
+ "1hQ6_DLw5XBOp1vVY5u1lqnMdNHsdBdE_": {
+  "kind": "pptx",
+  "md5": "a2f2de0cc83d3e5c1d1bbd05ff8e19be",
+  "modified": "2026-11-20T09:29:33.701Z",
+  "path": "slides-ideas/Banner-Xmas.pptx"
  },
  "1ii8juC1_-sbwQJ4HDzuNJCrqiYvjPIRy": {
   "md5": "1aaaa4fb1cbfbb9d1212a90872e4a46d",

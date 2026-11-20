@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T09:28:47+00:00",
+ "generatedAt": "2026-11-20T09:36:06+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -986,8 +986,8 @@
    "title": "Slide Ideas for BOS",
    "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
    "frame": "wide",
-   "count": 4,
-   "bytes": 56960095,
+   "count": 3,
+   "bytes": 36523436,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -1007,55 +1007,38 @@
      "previewHash": "00896b6fd8c501a66d038ae93ad5f5d66ed278ef"
     },
     {
-     "id": "e6b8339e781f",
-     "name": "Banner-LunarNewYear",
+     "id": "a778482ac496",
+     "name": "Banner-Summer",
      "kind": "deck",
      "format": "PPTX",
-     "file": "media/slides-ideas/Banner-LunarNewYear.pptx",
+     "file": "media/slides-ideas/Banner-Summer.pptx",
      "collection": "",
      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 22626969,
-     "hash": "763e021b1cc491db9ac7b1f7f381f59ac64e0ef8",
-     "src": "media/slides-ideas/Banner-LunarNewYear.pptx",
+     "size": 6831992,
+     "hash": "bd0465c86aba69951377fe0df03af63235f0d721",
+     "src": "media/slides-ideas/Banner-Summer.pptx",
      "w": 1024,
      "h": 576,
-     "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
-     "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
-     "previewHash": "8bb42071ccdacd9045c32a4ab2aa894345484a4a"
+     "thumb": "thumbs/slides-ideas/Banner-Summer.pptx.preview.webp",
+     "preview": "media/slides-ideas/Banner-Summer.pptx.preview.png",
+     "previewHash": "793220f1f5455cd662ab41c18968e675fad4f376"
     },
     {
-     "id": "425b2e29916d",
-     "name": "Banner-Summer (1)",
+     "id": "bf7e19791c48",
+     "name": "Mid-Autumn",
      "kind": "deck",
      "format": "PPTX",
-     "file": "media/slides-ideas/Banner-Summer (1).pptx",
+     "file": "media/slides-ideas/Mid-Autumn.pptx",
      "collection": "",
      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 7140359,
-     "hash": "b875968df4c21f32c0b86076e82db8adabe7f0d0",
-     "src": "media/slides-ideas/Banner-Summer (1).pptx",
+     "size": 8402664,
+     "hash": "4e7e5eff2f02a9694d4d31ae0c40648073cb244c",
+     "src": "media/slides-ideas/Mid-Autumn.pptx",
      "w": 1024,
      "h": 576,
-     "thumb": "thumbs/slides-ideas/Banner-Summer (1).pptx.preview.webp",
-     "preview": "media/slides-ideas/Banner-Summer (1).pptx.preview.png",
-     "previewHash": "e7ffb112d6d5e1e99abff83c7f514c1264f72c87"
-    },
-    {
-     "id": "dea4a72a4d9d",
-     "name": "Banner-Xmas",
-     "kind": "deck",
-     "format": "PPTX",
-     "file": "media/slides-ideas/Banner-Xmas.pptx",
-     "collection": "",
-     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 5903987,
-     "hash": "21f7a918a741e1ca5ea9de920936b1cd1b2f5858",
-     "src": "media/slides-ideas/Banner-Xmas.pptx",
-     "w": 1024,
-     "h": 576,
-     "thumb": "thumbs/slides-ideas/Banner-Xmas.pptx.preview.webp",
-     "preview": "media/slides-ideas/Banner-Xmas.pptx.preview.png",
-     "previewHash": "1bd5d1fbe70f7a33cbf8cbb92995440b2ac4d7da"
+     "thumb": "thumbs/slides-ideas/Mid-Autumn.pptx.preview.webp",
+     "preview": "media/slides-ideas/Mid-Autumn.pptx.preview.png",
+     "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24"
     }
    ],
    "pin": {
