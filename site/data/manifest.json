@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T09:39:09+00:00",
+ "generatedAt": "2026-11-20T10:10:29+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -316,8 +316,8 @@
    "title": "Mascot",
    "description": "Every pose of the BOS mascot. Click one to copy it straight into your slide.",
    "frame": "square",
-   "count": 55,
-   "bytes": 39874560,
+   "count": 58,
+   "bytes": 41656169,
    "items": [
     {
      "id": "e0aa1334f470",
@@ -560,6 +560,30 @@
      "thumb": "thumbs/mascot/Explorer.png.webp"
     },
     {
+     "id": "7ed643c969fa",
+     "name": "Explorer_ver2",
+     "file": "media/mascot/Explorer_ver2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 779478,
+     "hash": "781ee46807fb29d7acc606268742076539ae1b8f",
+     "w": 800,
+     "h": 685,
+     "thumb": "thumbs/mascot/Explorer_ver2.png.webp"
+    },
+    {
+     "id": "cd822a69ba2e",
+     "name": "Explorer_ver3",
+     "file": "media/mascot/Explorer_ver3.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 564072,
+     "hash": "b6c1a8ff0850154e0f81ca2b0dc93b850dc5fc7c",
+     "w": 533,
+     "h": 661,
+     "thumb": "thumbs/mascot/Explorer_ver3.png.webp"
+    },
+    {
      "id": "641385b8a452",
      "name": "Festival",
      "file": "media/mascot/Festival.png",
@@ -642,6 +666,18 @@
      "w": 670,
      "h": 657,
      "thumb": "thumbs/mascot/host.png.webp"
+    },
+    {
+     "id": "46eacf1c638d",
+     "name": "idea",
+     "file": "media/mascot/idea.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 438059,
+     "hash": "b73f0d962cb8fb35e05fe5bb98cea6ae14f54b7c",
+     "w": 511,
+     "h": 567,
+     "thumb": "thumbs/mascot/idea.png.webp"
     },
     {
      "id": "76022f3a7f7c",
