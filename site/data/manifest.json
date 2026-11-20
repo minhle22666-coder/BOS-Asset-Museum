@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-17T10:04:49+00:00",
+ "generatedAt": "2026-11-20T09:28:47+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 23,
-   "bytes": 14719613,
+   "count": 25,
+   "bytes": 18403359,
    "items": [
     {
      "id": "9957535a53f8",
@@ -178,18 +178,6 @@
      "thumb": "thumbs/logo-mascot/Zalo Avatar/KMR Battle.png.webp"
     },
     {
-     "id": "7e71b4589a31",
-     "name": "MerryXmas-ver1",
-     "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver1.png",
-     "collection": "Zalo Avatar",
-     "mime": "image/png",
-     "size": 1110086,
-     "hash": "51ec1b05c7bdaefbb7288b39f60704cfce214a0f",
-     "w": 773,
-     "h": 773,
-     "thumb": "thumbs/logo-mascot/Zalo Avatar/MerryXmas-ver1.png.webp"
-    },
-    {
      "id": "0e7a458ed066",
      "name": "MerryXmas-ver2",
      "file": "media/logo-mascot/Zalo Avatar/MerryXmas-ver2.png",
@@ -224,6 +212,18 @@
      "w": 1160,
      "h": 1160,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Mid-Autumn-3D.png.webp"
+    },
+    {
+     "id": "aa6e31ae3472",
+     "name": "Tet_BOS",
+     "file": "media/logo-mascot/Zalo Avatar/Tet_BOS.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 2069541,
+     "hash": "eb2a6a0d7a2db3351c5bae89fd2aef0ad01dbbf8",
+     "w": 1080,
+     "h": 1080,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Tet_BOS.png.webp"
     },
     {
      "id": "04be6bd176fa",
@@ -274,6 +274,30 @@
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas.png.webp"
     },
     {
+     "id": "9fdb3f4e06a4",
+     "name": "Xmas_BOS",
+     "file": "media/logo-mascot/Zalo Avatar/Xmas_BOS.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1297205,
+     "hash": "c89d3058cc7f6eba003b11ab20316c1553a8eb76",
+     "w": 1080,
+     "h": 1080,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas_BOS.png.webp"
+    },
+    {
+     "id": "a43dd92f9142",
+     "name": "Xmas_BOS_ver2",
+     "file": "media/logo-mascot/Zalo Avatar/Xmas_BOS_ver2.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1427086,
+     "hash": "a4b1fce2c7c4b9b6a9803fb0cdb35cd9f23aebe6",
+     "w": 1080,
+     "h": 1080,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Xmas_BOS_ver2.png.webp"
+    },
+    {
      "id": "5b29fbdf1d18",
      "name": "Đồng cỏ hiền hòa",
      "file": "media/logo-mascot/Zalo Avatar/Đồng cỏ hiền hòa.png",
@@ -292,8 +316,8 @@
    "title": "Mascot",
    "description": "Every pose of the BOS mascot. Click one to copy it straight into your slide.",
    "frame": "square",
-   "count": 46,
-   "bytes": 36004121,
+   "count": 55,
+   "bytes": 39874560,
    "items": [
     {
      "id": "e0aa1334f470",
@@ -500,6 +524,18 @@
      "thumb": "thumbs/mascot/Cầu Lông Ver4.png.webp"
     },
     {
+     "id": "1ac11ed5f4cd",
+     "name": "detective",
+     "file": "media/mascot/detective.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 525127,
+     "hash": "49b627893f2d8d34daf1310986d291ea8a2cdc1d",
+     "w": 531,
+     "h": 587,
+     "thumb": "thumbs/mascot/detective.png.webp"
+    },
+    {
      "id": "9f18a94eb88b",
      "name": "Explorer 1",
      "file": "media/mascot/Explorer 1.png",
@@ -524,6 +560,42 @@
      "thumb": "thumbs/mascot/Explorer.png.webp"
     },
     {
+     "id": "641385b8a452",
+     "name": "Festival",
+     "file": "media/mascot/Festival.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 137592,
+     "hash": "724b08ee5fbfff1fd62f87769cd7296694e6eae4",
+     "w": 277,
+     "h": 322,
+     "thumb": "thumbs/mascot/Festival.png.webp"
+    },
+    {
+     "id": "dd6166bc525d",
+     "name": "Festival_2",
+     "file": "media/mascot/Festival_2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 180308,
+     "hash": "ac70f73ccc39df3519bdd7016b73bdabe67ccae6",
+     "w": 284,
+     "h": 403,
+     "thumb": "thumbs/mascot/Festival_2.png.webp"
+    },
+    {
+     "id": "0eb1d74e7882",
+     "name": "Festival_3",
+     "file": "media/mascot/Festival_3.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 129637,
+     "hash": "0cb8fd47e74cf074b4a9ac1a873d0d8ff3d97eaf",
+     "w": 394,
+     "h": 303,
+     "thumb": "thumbs/mascot/Festival_3.png.webp"
+    },
+    {
      "id": "0d4460785ecf",
      "name": "Floatie",
      "file": "media/mascot/Floatie.png",
@@ -536,6 +608,18 @@
      "thumb": "thumbs/mascot/Floatie.png.webp"
     },
     {
+     "id": "3a88843fd42d",
+     "name": "hit button",
+     "file": "media/mascot/hit button.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 531080,
+     "hash": "92a1bfe2249244889d36156349f3d6d8841d7699",
+     "w": 569,
+     "h": 537,
+     "thumb": "thumbs/mascot/hit button.png.webp"
+    },
+    {
      "id": "eda98cee7b20",
      "name": "Holding-Trophy",
      "file": "media/mascot/Holding-Trophy.png",
@@ -546,6 +630,18 @@
      "w": 556,
      "h": 500,
      "thumb": "thumbs/mascot/Holding-Trophy.png.webp"
+    },
+    {
+     "id": "3b2b7036bf52",
+     "name": "host",
+     "file": "media/mascot/host.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 631489,
+     "hash": "96076bb134623141d8e3e89abd7dc5cfc061c3d6",
+     "w": 670,
+     "h": 657,
+     "thumb": "thumbs/mascot/host.png.webp"
     },
     {
      "id": "76022f3a7f7c",
@@ -680,6 +776,18 @@
      "thumb": "thumbs/mascot/Research.png.webp"
     },
     {
+     "id": "97d85bfe2055",
+     "name": "right anwser",
+     "file": "media/mascot/right anwser.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 586736,
+     "hash": "ec1c1df1cead593f26cf1c7bf09ad86a844a82ad",
+     "w": 489,
+     "h": 739,
+     "thumb": "thumbs/mascot/right anwser.png.webp"
+    },
+    {
      "id": "f673d2483682",
      "name": "Say-hi",
      "file": "media/mascot/Say-hi.png",
@@ -776,6 +884,18 @@
      "thumb": "thumbs/mascot/Vung Tau & Export.png.webp"
     },
     {
+     "id": "e38c237e654d",
+     "name": "wrong answer",
+     "file": "media/mascot/wrong answer.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 568431,
+     "hash": "98f71ca922a27aa1d9baaa05e4948d2dbd4ab049",
+     "w": 488,
+     "h": 719,
+     "thumb": "thumbs/mascot/wrong answer.png.webp"
+    },
+    {
      "id": "f8d4173540ef",
      "name": "Xmas-Elf",
      "file": "media/mascot/Xmas-Elf.png",
@@ -834,6 +954,18 @@
      "w": 648,
      "h": 582,
      "thumb": "thumbs/mascot/Xmas.png.webp"
+    },
+    {
+     "id": "8d5471181896",
+     "name": "Xmas_KMR",
+     "file": "media/mascot/Xmas_KMR.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 580039,
+     "hash": "34b79dd888cd344ef2df65053746e72dce980b22",
+     "w": 626,
+     "h": 658,
+     "thumb": "thumbs/mascot/Xmas_KMR.png.webp"
     },
     {
      "id": "b179fba9eae4",
