@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-25T10:20:03+00:00",
+ "generatedAt": "2026-11-25T15:57:55+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 26,
-   "bytes": 20856905,
+   "count": 27,
+   "bytes": 22724503,
    "items": [
     {
      "id": "9957535a53f8",
@@ -152,6 +152,18 @@
      "w": 706,
      "h": 706,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
+    },
+    {
+     "id": "177787609241",
+     "name": "GBA-Tet",
+     "file": "media/logo-mascot/Zalo Avatar/GBA-Tet.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1867598,
+     "hash": "579173c55958d96c7c3a5d4a00fae4cc8f1b4a1f",
+     "w": 1087,
+     "h": 1087,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/GBA-Tet.png.webp"
     },
     {
      "id": "78aeca67f34c",
