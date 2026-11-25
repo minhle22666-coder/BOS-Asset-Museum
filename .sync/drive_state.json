@@ -171,6 +171,11 @@
   "modified": "2026-10-27T10:40:01.841Z",
   "path": "mini-games/wave.png"
  },
+ "1HuhX1wneum3wgGvLAp791drnZj9lxjso": {
+  "md5": "05ed88d15aef67f711e8d77eef2e332f",
+  "modified": "2026-11-25T05:03:46.257Z",
+  "path": "logo-mascot/Zalo Avatar/Villains.png"
+ },
  "1I5zumJJLr9lhIxxIirwMYB-2UrbEOqM5": {
   "md5": "e501fdb59edb84e4e492b6f04ba52b6a",
   "modified": "2026-10-28T09:47:11.134Z",
@@ -307,11 +312,6 @@
   "modified": "2026-10-28T09:09:13.553Z",
   "path": "mascot/Quiz Time.png"
  },
- "1YCwrRywA4-3qEBlEneyXF1pwI_Ks7muq": {
-  "md5": "0e0bffbb8906f9ee27018a8a302d87a0",
-  "modified": "2026-11-03T11:08:29.816Z",
-  "path": "logo-mascot/Zalo Avatar/BOS Villains.png"
- },
  "1Y_ZyCHgSG3xxxahlwmnc4XnwVlI33K52": {
   "md5": "10deb1fcb9c3e0a5df89983893ce2d2f",
   "modified": "2026-10-14T04:12:45.738Z",
@@ -367,6 +367,11 @@
   "md5": "3326b9bd833f99cd81de5c26f1bb6e44",
   "modified": "2026-11-09T03:41:35.249Z",
   "path": "desktop-background/Đồng Cỏ Hiền Hòa.png"
+ },
+ "1dXUHNPZ29dRtZBiDYS8bZ4MaN8r5QPSQ": {
+  "md5": "1a391d2cb35823364216be7a163ec8d3",
+  "modified": "2026-11-25T10:18:55.636Z",
+  "path": "logo-mascot/Zalo Avatar/GBA.png"
  },
  "1eDiw2scFQcWqQMRLcncayesW2m1ZdVOX": {
   "md5": "5b3871618c0ab8a013b43bb019231653",
@@ -558,6 +563,12 @@
   "md5": "afe059e141028644c84be4cf6a61e556",
   "modified": "2026-10-28T09:10:04.813Z",
   "path": "mascot/All Hands Q1 (1).png"
+ },
+ "1tjlO4WioDRDwswhpd3HBDgwMp2Yh8Lo1": {
+  "kind": "pptx",
+  "md5": "96e8b7a7557c53824c9309aa07caf4d1",
+  "modified": "2026-11-20T10:36:26.340Z",
+  "path": "slides-ideas/Quiz.pptx"
  },
  "1tsdUIXVdtaRxT5ockDfmXwwTFRc0jOnZ": {
   "md5": "f92f1b3f7f67588e040b6cc00f347722",

@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-20T10:10:29+00:00",
+ "generatedAt": "2026-11-25T10:20:03+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 25,
-   "bytes": 18403359,
+   "count": 26,
+   "bytes": 20856905,
    "items": [
     {
      "id": "9957535a53f8",
@@ -142,18 +142,6 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png.webp"
     },
     {
-     "id": "20311ba18f11",
-     "name": "BOS Villains",
-     "file": "media/logo-mascot/Zalo Avatar/BOS Villains.png",
-     "collection": "Zalo Avatar",
-     "mime": "image/png",
-     "size": 739887,
-     "hash": "93f1203600caf1e66e6ad0321921243e963de0ef",
-     "w": 594,
-     "h": 594,
-     "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS Villains.png.webp"
-    },
-    {
      "id": "9b862b3ce82a",
      "name": "BOS-Tet",
      "file": "media/logo-mascot/Zalo Avatar/BOS-Tet.png",
@@ -164,6 +152,18 @@
      "w": 706,
      "h": 706,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
+    },
+    {
+     "id": "78aeca67f34c",
+     "name": "GBA",
+     "file": "media/logo-mascot/Zalo Avatar/GBA.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1754302,
+     "hash": "19627d41478cfb336a5f2b8bee292d5f2257d9a2",
+     "w": 1080,
+     "h": 1080,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/GBA.png.webp"
     },
     {
      "id": "889a07dc4f9f",
@@ -248,6 +248,18 @@
      "w": 776,
      "h": 776,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/Trung Thu.png.webp"
+    },
+    {
+     "id": "6c6a7490475d",
+     "name": "Villains",
+     "file": "media/logo-mascot/Zalo Avatar/Villains.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1439131,
+     "hash": "5b65e2e1373faca632f206c415e1d2fcc879619c",
+     "w": 1080,
+     "h": 1080,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/Villains.png.webp"
     },
     {
      "id": "180ed28a691f",
@@ -1022,8 +1034,8 @@
    "title": "Slide Ideas for BOS",
    "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
    "frame": "wide",
-   "count": 5,
-   "bytes": 67314429,
+   "count": 6,
+   "bytes": 84444028,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -1109,6 +1121,23 @@
      "thumb": "thumbs/slides-ideas/Mid-Autumn.pptx.preview.webp",
      "preview": "media/slides-ideas/Mid-Autumn.pptx.preview.png",
      "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24"
+    },
+    {
+     "id": "2916a9c26641",
+     "name": "Quiz",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Quiz.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 17129599,
+     "hash": "76a9733e9aca8b9a025581800440008b9be89e0c",
+     "src": "media/slides-ideas/Quiz.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Quiz.pptx.preview.webp",
+     "preview": "media/slides-ideas/Quiz.pptx.preview.png",
+     "previewHash": "4313b4662da6685e818bbde2b4f11fbaa23bb82c"
     }
    ],
    "pin": {
