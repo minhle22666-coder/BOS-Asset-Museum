@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-25T15:57:55+00:00",
+ "generatedAt": "2026-11-26T05:15:17+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -340,8 +340,8 @@
    "title": "Mascot",
    "description": "Every pose of the BOS mascot. Click one to copy it straight into your slide.",
    "frame": "square",
-   "count": 58,
-   "bytes": 41656169,
+   "count": 61,
+   "bytes": 43420774,
    "items": [
     {
      "id": "e0aa1334f470",
@@ -656,6 +656,18 @@
      "thumb": "thumbs/mascot/Floatie.png.webp"
     },
     {
+     "id": "d8bf95fefc13",
+     "name": "graduate",
+     "file": "media/mascot/graduate.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 734340,
+     "hash": "dcaddff59ea99b269ad86dce66c14ae3058a5bbb",
+     "w": 669,
+     "h": 863,
+     "thumb": "thumbs/mascot/graduate.png.webp"
+    },
+    {
      "id": "3a88843fd42d",
      "name": "hit button",
      "file": "media/mascot/hit button.png",
@@ -740,6 +752,18 @@
      "thumb": "thumbs/mascot/KMR-Tet.png.webp"
     },
     {
+     "id": "602c23781a91",
+     "name": "learn",
+     "file": "media/mascot/learn.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 492600,
+     "hash": "e5aa1cbead9e89f28ee04d82c0918d3ef2c4ef30",
+     "w": 642,
+     "h": 733,
+     "thumb": "thumbs/mascot/learn.png.webp"
+    },
+    {
      "id": "63d5504e1518",
      "name": "Mid-Autumn",
      "file": "media/mascot/Mid-Autumn.png",
@@ -822,6 +846,18 @@
      "w": 1492,
      "h": 881,
      "thumb": "thumbs/mascot/Quiz Time.png.webp"
+    },
+    {
+     "id": "6d9775cf2a4f",
+     "name": "quiz",
+     "file": "media/mascot/quiz.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 537665,
+     "hash": "6d80a7b261f44734ddf0f47a809a5f5f2b81a9dd",
+     "w": 677,
+     "h": 773,
+     "thumb": "thumbs/mascot/quiz.png.webp"
     },
     {
      "id": "bcad32ecd30b",
@@ -1047,7 +1083,7 @@
    "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
    "frame": "wide",
    "count": 6,
-   "bytes": 84444028,
+   "bytes": 91571993,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -1118,6 +1154,23 @@
      "previewHash": "e1689d5658ea7820069e78454ba9e295bab158c8"
     },
     {
+     "id": "a3d62702383c",
+     "name": "BOS Quiz",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/BOS Quiz.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 24257564,
+     "hash": "de5fdf377b1deea5f1d40330a0bd087fb76a5dfa",
+     "src": "media/slides-ideas/BOS Quiz.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/BOS Quiz.pptx.preview.webp",
+     "preview": "media/slides-ideas/BOS Quiz.pptx.preview.png",
+     "previewHash": "ca0d7818b052c1aa3f5b6a8dd9d2081f3ecb2618"
+    },
+    {
      "id": "bf7e19791c48",
      "name": "Mid-Autumn",
      "kind": "deck",
@@ -1133,23 +1186,6 @@
      "thumb": "thumbs/slides-ideas/Mid-Autumn.pptx.preview.webp",
      "preview": "media/slides-ideas/Mid-Autumn.pptx.preview.png",
      "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24"
-    },
-    {
-     "id": "2916a9c26641",
-     "name": "Quiz",
-     "kind": "deck",
-     "format": "PPTX",
-     "file": "media/slides-ideas/Quiz.pptx",
-     "collection": "",
-     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     "size": 17129599,
-     "hash": "76a9733e9aca8b9a025581800440008b9be89e0c",
-     "src": "media/slides-ideas/Quiz.pptx",
-     "w": 1024,
-     "h": 576,
-     "thumb": "thumbs/slides-ideas/Quiz.pptx.preview.webp",
-     "preview": "media/slides-ideas/Quiz.pptx.preview.png",
-     "previewHash": "4313b4662da6685e818bbde2b4f11fbaa23bb82c"
     }
    ],
    "pin": {
