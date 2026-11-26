@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-26T06:18:34+00:00",
+ "generatedAt": "2026-11-26T07:57:08+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 28,
-   "bytes": 22888796,
+   "count": 29,
+   "bytes": 24123762,
    "items": [
     {
      "id": "9957535a53f8",
@@ -154,6 +154,30 @@
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/white-logo-kamereo.png.webp"
     },
     {
+     "id": "fdbf2800a7c1",
+     "name": "BOS Halloween",
+     "file": "media/logo-mascot/Zalo Avatar/BOS Halloween.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1234966,
+     "hash": "e55dce4d8edfc7c5c551d609829b89531637abb6",
+     "w": 811,
+     "h": 811,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS Halloween.png.webp"
+    },
+    {
+     "id": "d66fa73bd052",
+     "name": "BOS Tet",
+     "file": "media/logo-mascot/Zalo Avatar/BOS Tet.png",
+     "collection": "Zalo Avatar",
+     "mime": "image/png",
+     "size": 1867598,
+     "hash": "579173c55958d96c7c3a5d4a00fae4cc8f1b4a1f",
+     "w": 1087,
+     "h": 1087,
+     "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS Tet.png.webp"
+    },
+    {
      "id": "9b862b3ce82a",
      "name": "BOS-Tet",
      "file": "media/logo-mascot/Zalo Avatar/BOS-Tet.png",
@@ -164,18 +188,6 @@
      "w": 706,
      "h": 706,
      "thumb": "thumbs/logo-mascot/Zalo Avatar/BOS-Tet.png.webp"
-    },
-    {
-     "id": "177787609241",
-     "name": "GBA-Tet",
-     "file": "media/logo-mascot/Zalo Avatar/GBA-Tet.png",
-     "collection": "Zalo Avatar",
-     "mime": "image/png",
-     "size": 1867598,
-     "hash": "579173c55958d96c7c3a5d4a00fae4cc8f1b4a1f",
-     "w": 1087,
-     "h": 1087,
-     "thumb": "thumbs/logo-mascot/Zalo Avatar/GBA-Tet.png.webp"
     },
     {
      "id": "78aeca67f34c",
