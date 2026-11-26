@@ -17,6 +17,8 @@ from pathlib import Path
 
 from PIL import Image, ImageOps, ImageSequence
 
+import render_slides
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 MEDIA = SITE / "media"
@@ -33,6 +35,7 @@ MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp
         ".gif": "image/gif", ".avif": "image/avif", ".svg": "image/svg+xml"}
 
 Image.MAX_IMAGE_PIXELS = 300_000_000
+SLIDE_TINY, SLIDE_SMALL, SLIDE_LARGE = 200, 560, 1600  # px wide: film strip, hover flip-through, big viewer
 
 
 def sha1(path: Path) -> str:
@@ -63,6 +66,72 @@ def make_thumb(src: Path, dst: Path) -> tuple[int, int]:
         dst.parent.mkdir(parents=True, exist_ok=True)
         im.save(dst, "WEBP", quality=84, method=5)
     return w, h
+
+
+def slides_key(digest: str) -> str:
+    return f"{digest}:{render_slides.RENDER_VERSION}"
+
+
+def deck_slides(deck: Path, digest: str, prev: dict | None, used: set) -> dict | None:
+    """Every slide of a deck as .webp pictures in thumbs/<deck>.slides/: t001 (film strip), s001 (card), l001 (viewer).
+    Re-drawn only when the deck changes. Without LibreOffice the slides drawn last time are kept."""
+    out = THUMBS / deck.relative_to(MEDIA).with_name(deck.name + ".slides")
+    old = (prev or {}).get("slides")
+    def have(info: dict | None) -> bool:
+        return bool(info) and all((SITE / info["dir"] / f"{k}{i:03d}.webp").exists()
+                                  for i in range(1, info["count"] + 1) for k in "tsl")
+    def keep(info: dict) -> dict:
+        for i in range(1, info["count"] + 1):
+            for k in "tsl":
+                used.add(SITE / info["dir"] / f"{k}{i:03d}.webp")
+        return info
+    if have(old) and old.get("key") == slides_key(digest):
+        return keep(old)
+    if not render_slides.available():
+        if have(old):
+            print(f"[slides] LibreOffice not installed, keeping the old slides of {deck.name}")
+            return keep(old)
+        return None
+    try:
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            pngs = render_slides.render(deck, Path(tmp), width=SLIDE_LARGE)
+            if not pngs:
+                raise RuntimeError("no pages")
+            out.mkdir(parents=True, exist_ok=True)
+            for f in out.glob("*.webp"):
+                f.unlink()
+            w = h = None
+            for i, png in enumerate(pngs, 1):
+                with Image.open(png) as im:
+                    im = im.convert("RGB")
+                    w, h = w or im.width, h or im.height
+                    im.save(out / f"l{i:03d}.webp", "WEBP", quality=82, method=5)
+                    im.thumbnail((SLIDE_SMALL, SLIDE_SMALL * 4), Image.LANCZOS)
+                    im.save(out / f"s{i:03d}.webp", "WEBP", quality=80, method=5)
+                    im.thumbnail((SLIDE_TINY, SLIDE_TINY * 4), Image.LANCZOS)
+                    im.save(out / f"t{i:03d}.webp", "WEBP", quality=78, method=5)
+        print(f"[slides] {deck.relative_to(SITE).as_posix()}: {len(pngs)} slides")
+        return keep({"dir": out.relative_to(SITE).as_posix(), "count": len(pngs), "w": w, "h": h, "key": slides_key(digest)})
+    except Exception as e:
+        print(f"[slides] FAILED {deck.name}: {e}")
+        return keep(old) if have(old) else None
+
+
+def needs_render() -> bool:
+    """True when some deck has no up-to-date slide pictures yet (sync.yml installs LibreOffice only then)."""
+    old = {}
+    if MANIFEST.exists():
+        for c in json.loads(MANIFEST.read_text(encoding="utf-8")).get("categories", []):
+            for it in c["items"]:
+                old[it.get("src") or it.get("file") or it["id"]] = it
+    for p in MEDIA.rglob("*") if MEDIA.exists() else []:
+        if p.is_file() and p.suffix.lower() in DECK:
+            prev = old.get(p.relative_to(SITE).as_posix()) or {}
+            info = prev.get("slides")
+            if not info or info.get("key") != slides_key(sha1(p)) or not (SITE / info["dir"]).is_dir():
+                return True
+    return False
 
 
 def deck_entry(p: Path, rel: str, digest: str, collection: str, old: dict, used: set) -> dict | None:
@@ -107,6 +176,14 @@ def deck_entry(p: Path, rel: str, digest: str, collection: str, old: dict, used:
         if t:
             entry["thumb"] = t.relative_to(SITE).as_posix()
             used.add(t)
+    if not is_link:
+        slides = deck_slides(p, digest, old.get(rel), used)
+        if slides:
+            entry["slides"] = slides
+            if not entry["thumb"]:  # no preview picture from Drive: use the first slide
+                entry["thumb"] = f"{slides['dir']}/s001.webp"
+                entry["preview"] = f"{slides['dir']}/l001.webp"
+                entry["w"], entry["h"] = slides["w"], slides["h"]
     if not entry["thumb"]:
         entry["thumb"] = "assets/planet/deck-placeholder.svg"
     return entry
@@ -205,4 +282,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    import sys
+    if "--needs-render" in sys.argv:  # exit code 0 = yes, some deck needs its slides drawn
+        sys.exit(0 if needs_render() else 1)
     main()

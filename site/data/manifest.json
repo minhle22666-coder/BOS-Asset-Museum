@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T08:07:36+00:00",
+ "generatedAt": "2026-11-26T09:00:35+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -1124,7 +1124,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Awards.pptx.preview.webp",
      "preview": "media/slides-ideas/Awards.pptx.preview.png",
-     "previewHash": "00896b6fd8c501a66d038ae93ad5f5d66ed278ef"
+     "previewHash": "00896b6fd8c501a66d038ae93ad5f5d66ed278ef",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Awards.pptx.slides",
+      "count": 7,
+      "w": 1600,
+      "h": 900,
+      "key": "b5007a102058cbe85904605b421399197f2c78e7:1"
+     }
     },
     {
      "id": "51787cdee72a",
@@ -1141,7 +1148,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-LunarNewYear.pptx.preview.png",
-     "previewHash": "166b3bdd9dd205f5156825cdad038d0a0d7ff99f"
+     "previewHash": "166b3bdd9dd205f5156825cdad038d0a0d7ff99f",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Banner-LunarNewYear.pptx.slides",
+      "count": 6,
+      "w": 1600,
+      "h": 900,
+      "key": "0809c802bb473c1c132403a92407d2ffa862bbf4:1"
+     }
     },
     {
      "id": "a778482ac496",
@@ -1158,7 +1172,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Banner-Summer.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-Summer.pptx.preview.png",
-     "previewHash": "793220f1f5455cd662ab41c18968e675fad4f376"
+     "previewHash": "793220f1f5455cd662ab41c18968e675fad4f376",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Banner-Summer.pptx.slides",
+      "count": 3,
+      "w": 1600,
+      "h": 900,
+      "key": "bd0465c86aba69951377fe0df03af63235f0d721:1"
+     }
     },
     {
      "id": "d1166de9974c",
@@ -1175,7 +1196,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Banner-Xmas.pptx.preview.webp",
      "preview": "media/slides-ideas/Banner-Xmas.pptx.preview.png",
-     "previewHash": "e1689d5658ea7820069e78454ba9e295bab158c8"
+     "previewHash": "e1689d5658ea7820069e78454ba9e295bab158c8",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Banner-Xmas.pptx.slides",
+      "count": 4,
+      "w": 1600,
+      "h": 900,
+      "key": "e96d96589f63fbc1224ec3d6b909a67f2a5a49ca:1"
+     }
     },
     {
      "id": "a3d62702383c",
@@ -1192,7 +1220,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/BOS Quiz.pptx.preview.webp",
      "preview": "media/slides-ideas/BOS Quiz.pptx.preview.png",
-     "previewHash": "ca0d7818b052c1aa3f5b6a8dd9d2081f3ecb2618"
+     "previewHash": "ca0d7818b052c1aa3f5b6a8dd9d2081f3ecb2618",
+     "slides": {
+      "dir": "thumbs/slides-ideas/BOS Quiz.pptx.slides",
+      "count": 5,
+      "w": 1600,
+      "h": 900,
+      "key": "de5fdf377b1deea5f1d40330a0bd087fb76a5dfa:1"
+     }
     },
     {
      "id": "bf7e19791c48",
@@ -1209,7 +1244,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Mid-Autumn.pptx.preview.webp",
      "preview": "media/slides-ideas/Mid-Autumn.pptx.preview.png",
-     "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24"
+     "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Mid-Autumn.pptx.slides",
+      "count": 3,
+      "w": 1600,
+      "h": 900,
+      "key": "4e7e5eff2f02a9694d4d31ae0c40648073cb244c:1"
+     }
     },
     {
      "id": "8b71e0507d24",
@@ -1226,7 +1268,14 @@
      "h": 576,
      "thumb": "thumbs/slides-ideas/Other BOS Slides.pptx.preview.webp",
      "preview": "media/slides-ideas/Other BOS Slides.pptx.preview.png",
-     "previewHash": "89a42c6229fc7e150ccee491ec754228685a0653"
+     "previewHash": "89a42c6229fc7e150ccee491ec754228685a0653",
+     "slides": {
+      "dir": "thumbs/slides-ideas/Other BOS Slides.pptx.slides",
+      "count": 21,
+      "w": 1600,
+      "h": 900,
+      "key": "ab1473685f74263cdd21606574fccd04b1958419:1"
+     }
     }
    ],
    "pin": {

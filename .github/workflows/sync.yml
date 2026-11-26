@@ -45,6 +45,17 @@ jobs:
           ALLOW_MASS_DELETE: ${{ vars.ALLOW_MASS_DELETE }}
         run: python scripts/sync_drive.py
 
+      # Each slide deck gets a picture of every slide (scripts/render_slides.py).
+      # LibreOffice is big, so it is installed only when a new or changed deck needs drawing.
+      - name: Install LibreOffice (only when a deck needs its slides drawn)
+        run: |
+          if python scripts/build_manifest.py --needs-render; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq --no-install-recommends libreoffice-impress poppler-utils eot2ttf
+          else
+            echo "Every deck already has pictures of its slides."
+          fi
+
       - name: Build thumbnails + gallery list
         run: python scripts/build_manifest.py
 

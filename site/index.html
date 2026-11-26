@@ -82,6 +82,7 @@
   <!-- Full-screen viewer -->
   <dialog class="viewer" id="viewer" aria-labelledby="v-name">
     <div class="v-stage" id="v-stage"><img id="v-img" alt=""></div>
+    <div class="v-strip" id="v-strip" role="group" aria-label="Every slide in this deck" hidden></div>
     <button class="v-nav v-prev" id="v-prev" type="button" aria-label="Previous piece"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
     <button class="v-nav v-next" id="v-next" type="button" aria-label="Next piece"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
     <div class="v-bar">
@@ -96,7 +97,7 @@
         <a class="btn-go btn-sm" id="v-open" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg><span>Open in Google Slides</span></a>
       </div>
     </div>
-    <button class="v-close" id="v-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="v-close" id="v-close" type="button" aria-label="Close" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </dialog>
 
   <!-- ZIP progress -->

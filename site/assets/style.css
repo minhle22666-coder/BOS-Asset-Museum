@@ -293,6 +293,7 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
 .wall-group::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, color-mix(in srgb, var(--hue) 45%, transparent), transparent); }
 .wall-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px 12px; }
 [data-frame="wide"] .wall-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.wall-grid:has(.has-slides) { padding-top: 14px; row-gap: 30px; }
 [data-frame="wide"] .tile-face::after { font-size: 16px; }
 .tile { position: relative; --rx: 0deg; --ry: 0deg; --gx: 50%; --gy: 0%; perspective: 800px; min-width: 0; }
 .tile-face { position: relative; display: block; width: 100%; aspect-ratio: 1; padding: 0; border-radius: 14px; overflow: hidden; cursor: copy;
@@ -324,6 +325,40 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
   .tile-actions > * { width: 24px; height: 24px; background: rgba(6, 14, 52, 0.6); }
   .tile-actions { top: 4px; right: 4px; }
 }
+/* ---------------------------------------------------------------- slide decks: many slides, not one picture */
+/* "7 slides" chip, bottom-left of the cover */
+.pages-chip { position: absolute; left: 8px; bottom: 8px; z-index: 2; display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 3px 7px; border-radius: 999px; font-size: 11.5px; font-weight: 600; color: #fff; background: rgba(6, 12, 42, 0.78); border: 1px solid rgba(200, 225, 255, 0.3); box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.6); pointer-events: none; transition: opacity 0.2s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.pages-chip svg { width: 14px; height: 14px; stroke-width: 1.8; }
+/* two sheets peeking out behind the cover, like a stack of slides; they fan out on hover */
+.stack { position: absolute; left: 0; right: 0; top: 0; z-index: 0; aspect-ratio: 16 / 10; pointer-events: none; }
+.card > .stack { aspect-ratio: auto; height: 100%; }
+.stack::before, .stack::after { content: ""; position: absolute; inset: 0; border-radius: 14px; border: 1px solid rgba(220, 235, 255, 0.4); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.9); transition: transform 0.45s var(--spring); }
+.stack::before { background: linear-gradient(rgba(8, 16, 60, 0.3), rgba(8, 16, 60, 0.3)), var(--p2, rgba(70, 110, 220, 0.5)) center / cover; transform: translate(0, -7px) scale(0.93, 0.95); }
+.stack::after { background: linear-gradient(rgba(8, 16, 60, 0.55), rgba(8, 16, 60, 0.55)), var(--p3, rgba(50, 80, 180, 0.4)) center / cover; transform: translate(0, -13px) scale(0.86, 0.9); }
+.card > .stack::before, .card > .stack::after { border-radius: 20px; }
+.tile.has-slides .tile-face { z-index: 1; }
+.tile.hot > .stack::before { transform: translate(-4px, -17px) scale(0.93, 0.95) rotate(-2deg); }
+.tile.hot > .stack::after { transform: translate(6px, -27px) scale(0.86, 0.9) rotate(2.5deg); }
+.card.is-front > .stack::before { transform: translate(0, -12px) scale(0.94, 0.95); }
+.card.is-front > .stack::after { transform: translate(0, -22px) scale(0.87, 0.9); }
+/* hovering a deck flips through its slides: a "3 / 7" tag and one segment per slide */
+.scrub { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: grid; gap: 6px; padding: 22px 10px 8px; background: linear-gradient(transparent, rgba(4, 10, 38, 0.72)); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+.scrub-n { justify-self: end; font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
+.scrub-bar { display: flex; gap: 3px; }
+.scrub-bar i { flex: 1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.35); transition: background 0.15s; }
+.scrub-bar i.on { background: #fff; box-shadow: 0 0 8px var(--hue); }
+.flipping .scrub { opacity: 1; }
+.flipping .pages-chip { opacity: 0; }
+.tile.has-slides.hot .tile-face img, .card.has-slides .card-face.flipping img { transform: none; }
+.tile.has-slides .tile-face { cursor: zoom-in; }
+.tile.has-slides.hot .glare { opacity: 0.3; }
+.card.is-front.has-slides .card-face { cursor: zoom-in; }
+/* film strip under the deck's name */
+.tile-strip { display: flex; gap: 4px; margin-top: 7px; }
+.mini { position: relative; flex: 1 1 0; min-width: 0; max-width: 54px; aspect-ratio: 16 / 9; padding: 0; border-radius: 5px; overflow: hidden; border: 1px solid rgba(200, 225, 255, 0.22); background: rgba(10, 20, 70, 0.6); opacity: 0.78; transition: opacity 0.2s, transform 0.25s var(--spring), border-color 0.2s; }
+.mini img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mini:hover, .mini:focus-visible { opacity: 1; transform: translateY(-2px); border-color: var(--hue); }
+.mini.more b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff; background: rgba(6, 12, 42, 0.66); }
 .wall.enter .tile { animation: tile-in 0.8s cubic-bezier(0.2, 0.9, 0.25, 1.05) both; animation-delay: var(--d, 0ms); }
 @keyframes tile-in { from { opacity: 0; transform: translate3d(0, 60px, 0) rotateX(40deg) scale(0.82); } }
 
@@ -351,6 +386,16 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
 .v-prev { left: 28px; }
 .v-next { right: 28px; }
 .v-close { top: 22px; right: 22px; width: 46px; height: 46px; }
+/* every slide of the open deck, in a row above the info bar */
+.v-strip { position: absolute; left: 50%; bottom: 122px; transform: translateX(-50%); width: auto; max-width: min(900px, calc(100% - 32px)); display: flex; gap: 8px; padding: 8px; overflow-x: auto; border-radius: 16px; background: var(--glass); border: 1px solid var(--glass-line); scrollbar-width: none;
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); }
+.v-strip::-webkit-scrollbar { display: none; }
+.v-slide { position: relative; flex: none; width: 96px; aspect-ratio: 16 / 9; padding: 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(200, 225, 255, 0.22); background: rgba(10, 20, 70, 0.6); opacity: 0.62; transition: opacity 0.2s, transform 0.25s var(--spring), border-color 0.2s, box-shadow 0.2s; }
+.v-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-slide span { position: absolute; left: 4px; bottom: 3px; padding: 0 5px; border-radius: 6px; font-size: 10.5px; font-weight: 600; background: rgba(4, 10, 38, 0.75); }
+.v-slide:hover { opacity: 1; transform: translateY(-3px); }
+.v-slide[aria-current="true"] { opacity: 1; border-color: var(--hue); box-shadow: 0 0 0 1px var(--hue), 0 0 16px -2px var(--hue); }
+.viewer.has-strip .v-stage { bottom: 212px; }
 
 /* ================================================================ zip, toast */
 .zipper { width: min(420px, calc(100vw - 32px)); padding: 24px; border-radius: 22px; border: 1px solid var(--glass-line); background: rgba(10, 24, 86, 0.75); color: var(--ink); }
@@ -418,6 +463,11 @@ body:not(.ready) .guide-float { transform: translateY(80px) scale(0.8); opacity:
   .v-nav { top: auto; bottom: 190px; width: 44px; height: 44px; }
   .v-prev { left: 14px; }
   .v-next { right: 14px; }
+  .v-strip { bottom: 206px; padding: 6px; gap: 6px; }
+  .v-slide { width: 72px; }
+  .viewer.has-strip .v-stage { bottom: 270px; }
+  .viewer.has-strip .v-nav { bottom: 282px; }
+  .mini { max-width: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

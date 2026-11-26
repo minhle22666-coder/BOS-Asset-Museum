@@ -48,6 +48,7 @@
     expand: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></svg>',
     check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
     down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
+    pages: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3.5" width="13.5" height="10" rx="2"/><path d="M4 8v9.5a2 2 0 0 0 2 2h11"/></svg>',
     zip: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 12 4l7 4.5v8L12 21l-7-4.5z"/><path d="M5 8.5 12 13l7-4.5M12 13v8"/></svg>',
   };
 
@@ -66,10 +67,52 @@
   }
   // Slide decks ("deck") download as files; decks too big to host ("link") open in Google Slides.
   const isDeck = (it) => it.kind === "deck" || it.kind === "link";
+  // Decks that the robot could draw carry a picture of every slide: thumbs/<deck>.slides/{t,s,l}001.webp
+  const nSlides = (it) => (it && it.slides && it.slides.count) || 0;
+  const slideSrc = (it, i, size = "s") => url(`${it.slides.dir}/${size}${String(i + 1).padStart(3, "0")}.webp`);
   const meta = (it) => it.kind === "link" ? `${it.format} slide deck, too big to host here, opens in Google Slides`
-    : it.kind === "deck" ? `${it.format} slide deck, ${bytes(it.size)}`
+    : it.kind === "deck" ? [`${it.format} slide deck`, nSlides(it) ? plural(nSlides(it), "slide") : null, bytes(it.size)].filter(Boolean).join(", ")
     : [ext(it.file), it.w ? `${it.w} × ${it.h}` : null, bytes(it.size)].filter(Boolean).join(", ");
-  const badge = (it) => isDeck(it) ? `<span class="badge">${esc(it.format || "DECK")}</span>` : "";
+  const badge = (it) => !isDeck(it) ? "" : `<span class="badge">${esc(it.format || "DECK")}</span>`
+    + (nSlides(it) > 1 ? `<span class="pages-chip">${ICON.pages}${plural(nSlides(it), "slide")}</span>` : "");
+  // a stack of pages peeking out behind a deck, so it reads as "many slides", not one picture
+  // (the sheets behind are the deck's own 2nd and 3rd slides)
+  // (a full address: a url() inside a CSS variable is read relative to style.css, not to the page)
+  const cssUrl = (u) => `url('${new URL(u, document.baseURI).href.replace(/'/g, "%27")}')`;
+  const stack = (it) => nSlides(it) > 1 ? `<span class="stack" aria-hidden="true" style="--p2:${esc(cssUrl(slideSrc(it, 1, "t")))};--p3:${esc(cssUrl(slideSrc(it, Math.min(2, nSlides(it) - 1), "t")))}"></span>` : "";
+  // the flip-through bar shown while you hover a deck: "3 / 7" and one segment per slide
+  const scrubBar = (it) => nSlides(it) > 1 ? `<span class="scrub" aria-hidden="true"><span class="scrub-n"></span><span class="scrub-bar">${"<i></i>".repeat(nSlides(it))}</span></span>` : "";
+  // Hovering across a deck flips through its slides: the pointer's left-right position picks the slide.
+  function flipTo(face, it, i) {
+    const img = $("img", face), n = nSlides(it);
+    if (!img || n < 2) return;
+    if (i == null) { img.src = url(it.thumb); face.classList.remove("flipping"); face.dataset.slide = ""; return; }
+    i = clamp(i, 0, n - 1);
+    if (face.dataset.slide === String(i)) return;
+    face.dataset.slide = String(i);
+    face.classList.add("flipping");
+    img.src = slideSrc(it, i);
+    const label = $(".scrub-n", face); if (label) label.textContent = `${i + 1} / ${n}`;
+    $$(".scrub-bar i", face).forEach((b, k) => b.classList.toggle("on", k === i));
+  }
+  // a row of tiny slides under a deck's name; the last one says how many more there are
+  function filmStrip(it, i) {
+    const n = nSlides(it);
+    if (n < 2) return "";
+    const show = n > 6 ? 5 : n;
+    let html = "";
+    for (let k = 0; k < show; k++) html += `<button type="button" class="mini" data-slide-of="${i}" data-slide="${k}" aria-label="Slide ${k + 1} of ${esc(it.name)}" title="Slide ${k + 1}"><img src="${slideSrc(it, k, "t")}" alt="" loading="lazy" decoding="async"></button>`;
+    if (n > show) html += `<button type="button" class="mini more" data-slide-of="${i}" data-slide="${show}" aria-label="See all ${n} slides of ${esc(it.name)}" title="See all ${n} slides"><img src="${slideSrc(it, show, "t")}" alt="" loading="lazy" decoding="async"><b>+${n - show}</b></button>`;
+    return `<span class="tile-strip">${html}</span>`;
+  }
+  const preloaded = new Set();
+  function preloadSlides(it, size = "s") {
+    const key = `${it.id}:${size}`;
+    if (!nSlides(it) || preloaded.has(key)) return;
+    preloaded.add(key);
+    for (let i = 0; i < nSlides(it); i++) { const im = new Image(); im.decoding = "async"; im.src = slideSrc(it, i, size); }
+  }
+  const slideAt = (face, it, clientX) => { const r = face.getBoundingClientRect(); return Math.floor(clamp((clientX - r.left) / r.width, 0, 0.9999) * nSlides(it)); };
   // point a Copy / Download / Open trio at one item
   function wireActions(it, copyBtn, dlLink, openLink) {
     if (copyBtn) copyBtn.hidden = isDeck(it);
@@ -249,7 +292,8 @@
         b.className = "card";
         b.dataset.i = i;
         b.setAttribute("role", "option");
-        b.innerHTML = `<div class="card-face"><img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async" draggable="false">${badge(it)}</div>`;
+        if (nSlides(it) > 1) b.classList.add("has-slides");
+        b.innerHTML = `${stack(it)}<div class="card-face"><img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async" draggable="false">${badge(it)}${scrubBar(it)}</div>`;
         this.helix.appendChild(b);
         return b;
       });
@@ -259,10 +303,24 @@
         const c = e.target.closest(".card");
         if (!c) return;
         const i = +c.dataset.i;
-        if (i === this.index) pick(this.items[i], $(".card-face", c)); else this.go(i);
+        if (i === this.index) pick(this.items[i], $(".card-face", c), +($(".card-face", c).dataset.slide || 0)); else this.go(i);
       });
+      // hover the front deck to flip through its slides
+      if (fine) {
+        let flipping = null;
+        const stop = () => { if (flipping) { flipTo($(".card-face", flipping.card), flipping.it, null); flipping = null; } };
+        this.stage.addEventListener("pointermove", (e) => {
+          const c = e.target.closest(".card.is-front.has-slides");
+          if (!c || e.buttons) { stop(); return; }
+          const it = this.items[+c.dataset.i], face = $(".card-face", c);
+          if (!flipping || flipping.card !== c) { stop(); flipping = { card: c, it }; preloadSlides(it); this.touched = true; }
+          flipTo(face, it, slideAt(face, it, e.clientX));
+        });
+        this.stage.addEventListener("pointerleave", stop);
+        this.stopFlip = stop;
+      }
       this.stage.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(this.items[this.index], $(".card-face", this.cards[this.index])); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(this.items[this.index], $(".card-face", this.cards[this.index]), 0); }
       });
       this.measure();
       // open a few pieces in, so the spiral fans out on both sides
@@ -301,6 +359,7 @@
     }
     get index() { return clamp(Math.round(this.target), 0, this.items.length - 1); }
     go(i, instant) {
+      if (this.stopFlip) this.stopFlip();
       this.target = clamp(i, 0, this.items.length - 1);
       if (instant) this.pos = this.target;
       this.dirty = true;
@@ -312,7 +371,9 @@
       $(".oc-count", this.el).textContent = [it.collection && this.hall.groups.length > 1 ? pretty(it.collection) : null, `${pad(i + 1)} / ${pad(this.items.length)}`].filter(Boolean).join("  ·  ");
       $(".oc-name", this.el).textContent = it.name;
       $(".oc-meta", this.el).textContent = meta(it);
-      $(".oc-hint", this.el).textContent = it.kind === "link" ? "Too big to host, open it in Google Slides" : isDeck(it) ? "Click the slide to download it" : "Click the picture to copy it";
+      $(".oc-hint", this.el).textContent = it.kind === "link" ? "Too big to host, open it in Google Slides"
+        : nSlides(it) > 1 ? (fine ? `Move across the deck to flip through its ${nSlides(it)} slides, click to see them big` : `Tap the deck to see all ${nSlides(it)} slides`)
+        : isDeck(it) ? "Click the slide to download it" : "Click the picture to copy it";
       wireActions(it, null, $('[data-act="download"]', this.el), $('[data-act="open"]', this.el));
       this.cards.forEach((c, k) => c.setAttribute("aria-selected", String(k === i)));
       this.thumbs.forEach((t, k) => t.setAttribute("aria-selected", String(k === i)));
@@ -379,13 +440,15 @@
       this.el.innerHTML = hall.groups.map((g) => `
         ${g.label ? `<h3 class="wall-group"><b>${esc(g.label)}</b><span>${plural(g.items.length, "piece")}</span></h3>` : ""}
         <div class="wall-grid">${g.items.map((it) => { const i = n++; return `
-          <figure class="tile" data-i="${i}">
-            <button class="tile-face" type="button" data-pick="${i}" aria-label="${isDeck(it) ? "Download" : "Copy"} ${esc(it.name)}" title="${isDeck(it) ? "Click to download" : "Click to copy"}">
-              <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">${badge(it)}
+          <figure class="tile${nSlides(it) > 1 ? " has-slides" : ""}" data-i="${i}">
+            ${stack(it)}
+            <button class="tile-face" type="button" data-pick="${i}" aria-label="${nSlides(it) > 1 ? `See the ${nSlides(it)} slides of` : isDeck(it) ? "Download" : "Copy"} ${esc(it.name)}" title="${nSlides(it) > 1 ? "Move across to flip through the slides, click to see them big" : isDeck(it) ? "Click to download" : "Click to copy"}">
+              <img src="${url(it.thumb)}" alt="${esc(it.name)}" loading="lazy" decoding="async">${badge(it)}${scrubBar(it)}
               <span class="glare" aria-hidden="true"></span>
             </button>
             <figcaption>
               <span class="tile-name" title="${esc(it.name)}">${esc(it.name)}</span>
+              ${filmStrip(it, i)}
               <span class="tile-actions">
                 ${it.file ? `<a href="${url(it.file)}" download="${esc(fileName(it.file))}" aria-label="Download ${esc(it.name)}" title="Download${isDeck(it) ? " " + esc(it.format) : ""}">${ICON.down}</a>` : ""}
                 ${it.href ? `<a href="${esc(it.href)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.name)} in Google Slides" title="Open in Google Slides">${ICON.open}</a>` : ""}
@@ -395,17 +458,25 @@
           </figure>`; }).join("")}</div>`).join("");
       parent.appendChild(this.el);
       this.el.addEventListener("click", (e) => {
-        const o = e.target.closest("[data-open]"), p = e.target.closest("[data-pick]");
-        if (o) openViewer(hall, +o.dataset.open);
-        else if (p) pick(hall.items[+p.dataset.pick], p);
+        const o = e.target.closest("[data-open]"), p = e.target.closest("[data-pick]"), sl = e.target.closest("[data-slide-of]");
+        if (sl) openViewer(hall, +sl.dataset.slideOf, +sl.dataset.slide);
+        else if (o) openViewer(hall, +o.dataset.open);
+        else if (p) pick(hall.items[+p.dataset.pick], p, +(p.dataset.slide || 0));
       });
       if (fine) {
         let hot = null;
-        const cool = () => { if (hot) { hot.classList.remove("hot"); hot.style.cssText = ""; hot = null; } };
+        const itemOf = (t) => hall.items[+t.dataset.i];
+        const cool = () => { if (hot) { hot.classList.remove("hot"); hot.style.cssText = ""; flipTo($(".tile-face", hot), itemOf(hot), null); hot = null; } };
         this.el.addEventListener("pointermove", (e) => {
           const t = e.target.closest(".tile");
-          if (t !== hot) { cool(); if (t) { hot = t; t.classList.add("hot"); } }
+          if (t !== hot) { cool(); if (t) { hot = t; t.classList.add("hot"); preloadSlides(itemOf(t)); } }
           if (!t) return;
+          // decks: the pointer's position across the picture picks the slide; a film-strip picture shows itself
+          if (t.classList.contains("has-slides")) {
+            const it = itemOf(t), face = $(".tile-face", t), mini = e.target.closest("[data-slide]");
+            if (mini) flipTo(face, it, +mini.dataset.slide);
+            else if (e.target.closest(".tile-face")) flipTo(face, it, slideAt(face, it, e.clientX));
+          }
           const r = t.getBoundingClientRect();
           const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
           t.style.setProperty("--gx", `${px * 100}%`);
@@ -831,8 +902,9 @@
     el.classList.remove("done"); void el.offsetWidth; el.classList.add("done");
     clearTimeout(el._done); el._done = setTimeout(() => el.classList.remove("done"), 1300);
   }
-  async function pick(it, el) {
+  async function pick(it, el, slide = 0) {
     if (!it) return;
+    if (nSlides(it) > 1) { const h = halls.find((x) => x.items.includes(it)); if (h) { openViewer(h, h.items.indexOf(it), slide); return; } }
     if (isDeck(it)) { downloadItem(it); flash(el, "Downloading"); return; }
     if (await copyItem(it)) flash(el, "Copied");
   }
@@ -872,29 +944,59 @@
   }
 
   // ---------------------------------------------------------------- viewer
-  const V = { hall: null, i: 0 };
-  function openViewer(hall, i) {
-    V.hall = hall; V.i = i;
+  const V = { hall: null, i: 0, s: 0, strip: null };
+  function openViewer(hall, i, s = 0) {
+    V.hall = hall; V.i = i; V.s = s;
     showViewer();
     const v = $("#viewer");
     v.classList.remove("closing");
     if (!v.open) v.showModal();
   }
-  function showViewer() {
-    const items = V.hall.items, it = items[V.i];
+  function viewerImage(src, alt) {
     const img = $("#v-img");
+    if (img.getAttribute("src") === src) return;
     img.classList.remove("in"); void img.offsetWidth;
-    img.src = url(it.preview || it.file || it.thumb); img.alt = it.name;
+    img.src = src; img.alt = alt;
     img.classList.add("in");
+  }
+  function showViewer() {
+    const items = V.hall.items, it = items[V.i], n = nSlides(it);
+    V.s = clamp(V.s, 0, Math.max(0, n - 1));
+    viewerImage(n ? slideSrc(it, V.s, "l") : url(it.preview || it.file || it.thumb), n ? `${it.name}, slide ${V.s + 1}` : it.name);
     $("#v-stage").dataset.frame = V.hall.cat.frame;
     $("#v-where").textContent = V.hall.cat.title + (it.collection ? `, ${pretty(it.collection)}` : "");
     $("#v-name").textContent = it.name;
-    $("#v-meta").textContent = `${meta(it)}. ${V.i + 1} of ${items.length}`;
+    $("#v-meta").textContent = n > 1 ? `Slide ${V.s + 1} of ${n}. ${meta(it)}. Deck ${V.i + 1} of ${items.length}` : `${meta(it)}. ${V.i + 1} of ${items.length}`;
     wireActions(it, $("#v-copy"), $("#v-download"), $("#v-open"));
-    $("#v-prev").hidden = $("#v-next").hidden = items.length < 2;
-    if (V.hall.view === "orbit" && V.hall.orbit) V.hall.orbit.go(V.i);
+    $("#v-prev").hidden = $("#v-next").hidden = items.length < 2 && n < 2;
+    $("#v-prev").setAttribute("aria-label", n > 1 ? "Previous slide" : "Previous piece");
+    $("#v-next").setAttribute("aria-label", n > 1 ? "Next slide" : "Next piece");
+    // every slide of the deck in a strip: hover one to peek, click to stay on it
+    const strip = $("#v-strip");
+    $("#viewer").classList.toggle("has-strip", n > 1);
+    strip.hidden = n < 2;
+    if (n > 1) {
+      if (V.strip !== it) {
+        V.strip = it;
+        strip.innerHTML = Array.from({ length: n }, (_, k) => `<button type="button" class="v-slide" data-s="${k}" aria-label="Slide ${k + 1}"><img src="${slideSrc(it, k, "t")}" alt="" decoding="async"><span>${k + 1}</span></button>`).join("");
+      }
+      $$(".v-slide", strip).forEach((b, k) => b.setAttribute("aria-current", String(k === V.s)));
+      const cur = $$(".v-slide", strip)[V.s];
+      if (cur) strip.scrollTo({ left: cur.offsetLeft - (strip.clientWidth - cur.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+      // get the neighbours ready, so stepping through feels instant
+      [V.s - 1, V.s + 1].filter((k) => k >= 0 && k < n).forEach((k) => { new Image().src = slideSrc(it, k, "l"); });
+    } else V.strip = null;
+    if (V.hall.view === "orbit" && V.hall.orbit && V.hall.orbit.index !== V.i) V.hall.orbit.go(V.i);
   }
-  function stepViewer(d) { const n = V.hall.items.length; V.i = (V.i + d + n) % n; showViewer(); }
+  // arrows walk through the slides of a deck first, then on to the next piece
+  function stepViewer(d) {
+    const items = V.hall.items, n = nSlides(items[V.i]);
+    if (n > 1 && V.s + d >= 0 && V.s + d < n) { V.s += d; showViewer(); return; }
+    if (items.length < 2) return;
+    V.i = (V.i + d + items.length) % items.length;
+    V.s = d < 0 ? Math.max(0, nSlides(items[V.i]) - 1) : 0;
+    showViewer();
+  }
   function closeViewer() {
     const v = $("#viewer");
     if (!v.open) return;
@@ -1054,6 +1156,15 @@
     $("#v-next").onclick = () => stepViewer(1);
     $("#v-close").onclick = closeViewer;
     $("#v-copy").onclick = () => copyItem(V.hall.items[V.i]);
+    const vStrip = $("#v-strip");
+    vStrip.addEventListener("click", (e) => { const b = e.target.closest(".v-slide"); if (b) { V.s = +b.dataset.s; showViewer(); } });
+    if (fine) {
+      vStrip.addEventListener("pointerover", (e) => {
+        const b = e.target.closest(".v-slide"), it = V.hall && V.hall.items[V.i];
+        if (b && it) viewerImage(slideSrc(it, +b.dataset.s, "l"), `${it.name}, slide ${+b.dataset.s + 1}`);
+      });
+      vStrip.addEventListener("pointerleave", () => { const it = V.hall && V.hall.items[V.i]; if (nSlides(it)) viewerImage(slideSrc(it, V.s, "l"), `${it.name}, slide ${V.s + 1}`); });
+    }
     $("#viewer").addEventListener("click", (e) => { if (e.target === e.currentTarget || e.target.id === "v-stage") closeViewer(); });
     $("#viewer").addEventListener("cancel", (e) => { e.preventDefault(); closeViewer(); });
     $("#z-cancel").onclick = () => { abortZip && abortZip.abort(); $("#zipper").close(); toast("ZIP cancelled."); };

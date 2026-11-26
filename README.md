@@ -2,7 +2,7 @@
 
 Website nội bộ chứa toàn bộ logo, mascot, hình nền và vật liệu mini game của team BOS.
 **Bấm vào ảnh là copy** (dán thẳng vào Google Slides / PowerPoint). Muốn tải file thì bấm icon mũi tên tải xuống, muốn xem to thì bấm icon phóng to. Mỗi sảnh có nút tải cả sảnh dạng ZIP, góc phải có nút tải tất cả.
-Sảnh có thư mục con (ví dụ Avatar & Logo) hiện tất cả trên cùng một trang, mỗi thư mục con một tiêu đề riêng. File slide hiện ảnh bìa, bấm vào là tải file PowerPoint.
+Sảnh có thư mục con (ví dụ Avatar & Logo) hiện tất cả trên cùng một trang, mỗi thư mục con một tiêu đề riêng. File slide hiện ảnh bìa kèm số trang ("7 slides") và một dải ảnh nhỏ các slide bên dưới. Rê chuột ngang qua ảnh bìa để lướt từng slide, bấm vào là mở xem to từng slide (mũi tên trái/phải để chuyển). Muốn tải file PowerPoint thì bấm icon mũi tên tải xuống, hoặc nút **Download PPTX** trong khung xem to.
 
 ---
 
@@ -35,6 +35,7 @@ Robot có "phanh an toàn": không đọc được Drive, hoặc Drive bỗng tr
 | `site/` | Toàn bộ website. Cloudflare chỉ đăng thư mục này. |
 | `site/media/<sảnh>/` | Ảnh gốc (robot tự chép từ Drive). |
 | `site/thumbs/`, `site/data/manifest.json` | Ảnh thu nhỏ và danh sách ảnh (robot tự tạo, đừng sửa tay). |
+| `site/thumbs/<sảnh>/<file>.pptx.slides/` | Ảnh từng slide của mỗi file PowerPoint (robot tự vẽ bằng LibreOffice, dùng đúng font nhúng trong file). |
 | `worker/index.js` | Máy chủ nhỏ phía sau nút Refresh. |
 | `wrangler.jsonc` | Cấu hình Cloudflare (đăng thư mục `site`, bật nút Refresh). |
 | `scripts/` | Code của robot. `categories.json` quy định tên và thứ tự các sảnh. |
