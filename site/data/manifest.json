@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T06:11:55+00:00",
+ "generatedAt": "2026-11-26T06:18:34+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -1094,8 +1094,8 @@
    "title": "Slide Ideas for BOS",
    "description": "Ready-made BOS slide decks. Edit them in Canva, or download any deck as PowerPoint.",
    "frame": "wide",
-   "count": 6,
-   "bytes": 91571993,
+   "count": 7,
+   "bytes": 103328408,
    "items": [
     {
      "id": "6c5d753bdace",
@@ -1198,6 +1198,23 @@
      "thumb": "thumbs/slides-ideas/Mid-Autumn.pptx.preview.webp",
      "preview": "media/slides-ideas/Mid-Autumn.pptx.preview.png",
      "previewHash": "d0c0e988418fb35ac27925cb04622051445b7c24"
+    },
+    {
+     "id": "8b71e0507d24",
+     "name": "Other BOS Slides",
+     "kind": "deck",
+     "format": "PPTX",
+     "file": "media/slides-ideas/Other BOS Slides.pptx",
+     "collection": "",
+     "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     "size": 11756415,
+     "hash": "ab1473685f74263cdd21606574fccd04b1958419",
+     "src": "media/slides-ideas/Other BOS Slides.pptx",
+     "w": 1024,
+     "h": 576,
+     "thumb": "thumbs/slides-ideas/Other BOS Slides.pptx.preview.webp",
+     "preview": "media/slides-ideas/Other BOS Slides.pptx.preview.png",
+     "previewHash": "89a42c6229fc7e150ccee491ec754228685a0653"
     }
    ],
    "pin": {
