@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-26T05:15:17+00:00",
+ "generatedAt": "2026-11-26T06:11:55+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
    "title": "Avatar & Logo",
    "description": "Logos for KMR and BOS, plus the mascot avatars for Zalo.",
    "frame": "square",
-   "count": 27,
-   "bytes": 22724503,
+   "count": 28,
+   "bytes": 22888796,
    "items": [
     {
      "id": "9957535a53f8",
@@ -92,6 +92,18 @@
      "w": 1077,
      "h": 1077,
      "thumb": "thumbs/logo-mascot/Logo KMR & BOS/green-logo-kamereo.png.webp"
+    },
+    {
+     "id": "b7618ffd4ae3",
+     "name": "KMR x BOS",
+     "file": "media/logo-mascot/Logo KMR & BOS/KMR x BOS.png",
+     "collection": "Logo KMR & BOS",
+     "mime": "image/png",
+     "size": 164293,
+     "hash": "3ee91e88f72f684d5353032984820d9e25332446",
+     "w": 1096,
+     "h": 375,
+     "thumb": "thumbs/logo-mascot/Logo KMR & BOS/KMR x BOS.png.webp"
     },
     {
      "id": "15dbad846263",
