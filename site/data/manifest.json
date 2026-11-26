@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T07:57:08+00:00",
+ "generatedAt": "2026-11-26T08:07:36+00:00",
  "categories": [
   {
    "slug": "logo-mascot",
@@ -1575,8 +1575,8 @@
    "title": "Desktop Background",
    "description": "Wallpapers for laptops, monitors and meeting-room screens.",
    "frame": "wide",
-   "count": 12,
-   "bytes": 32612587,
+   "count": 13,
+   "bytes": 36582919,
    "items": [
     {
      "id": "1a2f29547785",
@@ -1625,6 +1625,18 @@
      "w": 1536,
      "h": 864,
      "thumb": "thumbs/desktop-background/Mid-Autumn.png.webp"
+    },
+    {
+     "id": "7207d428391a",
+     "name": "Mid-Autumn_ver2",
+     "file": "media/desktop-background/Mid-Autumn_ver2.png",
+     "collection": "",
+     "mime": "image/png",
+     "size": 3970332,
+     "hash": "9b4340d51407ae556289feda616d5e80981bdb66",
+     "w": 2880,
+     "h": 1620,
+     "thumb": "thumbs/desktop-background/Mid-Autumn_ver2.png.webp"
     },
     {
      "id": "83fae80e333e",
